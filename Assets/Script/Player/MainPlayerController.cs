@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class MainPlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    GameObject cameraHolderSlot;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        Camera.main.transform.SetParent(cameraHolderSlot.transform);
+        Camera.main.transform.localPosition = Vector3.zero;
     }
 }
