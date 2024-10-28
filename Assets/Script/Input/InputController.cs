@@ -122,8 +122,9 @@ public class InputController : MonoBehaviour
         return keyCodeCommand != null;
     }
 }
-public abstract class UseInputController
+public abstract class UseInputController : MonoBehaviour
 {
     public abstract void ReadCommand(Command cmd);
     public abstract void UpdateController(double deltaTime);
+    public void LateUpdateController(double deltaTime) { }
 }

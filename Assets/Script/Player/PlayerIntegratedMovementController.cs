@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainPlayerController : UseInputController
+public class PlayerIntegratedMovementController : UseInputController
 {
+    /// <summary>
+    /// TODO: 
+    /// 1. Integrate player rotation on mouse move (using mouse axis)
+    /// 2. Integrate player position on movement axies (using GetAxis vert and hori)
+    /// 3. Create keybindings struct/scriptableObj to allow input data to come from 1 central place
+    /// </summary>
     [SerializeField]
-    GameObject cameraHolderSlot;
-    [Header("Movement")]
-    [SerializeField]
-    PlayerIntegratedMovementController integratedMovementController;
+    GameObject orientation;
     public override void ReadCommand(Command cmd)
     {
         if (cmd as MouseAxisCommand != null)
@@ -33,9 +36,4 @@ public class MainPlayerController : UseInputController
     {
     }
 
-    private void Start()
-    {
-        Camera.main.transform.SetParent(cameraHolderSlot.transform);
-        Camera.main.transform.localPosition = Vector3.zero;
-    }
 }
