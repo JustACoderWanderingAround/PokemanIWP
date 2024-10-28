@@ -2,10 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainPlayerController : MonoBehaviour
+public class MainPlayerController : UseInputController
 {
     [SerializeField]
     GameObject cameraHolderSlot;
+
+    public override void ReadCommand(Command cmd)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void UpdateController(double deltaTime)
+    {
+        throw new System.NotImplementedException();
+    }
 
     private void Start()
     {
