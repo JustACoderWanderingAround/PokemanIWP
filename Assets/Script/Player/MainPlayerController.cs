@@ -9,11 +9,24 @@ public class MainPlayerController : UseInputController
     [Header("Movement")]
     [SerializeField]
     PlayerIntegratedMovementController integratedMovementController;
+    
+    // Mouse rotation related vars
+    private float horizontalOrientation;
+    private float verticalOrientation;
+    private float mouseX, mouseY;
+    bool isRunning = false;
+    private Vector3 direction;
+    private Vector2 orientation;
     public override void ReadCommand(Command cmd)
     {
         if (cmd as MouseAxisCommand != null)
         {
-
+            MouseAxisCommand mac = cmd as MouseAxisCommand;
+            mouseX = mac.MouseX;
+            mouseY = mac.MouseY;
+            verticalOrientation -= mouseY;
+            verticalOrientation = Mathf.Clamp(verticalOrientation, -90, 90);
+            horizontalOrientation += mouseX;
         }
         else if (cmd as MovementAxisCommand != null)
         {
@@ -27,10 +40,12 @@ public class MainPlayerController : UseInputController
         {
 
         }
+
     }
 
     public override void UpdateController(double deltaTime)
     {
+        // todo: update direction of mainPlayer;
     }
 
     private void Start()

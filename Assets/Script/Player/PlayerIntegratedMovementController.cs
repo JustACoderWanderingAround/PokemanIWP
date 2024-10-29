@@ -10,15 +10,20 @@ public class PlayerIntegratedMovementController : UseInputController
     /// 2. Integrate player position on movement axies (using GetAxis vert and hori)
     /// 3. Create keybindings struct/scriptableObj to allow input data to come from 1 central place
     /// </summary>
+    
+    // 
     [SerializeField]
     GameObject orientation;
+
+    // private script only variables
+    private Vector3 centreOfMass;
+    bool canJump = true;
+    bool grounded;
+    public bool Grounded { get { return grounded; } set { grounded = value; } }
+
     public override void ReadCommand(Command cmd)
     {
-        if (cmd as MouseAxisCommand != null)
-        {
-
-        }
-        else if (cmd as MovementAxisCommand != null)
+        if (cmd as MovementAxisCommand != null)
         {
 
         }
