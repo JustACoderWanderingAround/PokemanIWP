@@ -48,15 +48,15 @@ public class MainPlayerController : UseInputController
 
     public override void UpdateController(double deltaTime)
     {
+        Vector2 headAngle = new Vector2(verticalOrientation, horizontalOrientation);
         // todo: update direction of mainPlayer;
         integratedMovementController.RotatePlayer(horizontalOrientation);
         //RotateHead(verticalOrientation);
-        //mainPlayerCameraController.RotateHeadXAxis(verticalOrientation);
+        mainPlayerCameraController.RotateHeadXAxis(verticalOrientation);
     }
-    public void RotateHead(float headAngle)
+    public void RotateHead(Vector2 headAngle)
     {
-        Vector3 newRot = new Vector3(headAngle, 0, 0);
-        cameraHolderSlot.transform.rotation = Quaternion.Euler(newRot);
+        cameraHolderSlot.transform.rotation = Quaternion.Euler(headAngle);
     }
     private void Start()
     {
