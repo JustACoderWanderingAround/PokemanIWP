@@ -11,7 +11,7 @@ public class PlayerIntegratedMovementController : UseInputController
     /// 3. Create keybindings struct/scriptableObj to allow input data to come from 1 central place
     /// </summary>
     
-    // 
+    // I forgot what this is
     [SerializeField]
     GameObject orientation;
 
@@ -40,5 +40,9 @@ public class PlayerIntegratedMovementController : UseInputController
     public override void UpdateController(double deltaTime)
     {
     }
-
+    public void RotatePlayer(float rotAngle)
+    {
+        Vector3 newRot = new Vector3(0, rotAngle, 0);
+        transform.rotation = Quaternion.Euler(newRot);
+    }
 }

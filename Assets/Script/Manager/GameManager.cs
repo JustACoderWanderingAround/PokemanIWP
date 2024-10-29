@@ -6,38 +6,44 @@ public class GameManager : MonoBehaviour
 {
     [Header("Player")]
     [SerializeField] private InputController inputController;
-    [SerializeField] private MainPlayerController mainController;
     public List<UseInputController> inputControllerList = new List<UseInputController>();
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     MovementAxisCommand move = new MovementAxisCommand(0, 0, 0);
     MouseAxisCommand mouseAxisCommand = new MouseAxisCommand(0, 0, 0);
     MouseButtonCommand mouseButtonCommand = new MouseButtonCommand(0, 0, false);
     KeyCodeCommand keyCodeCommand = new KeyCodeCommand(0, KeyCode.None, false, false);
+    // Start is called before the first frame update
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        foreach (var controller in inputControllerList)
+        if (inputController.TryGetMovementAxisInput(out move))
         {
-            if (inputController.TryGetMovementAxisInput(out move))
+            foreach (var controller in inputControllerList)
             {
                 controller.ReadCommand(move);
             }
-            if (inputController.TryGetMouseAxisInput(out mouseAxisCommand))
+        }
+        if (inputController.TryGetMouseAxisInput(out mouseAxisCommand))
+        {
+            foreach (var controller in inputControllerList)
             {
                 controller.ReadCommand(mouseAxisCommand);
             }
-            if (inputController.TryGetMouseButton(out mouseButtonCommand))
+        }
+        if (inputController.TryGetMouseButton(out mouseButtonCommand))
+        {
+            foreach (var controller in inputControllerList)
             {
                 controller.ReadCommand(mouseButtonCommand);
             }
         }
-
+        foreach (var controller in inputControllerList)
+        {
+            controller.UpdateController(Time.deltaTime);
+        }
     }
 }
