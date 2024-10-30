@@ -17,8 +17,8 @@ public class MainPlayerCameraController : MonoBehaviour
     }
     public void RotateHeadXAxis(float rotAngle)
     {
-        Vector3 newRot = new Vector3(rotAngle, transform.parent.rotation.y, 0);
-        transform.parent.rotation = Quaternion.Euler(newRot);
+        Vector3 newRot = new Vector3(rotAngle, 0, 0);
+        transform.parent.localRotation = Quaternion.Euler(newRot);
         //transform.rotation = Quaternion.Euler(Vector3.zero);
     }
 }

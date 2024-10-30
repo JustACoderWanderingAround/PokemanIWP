@@ -53,11 +53,8 @@ public class MainPlayerController : UseInputController
         // todo: update direction of mainPlayer;
         integratedMovementController.UpdateController(deltaTime);
         integratedMovementController.RotatePlayer(horizontalOrientation);
+        mainPlayerCameraController.RotateHeadXAxis(verticalOrientation);
         
-    }
-    public void RotateHead(Vector2 headAngle)
-    {
-        cameraHolderSlot.transform.rotation = Quaternion.Euler(headAngle);
     }
     private void Start()
     {
