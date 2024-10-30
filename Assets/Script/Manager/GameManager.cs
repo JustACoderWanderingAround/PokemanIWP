@@ -7,10 +7,12 @@ public class GameManager : MonoBehaviour
     [Header("Player")]
     [SerializeField] private InputController inputController;
     public List<UseInputController> inputControllerList = new List<UseInputController>();
+    public List<KeyCode> playerKeybindings;
     MovementAxisCommand move = new MovementAxisCommand(0, 0, 0);
     MouseAxisCommand mouseAxisCommand = new MouseAxisCommand(0, 0, 0);
     MouseButtonCommand mouseButtonCommand = new MouseButtonCommand(0, 0, false);
     KeyCodeCommand keyCodeCommand = new KeyCodeCommand(0, KeyCode.None, false, false);
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,15 @@ public class GameManager : MonoBehaviour
             foreach (var controller in inputControllerList)
             {
                 controller.ReadCommand(mouseButtonCommand);
+            }
+        }
+        foreach (KeyCode key in playerKeybindings) {
+            if (inputController.TryGetKeycodeInput(key, out keyCodeCommand))
+            {
+                foreach (var controller in inputControllerList)
+                {
+                    controller.ReadCommand(keyCodeCommand);
+                }
             }
         }
         foreach (var controller in inputControllerList)

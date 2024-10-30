@@ -261,6 +261,7 @@ MonoBehaviour:
   inputController: {fileID: 277405063}
   inputControllerList:
   - {fileID: 2068318895}
+  playerKeybindings: 7100000065000000
 --- !u!4 &277405062
 Transform:
   m_ObjectHideFlags: 0
@@ -1304,6 +1305,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486905261361842226, guid: 7dbaaa7be87eec54295fa5acca510074,
+        type: 3}
+      propertyPath: toggleToLean
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3119690338409696718, guid: 7dbaaa7be87eec54295fa5acca510074,
         type: 3}

@@ -30,6 +30,8 @@ public class PlayerIntegratedMovementController : UseInputController
     float crouchSpeed;
     [SerializeField]
     float crawlSpeed;
+    [SerializeField]
+    bool toggleToLean = true;
 
     [Header("Physics related objects")]
     [SerializeField]
@@ -73,7 +75,7 @@ public class PlayerIntegratedMovementController : UseInputController
         else if (cmd as KeyCodeCommand != null)
         {
             KeyCodeCommand kcc = cmd as KeyCodeCommand;
-            if (kcc.KeyDown)
+            if ((toggleToLean && kcc.KeyDown))
             {
                 if (kcc.KeycodeNumber == leanLCode)
                 {
@@ -81,7 +83,7 @@ public class PlayerIntegratedMovementController : UseInputController
                     {
                         leanState = LeanState.LeanStateNeutral;
                     }
-                    else if (leanState == LeanState.LeanStateNeutral)
+                    else if (leanState != LeanState.LeanStateL)
                     {
                         leanState = LeanState.LeanStateL;
                     }
@@ -92,13 +94,32 @@ public class PlayerIntegratedMovementController : UseInputController
                     {
                         leanState = LeanState.LeanStateNeutral;
                     }
-                    else if (leanState == LeanState.LeanStateNeutral)
+                    else if (leanState != LeanState.LeanStateR)
                     {
                         leanState = LeanState.LeanStateR;
                     }
                 }
-                leanController.LeanPlayer(leanState);
+
             }
+            else if (!toggleToLean)
+            {
+                if (kcc.KeyHeldDown)
+                {
+                    if (kcc.KeycodeNumber == leanLCode)
+                    {
+                        leanState = LeanState.LeanStateL;
+                    }
+                    else if (kcc.KeycodeNumber == leanRCode)
+                    {
+                        leanState = LeanState.LeanStateR;
+                    }
+                }
+                else
+                {
+                    leanState = LeanState.LeanStateNeutral;
+                }
+            }
+            leanController.LeanPlayer(leanState);
         }
         else if (cmd as MouseButtonCommand != null)
         {
