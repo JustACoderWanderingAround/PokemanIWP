@@ -19,6 +19,7 @@ public class MainPlayerController : UseInputController
     bool isRunning = false;
     private Vector3 direction;
     private Vector2 orientation;
+
     public override void ReadCommand(Command cmd)
     {
         if (cmd as MouseAxisCommand != null)
@@ -33,17 +34,17 @@ public class MainPlayerController : UseInputController
         }
         else if (cmd as MovementAxisCommand != null)
         {
-            integratedMovementController.ReadCommand(cmd);
+           
         }
         else if (cmd as KeyCodeCommand != null)
         {
-
+            
         }
         else if (cmd as MouseButtonCommand != null)
         {
 
         }
-
+        integratedMovementController.ReadCommand(cmd);
     }
 
     public override void UpdateController(double deltaTime)
@@ -52,8 +53,7 @@ public class MainPlayerController : UseInputController
         // todo: update direction of mainPlayer;
         integratedMovementController.UpdateController(deltaTime);
         integratedMovementController.RotatePlayer(horizontalOrientation);
-        //RotateHead(verticalOrientation);
-        //mainPlayerCameraController.RotateHeadXAxis(verticalOrientation);
+        
     }
     public void RotateHead(Vector2 headAngle)
     {
@@ -62,6 +62,6 @@ public class MainPlayerController : UseInputController
     private void Start()
     {
         Camera.main.transform.SetParent(cameraHolderSlot.transform);
-        Camera.main.transform.localPosition = Vector3.zero;
+        Camera.main.transform.localPosition = new Vector3(0, 1.0f, 0);
     }
 }
