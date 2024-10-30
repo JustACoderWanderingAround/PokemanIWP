@@ -261,7 +261,6 @@ MonoBehaviour:
   inputController: {fileID: 277405063}
   inputControllerList:
   - {fileID: 2068318895}
-  - {fileID: 2068318895}
 --- !u!4 &277405062
 Transform:
   m_ObjectHideFlags: 0
@@ -1406,6 +1405,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orientation: {fileID: 0}
+  currentMoveSpeed: 2
+  standingPlayerHeight: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

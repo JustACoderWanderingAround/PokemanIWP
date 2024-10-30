@@ -33,7 +33,7 @@ public class MainPlayerController : UseInputController
         }
         else if (cmd as MovementAxisCommand != null)
         {
-
+            integratedMovementController.ReadCommand(cmd);
         }
         else if (cmd as KeyCodeCommand != null)
         {
@@ -50,9 +50,10 @@ public class MainPlayerController : UseInputController
     {
         Vector2 headAngle = new Vector2(verticalOrientation, horizontalOrientation);
         // todo: update direction of mainPlayer;
+        integratedMovementController.UpdateController(deltaTime);
         integratedMovementController.RotatePlayer(horizontalOrientation);
         //RotateHead(verticalOrientation);
-        mainPlayerCameraController.RotateHeadXAxis(verticalOrientation);
+        //mainPlayerCameraController.RotateHeadXAxis(verticalOrientation);
     }
     public void RotateHead(Vector2 headAngle)
     {
