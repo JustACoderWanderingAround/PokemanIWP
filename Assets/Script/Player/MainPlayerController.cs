@@ -11,6 +11,8 @@ public class MainPlayerController : UseInputController
     PlayerIntegratedMovementController integratedMovementController;
     [SerializeField]
     MainPlayerCameraController mainPlayerCameraController;
+    [SerializeField]
+    PlayerHandController playerHandController;
 
     // Mouse rotation related vars
     private float horizontalOrientation;
@@ -42,7 +44,8 @@ public class MainPlayerController : UseInputController
         }
         else if (cmd as MouseButtonCommand != null)
         {
-
+            // TODO: Controller for items in hands
+            playerHandController.ReadCommand(cmd);
         }
         integratedMovementController.ReadCommand(cmd);
     }
@@ -59,6 +62,6 @@ public class MainPlayerController : UseInputController
     private void Start()
     {
         Camera.main.transform.SetParent(cameraHolderSlot.transform);
-        Camera.main.transform.localPosition = new Vector3(0, 1.0f, 0);
+        Camera.main.transform.localPosition = Vector3.zero;
     }
 }

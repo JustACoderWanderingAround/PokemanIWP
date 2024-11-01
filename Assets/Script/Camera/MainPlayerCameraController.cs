@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class MainPlayerCameraController : MonoBehaviour
 {
+    /// <summary>
+    /// HANDLES:
+    /// HEAD ROTATION
+    /// CAMERA SHAKE
+    /// FOV CHANGE IF NECESSARY
+    ///
+    /// </summary>
     // Start is called before the first frame update
     void Start()
     {
