@@ -27,6 +27,8 @@ public class PlayerIntegratedMovementController : UseInputController
     [SerializeField]
     float runningSpeed;
     [SerializeField]
+    float defaultSpeed = 2.0f;
+    [SerializeField]
     float crouchSpeed;
     [SerializeField]
     float crawlSpeed;
@@ -163,5 +165,17 @@ public class PlayerIntegratedMovementController : UseInputController
     {
         //leanSlot.transform.rotation = Quaternion.Euler(new Vector3(0, 0, t)
         targetLeanAngle = leanAngle;
+    }
+    public void SetMovementState(MainPlayerController.MovementState newState)
+    {
+        switch (newState)
+        {
+            case MainPlayerController.MovementState.Walk:
+                currentMoveSpeed = defaultSpeed;
+                break;
+            case MainPlayerController.MovementState.Run:
+                currentMoveSpeed = runningSpeed;
+                break;
+        }
     }
 }

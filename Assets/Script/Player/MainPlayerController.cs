@@ -21,7 +21,14 @@ public class MainPlayerController : UseInputController
     bool isRunning = false;
     private Vector3 direction;
     private Vector2 orientation;
+    public KeyCode runKey = KeyCode.LeftShift;
 
+    public enum MovementState
+    {
+        Walk,
+        Run
+    }
+    MovementState moveState = MovementState.Walk;
     public override void ReadCommand(Command cmd)
     {
         if (cmd as MouseAxisCommand != null)
@@ -32,7 +39,7 @@ public class MainPlayerController : UseInputController
             verticalOrientation -= mouseY;
             verticalOrientation = Mathf.Clamp(verticalOrientation, -90, 90);
             horizontalOrientation += mouseX;
-            Debug.Log("Orientation: \nX: " + horizontalOrientation + "\nY:" + verticalOrientation);
+            //Debug.Log("Orientation: \nX: " + horizontalOrientation + "\nY:" + verticalOrientation);
         }
         else if (cmd as MovementAxisCommand != null)
         {
@@ -40,7 +47,21 @@ public class MainPlayerController : UseInputController
         }
         else if (cmd as KeyCodeCommand != null)
         {
-            
+            KeyCodeCommand kcc = cmd as KeyCodeCommand;
+            if (kcc.KeycodeNumber == runKey)
+            {
+                if (kcc.KeyHeldDown)
+                {
+                    Debug.Log("Run");
+                    moveState = MovementState.Run;
+                }
+                else if (kcc.KeyDown == false)
+                {
+                    Debug.Log("Walk");
+                    moveState = MovementState.Walk;
+                }
+                integratedMovementController.SetMovementState(moveState);
+            }
         }
         else if (cmd as MouseButtonCommand != null)
         {

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 745146257166661814}
   - component: {fileID: 1486905261361842226}
   - component: {fileID: 8626251992171839217}
+  - component: {fileID: 4804409122025644012}
+  - component: {fileID: 3252378079614052428}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -50,6 +52,8 @@ MonoBehaviour:
   cameraHolderSlot: {fileID: 5077699156653619655}
   integratedMovementController: {fileID: 1486905261361842226}
   mainPlayerCameraController: {fileID: 0}
+  playerHandController: {fileID: 3252378079614052428}
+  runKey: 304
 --- !u!114 &1486905261361842226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,7 +69,8 @@ MonoBehaviour:
   currentMoveSpeed: 2
   standingPlayerHeight: 1
   maxLeanAngle: 15
-  runningSpeed: 0
+  runningSpeed: 5
+  defaultSpeed: 2
   crouchSpeed: 0
   crawlSpeed: 0
   toggleToLean: 1
@@ -86,6 +91,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4792808744055028388}
+--- !u!54 &4804409122025644012
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428230403955533872}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
+--- !u!114 &3252378079614052428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428230403955533872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38c94b25552728c4a996469c693b6aa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftHandSlot: {fileID: 3409699169559691161}
+  rightHandSlot: {fileID: 3366595572899280417}
 --- !u!1 &2507209859406098564
 GameObject:
   m_ObjectHideFlags: 0
