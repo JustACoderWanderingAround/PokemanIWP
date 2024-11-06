@@ -59,7 +59,7 @@ public class SimpleGroundEnemy : DamagableEntity
                 if (agent.remainingDistance <= agent.stoppingDistance) //done with path
                 {
                     Vector3 point;
-                    if (movementController.RandomPoint(transform.position, Random.Range(0, nextTargetMaxRange), out point)) //pass in our centre point and radius of area
+                    if (movementController.RandomPoint(transform.position, Random.Range(nextTargetMaxRange / 2, nextTargetMaxRange), out point)) //pass in our centre point and radius of area
                     {
                         ChangeState(EnemyState.STATE_IDLE);
                         nextTarget = point;
