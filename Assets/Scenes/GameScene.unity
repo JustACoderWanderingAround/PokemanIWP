@@ -458,6 +458,12 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!1 &564671142 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1428230403955533872, guid: 7dbaaa7be87eec54295fa5acca510074,
+    type: 3}
+  m_PrefabInstance: {fileID: 2068318894}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &612350546 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3956056507582781333, guid: ad22f9fc86af0bd40b1129283fd02988,
@@ -576,7 +582,7 @@ Transform:
   m_GameObject: {fileID: 1615486982}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: 0}
+  m_LocalPosition: {x: -4.79, y: 2.08, z: 0}
   m_LocalScale: {x: 0.1, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -700,7 +706,7 @@ PrefabInstance:
     - target: {fileID: 3119690338409696718, guid: 7dbaaa7be87eec54295fa5acca510074,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.93
+      value: -10.02
       objectReference: {fileID: 0}
     - target: {fileID: 3119690338409696718, guid: 7dbaaa7be87eec54295fa5acca510074,
         type: 3}
@@ -785,7 +791,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1428230403955533872, guid: 7dbaaa7be87eec54295fa5acca510074,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2068318901}
   m_SourcePrefab: {fileID: 100100000, guid: 7dbaaa7be87eec54295fa5acca510074, type: 3}
 --- !u!114 &2068318895 stripped
 MonoBehaviour:
@@ -793,12 +803,27 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 2068318894}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 564671142}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bcc40adbea1a5874587af8f1ae84bf37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2068318901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564671142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7115bee9b2c18643a8dd19cb2dd191e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityName: Player
+  description: This is the player
+  maxHealth: 10
 --- !u!1001 &2776733828519053895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -813,6 +838,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 23800000, guid: 758365b2ab16bb44aa2f4fc68bd0563f,
         type: 2}
+    - target: {fileID: 2450154394642853099, guid: ad5a87820777bb74b93eb80965b8c1d9,
+        type: 3}
+      propertyPath: m_LayerMask.m_Bits
+      value: 311
+      objectReference: {fileID: 0}
     - target: {fileID: 3730843844722956536, guid: ad5a87820777bb74b93eb80965b8c1d9,
         type: 3}
       propertyPath: m_LocalPosition.x

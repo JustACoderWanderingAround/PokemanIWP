@@ -9,6 +9,8 @@ public class DamagableEntity : Entity
     public int GetMaxHealth() { return maxHealth; }
     int currentHealth;
     public int GetCurrentHealth() { return currentHealth; }
+
+    bool isAlive;
     // Start is called before the first frame update
     protected virtual void Awake()
     {
@@ -18,5 +20,7 @@ public class DamagableEntity : Entity
     public virtual void Damage(int dmg)
     {
         currentHealth -= dmg;
-    } 
+        isAlive = currentHealth > 0;
+    }
+    public bool IsAlive() => isAlive;
 }

@@ -13,6 +13,8 @@ public class MainPlayerController : UseInputController
     MainPlayerCameraController mainPlayerCameraController;
     [SerializeField]
     PlayerHandController playerHandController;
+    [SerializeField]
+    Entity data;
 
     // Mouse rotation related vars
     private float horizontalOrientation;

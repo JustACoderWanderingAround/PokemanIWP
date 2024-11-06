@@ -77,6 +77,7 @@ public class SimpleGroundEnemy : DamagableEntity
     void UpdateStateMachine()
     {
         stateTimer += Time.deltaTime;
+        Debug.Log("ST: " + stateTimer);
         switch (state)
         {
             case EnemyState.STATE_IDLE:
@@ -115,7 +116,7 @@ public class SimpleGroundEnemy : DamagableEntity
     void ChangeState(EnemyState newState)
     {
         Debug.Log("State changed");
-        stateTimer = 0;
         state = newState;
+        stateTimer = 0;
     }
 }
