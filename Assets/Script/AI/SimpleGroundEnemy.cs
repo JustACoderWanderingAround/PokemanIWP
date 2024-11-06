@@ -10,7 +10,10 @@ public class SimpleGroundEnemy : DamagableEntity
     [SerializeField]
     private float nextTargetMaxRange = 5.0f;
     NavMeshAgent agent;
+
+    // FOV and Player spotting related things
     FieldOfView fov;
+    List<Collider> spottedObjects;
 
     // AI Related vars
     float stateTimer;
@@ -23,26 +26,54 @@ public class SimpleGroundEnemy : DamagableEntity
     }
     EnemyState state;
 
-    protected override void Awake()
+    void Start()
     {
-        base.Awake();
-        agent = movementController.GetAgent();
+        spottedObjects = new List<Collider>();
+        fov = GetComponent<FieldOfView>();
         state = EnemyState.STATE_PATROL;
         Vector3 point;
         movementController.RandomPoint(transform.position, nextTargetMaxRange, out point);
-        movementController.GetAgent().destination = point;
+        agent = movementController.GetAgent();
+        agent.destination = point;
+        StartCoroutine(FOVRoutine());
     }
+    private IEnumerator FOVRoutine()
+    {
+        WaitForSeconds wait = new WaitForSeconds(0.2f);
 
-    // plan: randomly walk around
-    // after a few seconds, idle
-    // keep walking
-
+        while (true)
+        {
+            yield return wait;
+            fov.FieldOfViewCheck(out spottedObjects);
+            // TODO: Player distance check logic + sound check logic
+            if (spottedObjects.Count > 0)
+            {
+                foreach (var obj in spottedObjects)
+                {
+                    if (obj.CompareTag("Player"))
+                    {
+                        ChangeState(EnemyState.STATE_ATTACK);
+                        movementController.SetTarget(obj.transform.position);
+                        break;
+                    }
+                    else if (obj.CompareTag("PlayerLightSource"))
+                    {
+                        agent.destination = obj.transform.position;
+                    }
+                }
+            }
+        }
+    }
+    
     // Update is called once per frame
     void Update()
     {
-        // TODO: Player distance check logic + sound check logic
+        
         UpdateStateMachine();
     }
+    // plan: randomly walk around
+    // after a few seconds, idle
+    // keep walking
     void UpdateStateMachine()
     {
         stateTimer += Time.deltaTime;
@@ -67,6 +98,17 @@ public class SimpleGroundEnemy : DamagableEntity
                 }
                 break;
             case EnemyState.STATE_ATTACK:
+                if (stateTimer > 10.0f)
+                {
+                    if (spottedObjects.Count > 0)
+                    {
+                        stateTimer = 0;
+                    }
+                    else
+                    {
+                        ChangeState(EnemyState.STATE_PATROL);
+                    }
+                }
                 break;
         }
     }
