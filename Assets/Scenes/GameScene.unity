@@ -560,13 +560,13 @@ GameObject:
   - component: {fileID: 1615486985}
   - component: {fileID: 1615486984}
   - component: {fileID: 1615486987}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1615486983
 Transform:
   m_ObjectHideFlags: 0
@@ -653,25 +653,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1615486982}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1615486987
-MonoBehaviour:
+--- !u!208 &1615486987
+NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1615486982}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_OverrideGenerateLinks: 0
-  m_GenerateLinks: 0
-  m_IgnoreFromBuild: 0
-  m_ApplyToChildren: 1
-  m_AffectedAgents: ffffffff
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &2068318894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -693,12 +690,12 @@ PrefabInstance:
     - target: {fileID: 1428230403955533872, guid: 7dbaaa7be87eec54295fa5acca510074,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2507209859406098564, guid: 7dbaaa7be87eec54295fa5acca510074,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3119690338409696718, guid: 7dbaaa7be87eec54295fa5acca510074,
         type: 3}
@@ -753,32 +750,32 @@ PrefabInstance:
     - target: {fileID: 3366595572899280417, guid: 7dbaaa7be87eec54295fa5acca510074,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3409699169559691161, guid: 7dbaaa7be87eec54295fa5acca510074,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5077699156653619655, guid: 7dbaaa7be87eec54295fa5acca510074,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5661897699642640083, guid: 7dbaaa7be87eec54295fa5acca510074,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5965913931026651816, guid: 7dbaaa7be87eec54295fa5acca510074,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8575378031768475079, guid: 7dbaaa7be87eec54295fa5acca510074,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8575378031768475079, guid: 7dbaaa7be87eec54295fa5acca510074,
         type: 3}
@@ -915,8 +912,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3058691502916623033, guid: ad22f9fc86af0bd40b1129283fd02988,
         type: 3}
-      propertyPath: obstructionMask.m_Bits
+      propertyPath: targetMask.m_Bits
       value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058691502916623033, guid: ad22f9fc86af0bd40b1129283fd02988,
+        type: 3}
+      propertyPath: obstructionMask.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 3956056507582781333, guid: ad22f9fc86af0bd40b1129283fd02988,
         type: 3}
