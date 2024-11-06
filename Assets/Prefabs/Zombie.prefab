@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8634324274106890367}
   - component: {fileID: 5980508751264760385}
   - component: {fileID: 3016944225226027492}
+  - component: {fileID: 5544895748166815584}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -130,6 +131,18 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &5544895748166815584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056921078413028969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 261b309cd5f068c45a0818007a516771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3956056507582781333
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,6 +153,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7044685413315603601}
   - component: {fileID: 1164102328113803972}
+  - component: {fileID: 3058691502916623033}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -178,3 +192,27 @@ MonoBehaviour:
   entityName: Da Zombie
   description: Dis is da zombie
   maxHealth: 10
+  movementController: {fileID: 0}
+  nextTargetMaxRange: 5
+--- !u!114 &3058691502916623033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3956056507582781333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d43b0f3a7e6af594bb730b3c6b568a11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0
+  angle: 0
+  playerRef: {fileID: 0}
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 0
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 0
+  canSeePlayer: 0
