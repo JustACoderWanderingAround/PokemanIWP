@@ -13,6 +13,8 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
     // FOV and Player spotting related things
     FieldOfView fov;
     List<Collider> spottedObjects;
+    [SerializeField]
+    Animator animator;
 
     // AI Related vars
     float stateTimer;
@@ -114,9 +116,23 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
     }
     void ChangeState(EnemyState newState)
     {
+
+        switch (newState)
+        {
+            case EnemyState.STATE_IDLE:
+                animator.SetTrigger("Idle");
+                break;
+            case EnemyState.STATE_PATROL:
+                animator.SetTrigger("Patrol");
+                break;
+            case EnemyState.STATE_ATTACK:
+                animator.SetTrigger("Attack");
+                break;
+        }
         Debug.Log("State changed");
         state = newState;
         stateTimer = 0;
+
     }
 
     public void OnSoundHeard(Vector3 soundPos)
