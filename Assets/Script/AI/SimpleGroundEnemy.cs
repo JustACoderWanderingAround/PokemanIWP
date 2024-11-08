@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class SimpleGroundEnemy : DamagableEntity
+public class SimpleGroundEnemy : DamagableEntity, ISoundListener
 {
     [SerializeField]
     NavAgentMovementController movementController;
     [SerializeField]
     private float nextTargetMaxRange = 5.0f;
     NavMeshAgent agent;
-
     // FOV and Player spotting related things
     FieldOfView fov;
     List<Collider> spottedObjects;
@@ -77,7 +76,7 @@ public class SimpleGroundEnemy : DamagableEntity
     void UpdateStateMachine()
     {
         stateTimer += Time.deltaTime;
-        Debug.Log("ST: " + stateTimer);
+        //Debug.Log("ST: " + stateTimer);
         switch (state)
         {
             case EnemyState.STATE_IDLE:
@@ -118,5 +117,11 @@ public class SimpleGroundEnemy : DamagableEntity
         Debug.Log("State changed");
         state = newState;
         stateTimer = 0;
+    }
+
+    public void OnSoundHeard(Vector3 soundPos)
+    {
+        ChangeState(EnemyState.STATE_PATROL);
+        movementController.SetTarget(soundPos);
     }
 }

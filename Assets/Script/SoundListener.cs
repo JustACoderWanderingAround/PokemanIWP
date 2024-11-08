@@ -4,12 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class SoundListener : MonoBehaviour
+public interface ISoundListener
 {
-    UnityEvent onSoundHeardCallback;
-
-    public void OnSoundHeard()
-    {
-        onSoundHeardCallback.Invoke();
-    }
+    public void OnSoundHeard(Vector3 soundPos);
 }

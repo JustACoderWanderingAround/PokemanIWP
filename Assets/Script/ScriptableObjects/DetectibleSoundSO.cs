@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu]
-public class DetectibleSound : ScriptableObject
+public class DetectibleSoundSO : ScriptableObject
 {
     public string soundName;
     public AudioClip clip;

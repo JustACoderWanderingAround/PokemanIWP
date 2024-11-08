@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TestSound
   m_EditorClassIdentifier: 
   soundName: The Test
-  clip: {fileID: 0}
-  detectionRadius: 3
+  clip: {fileID: 8300000, guid: 4e2a284fc8fc0c84584fa698ce94470a, type: 3}
+  detectionRadius: 10
