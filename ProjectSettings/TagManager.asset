@@ -15,7 +15,7 @@ TagManager:
   - NavMesh-Ignore
   - FOV-Ignore
   - ObstructionTest
-  - 
+  - LightDetection
   - 
   - 
   - 

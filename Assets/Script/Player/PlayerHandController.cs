@@ -14,6 +14,9 @@ public class PlayerHandController : UseInputController
     private GameObject leftHandSlot;
     [SerializeField]
     private GameObject rightHandSlot;
+
+    bool isSecondaryButtonPressed;
+
     public override void ReadCommand(Command cmd)
     {
         if (cmd as MouseButtonCommand != null)
@@ -23,11 +26,17 @@ public class PlayerHandController : UseInputController
             {
                 if (mbc.MouseButton == 0)
                 {
+                    if (isSecondaryButtonPressed)
+                    {
 
+                    }
                 }
                 else if (mbc.MouseButton == 1)
                 {
+                    if (isSecondaryButtonPressed)
+                    {
 
+                    }
                 }
             }
         }
@@ -42,6 +51,10 @@ public class PlayerHandController : UseInputController
 
     }
     public void UseItem(int handNum)
+    {
+
+    }
+    public void UseItemSecondary(int handNum)
     {
 
     }

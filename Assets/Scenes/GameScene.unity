@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 0
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 7e1e5781d39549148abcbf66c428df00, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 2869c66e822baa941bb52b0e6ec3dfdf, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.040745974, g: 0.050543424, b: 0.08338426, a: 1}
+  m_IndirectSpecularColor: {r: 0.04235617, g: 0.05210315, b: 0.085045576, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -370,7 +370,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.25
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -603,8 +603,8 @@ Transform:
   m_GameObject: {fileID: 1615486982}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.79, y: 2.08, z: 0}
-  m_LocalScale: {x: 0.1, y: 5, z: 5}
+  m_LocalPosition: {x: -4.79, y: 1.5, z: 0}
+  m_LocalScale: {x: 0.1, y: 3, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 129251126}
@@ -984,13 +984,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3058691502916623033, guid: ad22f9fc86af0bd40b1129283fd02988,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058691502916623033, guid: ad22f9fc86af0bd40b1129283fd02988,
+        type: 3}
       propertyPath: targetMask.m_Bits
-      value: 64
+      value: 576
       objectReference: {fileID: 0}
     - target: {fileID: 3058691502916623033, guid: ad22f9fc86af0bd40b1129283fd02988,
         type: 3}
       propertyPath: obstructionMask.m_Bits
       value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058691502916623033, guid: ad22f9fc86af0bd40b1129283fd02988,
+        type: 3}
+      propertyPath: tagsToCompare.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058691502916623033, guid: ad22f9fc86af0bd40b1129283fd02988,
+        type: 3}
+      propertyPath: tagsToCompare.Array.data[0]
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058691502916623033, guid: ad22f9fc86af0bd40b1129283fd02988,
+        type: 3}
+      propertyPath: tagsToCompare.Array.data[1]
+      value: PlayerLightSource
       objectReference: {fileID: 0}
     - target: {fileID: 3956056507582781333, guid: ad22f9fc86af0bd40b1129283fd02988,
         type: 3}
