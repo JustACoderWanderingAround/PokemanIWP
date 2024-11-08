@@ -504,6 +504,27 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!135 &612350555
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612350546}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,6 +706,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 745146257166661814, guid: 7dbaaa7be87eec54295fa5acca510074,
         type: 3}
+      propertyPath: runFootstepFrequency
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 745146257166661814, guid: 7dbaaa7be87eec54295fa5acca510074,
+        type: 3}
+      propertyPath: walkFootstepFrequency
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 745146257166661814, guid: 7dbaaa7be87eec54295fa5acca510074,
+        type: 3}
       propertyPath: mainPlayerCameraController
       value: 
       objectReference: {fileID: 330585548}
@@ -697,6 +728,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428230403955533872, guid: 7dbaaa7be87eec54295fa5acca510074,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2507209859406098564, guid: 7dbaaa7be87eec54295fa5acca510074,
         type: 3}
@@ -788,6 +824,12 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8947487854218680974, guid: 7dbaaa7be87eec54295fa5acca510074,
+        type: 3}
+      propertyPath: sounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: bb339cdd88aca204fb996c145bcdebfd,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1029,6 +1071,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 612350551}
+    - targetCorrespondingSourceObject: {fileID: 3956056507582781333, guid: ad22f9fc86af0bd40b1129283fd02988,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 612350555}
   m_SourcePrefab: {fileID: 100100000, guid: ad22f9fc86af0bd40b1129283fd02988, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

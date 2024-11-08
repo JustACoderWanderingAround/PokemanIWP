@@ -15,11 +15,19 @@ public class MainPlayerController : UseInputController
     PlayerHandController playerHandController;
     [SerializeField]
     Entity data;
+    [SerializeField]
+    SoundGenerator soundGenerator;
+    [SerializeField]
+    float runFootstepFrequency;
+    [SerializeField]
+    float walkFootstepFrequency;
 
     // Mouse rotation related vars
     private float horizontalOrientation;
     private float verticalOrientation;
     private float mouseX, mouseY;
+    private float maxFootstepTimer = -1;
+    private float footstepTimer;
     bool isRunning = false;
     private Vector3 direction;
     private Vector2 orientation;
@@ -45,7 +53,25 @@ public class MainPlayerController : UseInputController
         }
         else if (cmd as MovementAxisCommand != null)
         {
-           
+            MovementAxisCommand mac = (cmd as MovementAxisCommand);
+            if (mac.VerticalAxis != 0 || mac.HorizontalAxis != 0)
+            {
+                switch (moveState)
+                {
+                    case MovementState.Walk:
+                        Debug.Log("Walk");
+                        maxFootstepTimer = walkFootstepFrequency;
+                        break;
+                    case MovementState.Run:
+                        Debug.Log("Run");
+                        maxFootstepTimer = runFootstepFrequency;
+                        break;
+                }
+            }
+            else
+            {
+                maxFootstepTimer = -1;
+            }
         }
         else if (cmd as KeyCodeCommand != null)
         {
@@ -56,11 +82,13 @@ public class MainPlayerController : UseInputController
                 {
                     Debug.Log("Run");
                     moveState = MovementState.Run;
+                    maxFootstepTimer = runFootstepFrequency;
                 }
                 else if (kcc.KeyDown == false)
                 {
                     Debug.Log("Walk");
                     moveState = MovementState.Walk;
+                    maxFootstepTimer = walkFootstepFrequency;
                 }
                 integratedMovementController.SetMovementState(moveState);
             }
@@ -76,11 +104,24 @@ public class MainPlayerController : UseInputController
     public override void UpdateController(double deltaTime)
     {
         Vector2 headAngle = new Vector2(verticalOrientation, horizontalOrientation);
-        // todo: update direction of mainPlayer;
         integratedMovementController.UpdateController(deltaTime);
         integratedMovementController.RotatePlayer(horizontalOrientation);
         mainPlayerCameraController.RotateHeadXAxis(verticalOrientation);
-        
+        // plan: if maxFootstepTimer is > -1, then wait until footstepTimer is > maxFootstepTimer. when it does, emit 1 sound. 
+        if (maxFootstepTimer > -1)
+        {
+            footstepTimer += Time.deltaTime;
+            if (footstepTimer > maxFootstepTimer)
+            {
+                soundGenerator.PlaySoundOnce(0);
+                footstepTimer = 0;
+            }
+        }
+        else
+        {
+            footstepTimer = 0;
+        }
+
     }
     private void Start()
     {

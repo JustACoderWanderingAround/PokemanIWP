@@ -26,7 +26,8 @@ public class SoundGenerator : MonoBehaviour
         audioSource.clip = sounds[soundID].clip;
         audioSource.loop = false;
         loopSoundGenerator = false;
-        audioSource.Play();
+        if (!audioSource.isPlaying)
+            audioSource.Play();
         EmitSound(soundID); 
     }
     public void PlaySoundLoop(int soundID, float frequency)
