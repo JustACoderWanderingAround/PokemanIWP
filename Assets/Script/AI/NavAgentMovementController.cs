@@ -6,11 +6,15 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class NavAgentMovementController : MonoBehaviour
 {
+    [SerializeField]
+    float runningSpeed;
     NavMeshAgent m_agent;
+    float defaultSpeed;
     // Start is called before the first frame update
     void Awake()
     {
         m_agent = GetComponent<NavMeshAgent>();
+        defaultSpeed = m_agent.speed;
     }
     public void SetTarget(Vector3 newTarget)
     {
@@ -22,10 +26,12 @@ public class NavAgentMovementController : MonoBehaviour
     {
         m_agent.speed = 0;
         m_agent.isStopped = true;
+        m_agent.destination = transform.position;
     }
     public void ResumeNavigation()
     {
         m_agent.isStopped = false;
+        m_agent.speed = defaultSpeed;
     }
     // Pick the next point iwthin the room to move to
     // Function taken from https://www.youtube.com/watch?v=dYs0WRzzoRc

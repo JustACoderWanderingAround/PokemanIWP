@@ -74,10 +74,10 @@ MonoBehaviour:
   - PlayerLightSource
   targetMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 631
   obstructionMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 384
 --- !u!195 &5848293865014592690
 NavMeshAgent:
   m_ObjectHideFlags: 0

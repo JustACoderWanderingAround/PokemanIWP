@@ -55,7 +55,7 @@ public class SoundGenerator : MonoBehaviour
     }
     void EmitSound(int soundID) 
     {
-        Debug.Log("Sound emitted at " + transform.position);
+        //Debug.Log("Sound emitted at " + transform.position);
         if (audioSource.clip != sounds[soundID].clip)
             audioSource.clip = sounds[soundID].clip;
         if (!audioSource.isPlaying)
