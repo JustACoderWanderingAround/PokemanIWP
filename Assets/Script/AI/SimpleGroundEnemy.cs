@@ -21,6 +21,7 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
     Vector3 nextTarget;
     enum EnemyState
     {
+        STATE_DEAD,
         STATE_IDLE,
         STATE_PATROL,
         STATE_CHASE,
@@ -54,7 +55,7 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
                 {
                     if (obj.CompareTag("Player"))
                     {
-                        if (state != EnemyState.STATE_CHASE || state != EnemyState.STATE_ATTACK)
+                        if (!(state == EnemyState.STATE_CHASE || state == EnemyState.STATE_ATTACK))
                         {
                             ChangeState(EnemyState.STATE_CHASE);
                             movementController.SetTarget(obj.transform.position);
@@ -77,8 +78,12 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
     // Update is called once per frame
     void Update()
     {
-        
-        UpdateStateMachine();
+        if (GetCurrentHealth() > 0)
+            UpdateStateMachine();
+        else
+        {
+            ChangeState(EnemyState.STATE_DEAD);
+        }
     }
     // plan: randomly walk around
     // after a few seconds, idle
@@ -121,7 +126,7 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
                 break;
             case EnemyState.STATE_CHASE:
                 //Debug.Log(agent.remainingDistance);
-                if (agent.remainingDistance <= 3)
+                if (agent.remainingDistance <= 1)
                 {
                     ChangeState(EnemyState.STATE_ATTACK);
                 }
@@ -170,9 +175,12 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
                     break;
                 case EnemyState.STATE_CHASE:
                     if (!animator.GetBool("Chase"))
-                        animator.SetTrigger("Chase");
+                        animator.SetTrigger("Patrol");
                     movementController.ResumeNavigation();
                     Debug.Log("Chase");
+                    break;
+                case EnemyState.STATE_DEAD:
+                    animator.SetTrigger("Dead");
                     break;
             }
            

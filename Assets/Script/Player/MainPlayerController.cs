@@ -91,6 +91,7 @@ public class MainPlayerController : UseInputController
                     maxFootstepTimer = walkFootstepFrequency;
                 }
                 integratedMovementController.SetMovementState(moveState);
+
             }
         }
         else if (cmd as MouseButtonCommand != null)
@@ -98,6 +99,7 @@ public class MainPlayerController : UseInputController
             // TODO: Controller for items in hands
             playerHandController.ReadCommand(cmd);
         }
+        playerHandController.ReadCommand(cmd);
         integratedMovementController.ReadCommand(cmd);
     }
 

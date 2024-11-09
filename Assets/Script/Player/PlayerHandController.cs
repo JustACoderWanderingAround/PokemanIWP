@@ -14,11 +14,20 @@ public class PlayerHandController : UseInputController
     private GameObject leftHandSlot;
     [SerializeField]
     private GameObject rightHandSlot;
-
+    public KeyCode secondaryButtonCode = KeyCode.LeftAlt;
     bool isSecondaryButtonPressed;
 
     public override void ReadCommand(Command cmd)
     {
+        if (cmd as KeyCodeCommand != null)
+        {
+            KeyCodeCommand kcc = cmd as KeyCodeCommand;
+            if (kcc.KeycodeNumber == secondaryButtonCode)
+            {
+                isSecondaryButtonPressed = kcc.KeyHeldDown || kcc.KeyDown;
+                Debug.Log("SecondaryButtonPressed");
+            }
+        }
         if (cmd as MouseButtonCommand != null)
         {
             MouseButtonCommand mbc = cmd as MouseButtonCommand;
