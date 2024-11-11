@@ -114,7 +114,7 @@ public class MainPlayerController : UseInputController
             footstepTimer += Time.deltaTime;
             if (footstepTimer > maxFootstepTimer)
             {
-                soundGenerator.PlaySoundOnce(0);
+                //soundGenerator.PlaySoundOnce(0);
                 footstepTimer = 0;
             }
         }
