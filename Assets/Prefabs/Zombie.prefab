@@ -289,7 +289,7 @@ MonoBehaviour:
   description: Dis is da zombie
   maxHealth: 10
   movementController: {fileID: 4191802257132747869}
-  nextTargetMaxRange: 5
+  nextTargetMaxRange: 10
   animator: {fileID: 4088630762527938232}
 --- !u!114 &3058691502916623033
 MonoBehaviour:

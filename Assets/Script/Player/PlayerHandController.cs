@@ -37,15 +37,17 @@ public class PlayerHandController : UseInputController
                 {
                     if (isSecondaryButtonPressed)
                     {
-
+                        leftHandSlot.transform.GetChild(0).gameObject.SetActive(true);
                     }
+
                 }
                 else if (mbc.MouseButton == 1)
                 {
                     if (isSecondaryButtonPressed)
                     {
-
+                        leftHandSlot.transform.GetChild(0).gameObject.SetActive(false);
                     }
+                    
                 }
             }
         }

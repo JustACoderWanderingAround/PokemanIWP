@@ -138,6 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftHandSlot: {fileID: 3409699169559691161}
   rightHandSlot: {fileID: 3366595572899280417}
+  secondaryButtonCode: 308
 --- !u!82 &3404643405425099810
 AudioSource:
   m_ObjectHideFlags: 0
@@ -596,7 +597,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8575378031768475079}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 5ea7a47f47c7ff148aa753e1a39ce463, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

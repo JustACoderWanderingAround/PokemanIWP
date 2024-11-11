@@ -33,21 +33,29 @@ public class NavAgentMovementController : MonoBehaviour
         m_agent.isStopped = false;
         m_agent.speed = defaultSpeed;
     }
+    public float GetRemainingDistance()
+    {
+        return m_agent.remainingDistance;
+    }
+    public float GetStoppingDistance()
+    {
+        return m_agent.stoppingDistance;
+    }
     // Pick the next point iwthin the room to move to
     // Function taken from https://www.youtube.com/watch?v=dYs0WRzzoRc
-    public bool RandomPoint(Vector3 center, float range, out Vector3 result)
+    public bool GetNextTargetPos(Vector3 center, float range, out Vector3 result)
     {
 
-        Vector3 randomPoint = center + Random.insideUnitSphere * range; //random point in a sphere 
-        NavMeshHit hit;
-        if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, UnityEngine.AI.NavMesh.AllAreas)) //documentation: https://docs.unity3d.com/ScriptReference/AI.NavMesh.SamplePosition.html
+        for (int i = 0; i < 30; i++)
         {
-            //the 1.0f is the max distance from the random point to a point on the navmesh, might want to increase if range is big
-            //or add a for loop like in the documentation
-            result = hit.position;
-            return true;
+            Vector3 randomPoint = center + Random.insideUnitSphere * range;
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
+            {
+                result = hit.position;
+                return true;
+            }
         }
-
         result = Vector3.zero;
         return false;
     }

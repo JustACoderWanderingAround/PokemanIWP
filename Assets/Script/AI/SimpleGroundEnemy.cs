@@ -9,7 +9,6 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
     NavAgentMovementController movementController;
     [SerializeField]
     private float nextTargetMaxRange = 5.0f;
-    NavMeshAgent agent;
     // FOV and Player spotting related things
     FieldOfView fov;
     List<Collider> spottedObjects;
@@ -19,25 +18,26 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
     // AI Related vars
     float stateTimer;
     Vector3 nextTarget;
-    enum EnemyState
+    bool playerSpotted;
+    public enum EnemyState
     {
-        STATE_DEAD,
-        STATE_IDLE,
+        STATE_DEAD = -1,
+        STATE_IDLE = 0,
         STATE_PATROL,
         STATE_CHASE,
         STATE_ATTACK
     }
-    EnemyState state;
+    public EnemyState state;
 
     void Start()
     {
         spottedObjects = new List<Collider>();
         fov = GetComponent<FieldOfView>();
         state = EnemyState.STATE_PATROL;
+        animator.SetTrigger("Patrol");
         Vector3 point;
-        movementController.RandomPoint(transform.position, nextTargetMaxRange, out point);
-        agent = movementController.GetAgent();
-        agent.destination = point;
+        movementController.GetNextTargetPos(transform.position, nextTargetMaxRange, out point);
+        movementController.SetTarget(point);
         StartCoroutine(FOVRoutine());
     }
     private IEnumerator FOVRoutine()
@@ -49,25 +49,29 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
             yield return wait;
             fov.FieldOfViewCheck(out spottedObjects);
             // TODO: Player distance check logic + sound check logic
-            if (spottedObjects.Count > 0)
+            if (spottedObjects.Count > 0 && !playerSpotted)
             {
                 foreach (var obj in spottedObjects)
                 {
                     if (obj.CompareTag("Player"))
                     {
-                        if (!(state == EnemyState.STATE_CHASE || state == EnemyState.STATE_ATTACK))
+                        if (state < EnemyState.STATE_CHASE)
                         {
                             ChangeState(EnemyState.STATE_CHASE);
                             movementController.SetTarget(obj.transform.position);
-                            Debug.Log("1");
+                            playerSpotted = true;
+                            Debug.Log("Player spotted");
                         }
                         break;
                     }
-                    else if (obj.CompareTag("PlayerLightSource"))
+                    else if (obj.CompareTag("PlayerLightSource") && !playerSpotted)
                     {
-                        ChangeState(EnemyState.STATE_PATROL);
-                        agent.destination = obj.transform.position;
-                        Debug.Log("2");
+                        if (Vector3.Distance(obj.transform.position, transform.position) > 2 && state < EnemyState.STATE_CHASE)
+                        {
+                            ChangeState(EnemyState.STATE_PATROL);
+                            movementController.SetTarget(obj.ClosestPoint(transform.position));
+                            Debug.Log("Light source spotted");
+                        }
                         break;
                     }
                 }
@@ -97,19 +101,13 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
             case EnemyState.STATE_IDLE:
                 if (stateTimer > 5.0f)
                 {
-                    movementController.SetTarget(nextTarget);
                     ChangeState(EnemyState.STATE_PATROL);
                 }
                 break;
             case EnemyState.STATE_PATROL:
-                if (agent.remainingDistance <= agent.stoppingDistance) //done with path
+                if (movementController.GetRemainingDistance()<= movementController.GetStoppingDistance()) //done with path
                 {
-                    Vector3 point;
-                    if (movementController.RandomPoint(transform.position, Random.Range(nextTargetMaxRange / 2, nextTargetMaxRange), out point)) //pass in our centre point and radius of area
-                    {
-                        ChangeState(EnemyState.STATE_IDLE);
-                        nextTarget = point;
-                    }
+                    ChangeState(EnemyState.STATE_IDLE);
                 }
                 break;
             case EnemyState.STATE_ATTACK:
@@ -123,10 +121,15 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
                         }
                     }
                 }
+                else
+                {
+                    playerSpotted = false;
+                    ChangeState(EnemyState.STATE_PATROL);
+                }
                 break;
             case EnemyState.STATE_CHASE:
-                //Debug.Log(agent.remainingDistance);
-                if (agent.remainingDistance <= 1)
+                //Debug.Log(GetRemainingDistance());
+                if (movementController.GetRemainingDistance()<= 1)
                 {
                     ChangeState(EnemyState.STATE_ATTACK);
                 }
@@ -136,21 +139,16 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
                     {
                         stateTimer = 0;
                     }
-                    Vector3 point;
-                    if (movementController.RandomPoint(transform.position, Random.Range(nextTargetMaxRange / 2, nextTargetMaxRange), out point)) //pass in our centre point and radius of area
-                    {
-                        ChangeState(EnemyState.STATE_PATROL);
-                        nextTarget = point;
-                    }
+                    ChangeState(EnemyState.STATE_PATROL);
                 }
                 break;
         }
     }
     void ChangeState(EnemyState newState)
     {
+        Debug.Log(stateTimer)
         if (state != newState)
         {
-            Debug.Log("State changed");
             state = newState;
             stateTimer = 0;
             switch (state)
@@ -159,25 +157,23 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
                     if (!animator.GetBool("Idle"))
                         animator.SetTrigger("Idle");
                     movementController.ResumeNavigation();
-                    Debug.Log("Idle");
+                    Debug.Log("Change state: Idle");
                     break;
                 case EnemyState.STATE_PATROL:
-                    if (!animator.GetBool("Patrol"))
-                        animator.SetTrigger("Patrol");
-                    movementController.ResumeNavigation();
-                    Debug.Log("Patrol");
+                    ReturnToPatrol();
+                    animator.SetTrigger("Patrol");
                     break;
                 case EnemyState.STATE_ATTACK:
                     if (!animator.GetBool("Attack"))
                         animator.SetTrigger("Attack");
                     movementController.StopNavigation();
-                    Debug.Log("Attack");
+                    Debug.Log("Change state: Attack");
                     break;
                 case EnemyState.STATE_CHASE:
                     if (!animator.GetBool("Chase"))
                         animator.SetTrigger("Patrol");
                     movementController.ResumeNavigation();
-                    Debug.Log("Chase");
+                    Debug.Log("Change state: Chase");
                     break;
                 case EnemyState.STATE_DEAD:
                     animator.SetTrigger("Dead");
@@ -191,5 +187,22 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
     {
         ChangeState(EnemyState.STATE_PATROL);
         movementController.SetTarget(soundPos);
+    }
+    
+    void ReturnToPatrol()
+    {
+        Vector3 point;
+        if (movementController.GetNextTargetPos(transform.position, nextTargetMaxRange, out point)) //pass in our centre point and radius of area
+        {
+            ChangeState(EnemyState.STATE_PATROL);
+            movementController.SetTarget(point);
+            Debug.Log("New patrol target set");
+        }
+        else
+        {
+            Debug.Log("no new patrol target set :(");
+        }
+        movementController.ResumeNavigation();
+        Debug.Log("Change state: Patrol");
     }
 }

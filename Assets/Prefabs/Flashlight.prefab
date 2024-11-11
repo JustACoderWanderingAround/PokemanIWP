@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 8084598664069631563}
   m_Layer: 9
   m_Name: Col
-  m_TagString: Untagged
+  m_TagString: PlayerLightSource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

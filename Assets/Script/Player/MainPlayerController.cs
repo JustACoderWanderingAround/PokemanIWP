@@ -49,7 +49,6 @@ public class MainPlayerController : UseInputController
             verticalOrientation -= mouseY;
             verticalOrientation = Mathf.Clamp(verticalOrientation, -90, 90);
             horizontalOrientation += mouseX;
-            //Debug.Log("Orientation: \nX: " + horizontalOrientation + "\nY:" + verticalOrientation);
         }
         else if (cmd as MovementAxisCommand != null)
         {
@@ -59,11 +58,11 @@ public class MainPlayerController : UseInputController
                 switch (moveState)
                 {
                     case MovementState.Walk:
-                        Debug.Log("Walk");
+         
                         maxFootstepTimer = walkFootstepFrequency;
                         break;
                     case MovementState.Run:
-                        Debug.Log("Run");
+         
                         maxFootstepTimer = runFootstepFrequency;
                         break;
                 }
@@ -80,13 +79,13 @@ public class MainPlayerController : UseInputController
             {
                 if (kcc.KeyHeldDown)
                 {
-                    Debug.Log("Run");
+     
                     moveState = MovementState.Run;
                     maxFootstepTimer = runFootstepFrequency;
                 }
                 else if (kcc.KeyDown == false)
                 {
-                    Debug.Log("Walk");
+     
                     moveState = MovementState.Walk;
                     maxFootstepTimer = walkFootstepFrequency;
                 }
