@@ -94,6 +94,10 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
     // keep walking
     void UpdateStateMachine()
     {
+        if (spottedObjects.Count < 1)
+        {
+            playerSpotted = false;
+        }
         stateTimer += Time.deltaTime;
         //Debug.Log("ST: " + stateTimer);
         switch (state)
@@ -123,7 +127,6 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
                 }
                 else
                 {
-                    playerSpotted = false;
                     ChangeState(EnemyState.STATE_PATROL);
                 }
                 break;
