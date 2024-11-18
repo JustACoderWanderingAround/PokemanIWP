@@ -53,7 +53,9 @@ public class MainPlayerController : UseInputController
         else if (cmd as MovementAxisCommand != null)
         {
             MovementAxisCommand mac = (cmd as MovementAxisCommand);
-            if (mac.VerticalAxis != 0 || mac.HorizontalAxis != 0)
+            // set horizontal and vertical axes vals according to latest command
+            float horizontal = Mathf.Abs(mac.HorizontalAxis) > 0.999 ? mac.HorizontalAxis : 0;
+            if (mac.VerticalAxis != 0 || horizontal != 0)
             {
                 switch (moveState)
                 {

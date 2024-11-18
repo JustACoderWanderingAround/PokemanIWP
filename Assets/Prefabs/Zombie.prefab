@@ -287,10 +287,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityName: Da Zombie
   description: Dis is da zombie
-  maxHealth: 10
+  maxHealth: 1
   movementController: {fileID: 4191802257132747869}
   nextTargetMaxRange: 10
   animator: {fileID: 4088630762527938232}
+  state: 0
 --- !u!114 &3058691502916623033
 MonoBehaviour:
   m_ObjectHideFlags: 0

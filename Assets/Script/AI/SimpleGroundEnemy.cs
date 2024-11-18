@@ -221,4 +221,9 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
         movementController.ResumeNavigation();
         Debug.Log("Change state: Patrol");
     }
+    public override void Damage(int dmg)
+    {
+        base.Damage(dmg);
+
+    }
 }
