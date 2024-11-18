@@ -14,7 +14,7 @@ public class PlayerHandController : UseInputController
     private GameObject leftHandSlot;
     [SerializeField]
     private GameObject rightHandSlot;
-    public KeyCode secondaryButtonCode = KeyCode.LeftAlt;
+    public KeyCode secondaryButtonCode = KeyCode.LeftControl;
     bool isSecondaryButtonPressed;
 
     public override void ReadCommand(Command cmd)
@@ -36,8 +36,7 @@ public class PlayerHandController : UseInputController
                 if (mbc.MouseButton == 0)
                 {
                     if (isSecondaryButtonPressed)
-                    {
-                        //leftHandSlot.transform.GetChild(0).gameObject.SetActive(true);
+                    {                        
                         UseItem(1);
                     }
                     else
@@ -50,7 +49,6 @@ public class PlayerHandController : UseInputController
                 {
                     if (isSecondaryButtonPressed)
                     {
-                        //leftHandSlot.transform.GetChild(0).gameObject.SetActive(false);
                         UseItemSecondary(1);
                     }
                     else
