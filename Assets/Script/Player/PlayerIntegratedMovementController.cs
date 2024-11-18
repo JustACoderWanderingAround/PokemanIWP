@@ -70,8 +70,9 @@ public class PlayerIntegratedMovementController : UseInputController
             if (movementCommand != null)
             {
                 // set horizontal and vertical axes vals according to latest command
-                horizontal = movementCommand.HorizontalAxis;
+                horizontal = Mathf.Abs(movementCommand.HorizontalAxis) > 0.999 ? movementCommand.HorizontalAxis : 0;
                 vertical = movementCommand.VerticalAxis;
+                Debug.Log("ReadCommandMA: H " + horizontal + " V "+ vertical);
             }
         }
         else if (cmd as KeyCodeCommand != null)
@@ -147,6 +148,7 @@ public class PlayerIntegratedMovementController : UseInputController
             direction = Vector3.zero;
 
         // Move player
+        //Debug.Log(horizontal + " " + vertical);
         transform.position += direction.normalized * currentMoveSpeed * Time.deltaTime;
         // set player rotation
         float targetAngle = Mathf.Atan2((Camera.main.transform.forward + sideDirection).normalized.x, (Camera.main.transform.forward + sideDirection).normalized.z) * Mathf.Rad2Deg;

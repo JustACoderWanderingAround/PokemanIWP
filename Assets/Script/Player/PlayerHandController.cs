@@ -37,7 +37,12 @@ public class PlayerHandController : UseInputController
                 {
                     if (isSecondaryButtonPressed)
                     {
-                        leftHandSlot.transform.GetChild(0).gameObject.SetActive(true);
+                        //leftHandSlot.transform.GetChild(0).gameObject.SetActive(true);
+                        UseItem(1);
+                    }
+                    else
+                    {
+                        UseItem(0);
                     }
 
                 }
@@ -45,9 +50,13 @@ public class PlayerHandController : UseInputController
                 {
                     if (isSecondaryButtonPressed)
                     {
-                        leftHandSlot.transform.GetChild(0).gameObject.SetActive(false);
+                        //leftHandSlot.transform.GetChild(0).gameObject.SetActive(false);
+                        UseItemSecondary(1);
                     }
-                    
+                    else
+                    {
+                        UseItemSecondary(0);
+                    }
                 }
             }
         }
@@ -61,13 +70,47 @@ public class PlayerHandController : UseInputController
     {
 
     }
-    public void UseItem(int handNum)
+    /// <summary>
+    /// Use the primary function of the item in handNum's hand
+    /// </summary>
+    /// <param name="handNum">The number of the hand to use the item in. 0 is right, 1 is left</param>
+    public bool UseItem(int handNum)
     {
-
+        if (handNum == 1)
+        {
+            if (leftHandSlot.transform.GetChild(0) != null)
+                return leftHandSlot.transform.GetChild(0).GetComponent<UsableItem>().PrimaryUse();
+            else return false;
+        }
+        else if (handNum == 0)
+        {
+            if (rightHandSlot.transform.GetChild(0) != null)
+                return rightHandSlot.transform.GetChild(0).GetComponent<UsableItem>().PrimaryUse();
+            else return false;
+        }
+        else
+            return false;
     }
-    public void UseItemSecondary(int handNum)
+    /// <summary>
+    /// Use the secondary function of the item in handNum's hand
+    /// </summary>
+    /// <param name="handNum">The number of the hand to use the item in. 0 is right, 1 is left</param>
+    public bool UseItemSecondary(int handNum)
     {
-
+        if (handNum == 1)
+        {
+            if (leftHandSlot.transform.GetChild(0) != null)
+                return leftHandSlot.transform.GetChild(0).GetComponent<UsableItem>().SecondaryUse();
+            else return false;
+        }
+        else if (handNum == 0)
+        {
+            if (rightHandSlot.transform.GetChild(0) != null)
+                return rightHandSlot.transform.GetChild(0).GetComponent<UsableItem>().SecondaryUse();
+            else return false;
+        }
+        else
+            return false;
     }
     public void CheckAndPickUp()
     {

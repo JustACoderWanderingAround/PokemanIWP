@@ -4,6 +4,6 @@ using UnityEngine;
 
 public abstract class UsableItem : MonoBehaviour
 {
-    public abstract void PrimaryUse();
-    public abstract void SecondaryUse();
+    public abstract bool PrimaryUse();
+    public abstract bool SecondaryUse();
 }
