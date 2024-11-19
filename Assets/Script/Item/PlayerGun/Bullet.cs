@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * intensity * 10, ForceMode.Impulse);
+        rb.AddForce(transform.forward * intensity);
         lifeTimer = maxLifeTimer;
     }
 
@@ -28,9 +28,11 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        //Debug.Log(transform.position.x + " " + transform.position.y);
     }
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Collided! Bullet destroyed.");
         if (collision.collider.gameObject.GetComponent<DamagableEntity>() != null)
         {
             collision.collider.gameObject.GetComponent<DamagableEntity>().Damage(damage);

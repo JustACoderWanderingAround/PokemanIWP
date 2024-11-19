@@ -14,6 +14,10 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
     List<Collider> spottedObjects;
     [SerializeField]
     Animator animator;
+    [SerializeField]
+    float runSpeed = 2.5f;
+    [SerializeField]
+    float walkSpeed = 1.2f;
 
     // AI Related vars
     float stateTimer;
@@ -21,11 +25,11 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
     bool playerSpotted;
     public enum EnemyState
     {
-        STATE_DEAD = -1,
         STATE_IDLE = 0,
         STATE_PATROL,
         STATE_CHASE,
-        STATE_ATTACK
+        STATE_ATTACK,
+        STATE_DEAD
     }
     public EnemyState state;
 
@@ -182,13 +186,15 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
                     Debug.Log("Change state: Attack");
                     break;
                 case EnemyState.STATE_CHASE:
-                    animator.SetTrigger("Patrol");
-                    Debug.Log("Animator: Patrol");
+                    animator.SetTrigger("Chase");
+                    Debug.Log("Animator: Chase");
                     movementController.ResumeNavigation();
                     Debug.Log("Change state: Chase");
                     break;
                 case EnemyState.STATE_DEAD:
                     animator.SetTrigger("Dead");
+                    movementController.StopNavigation();
+                    StopAllCoroutines();
                     break;
             }
            
@@ -224,6 +230,6 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
     public override void Damage(int dmg)
     {
         base.Damage(dmg);
-
+        animator.SetTrigger("Damaged");
     }
 }

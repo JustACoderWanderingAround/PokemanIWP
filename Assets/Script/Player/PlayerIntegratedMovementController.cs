@@ -6,8 +6,6 @@ public class PlayerIntegratedMovementController : UseInputController
 {
     /// <summary>
     /// TODO: 
-    /// 1. Integrate player rotation on mouse move (using mouse axis)
-    /// 2. Integrate player position on movement axies (using GetAxis vert and hori)
     /// 3. Create keybindings struct/scriptableObj to allow input data to come from 1 central place
     /// </summary>
 

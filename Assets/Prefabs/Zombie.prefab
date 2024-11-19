@@ -304,11 +304,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43b0f3a7e6af594bb730b3c6b568a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 5
+  radius: 3
   angle: 210
   tagsToCompare:
   - Player
-  - PlayerLightSource
   targetMask:
     serializedVersion: 2
     m_Bits: 631
@@ -369,7 +368,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.4
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
