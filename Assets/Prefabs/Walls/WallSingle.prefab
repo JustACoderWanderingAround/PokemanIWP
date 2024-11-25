@@ -100,6 +100,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_C
       objectReference: {fileID: 0}
+    - target: {fileID: 2886493347970738491, guid: 0e2a0f88f62841f42ae86ae323be43bf,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2530877269197224553}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WFCWallX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,6 +99,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wall_C
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886493347970738491, guid: 0e2a0f88f62841f42ae86ae323be43bf,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

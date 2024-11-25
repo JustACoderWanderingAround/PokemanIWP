@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2530877269197224553}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WFCWallZ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,6 +42,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2530877269197224553}
     m_Modifications:
+    - target: {fileID: 4043662895589735077, guid: 39ebac75a5242ea49bc616cbbeb4f972,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5265628948072068435, guid: 39ebac75a5242ea49bc616cbbeb4f972,
         type: 3}
       propertyPath: m_LocalScale.y
@@ -97,10 +102,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5387027320520531432, guid: 39ebac75a5242ea49bc616cbbeb4f972,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6285970060339100707, guid: 39ebac75a5242ea49bc616cbbeb4f972,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6285970060805821780, guid: 39ebac75a5242ea49bc616cbbeb4f972,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6285970061317577425, guid: 39ebac75a5242ea49bc616cbbeb4f972,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7638544489812060533, guid: 39ebac75a5242ea49bc616cbbeb4f972,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8395182800169386474, guid: 39ebac75a5242ea49bc616cbbeb4f972,
         type: 3}
       propertyPath: m_Name
       value: Torch (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8395182800169386474, guid: 39ebac75a5242ea49bc616cbbeb4f972,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043059839841139073, guid: 39ebac75a5242ea49bc616cbbeb4f972,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -186,6 +226,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_C
       objectReference: {fileID: 0}
+    - target: {fileID: 2886493347970738491, guid: 0e2a0f88f62841f42ae86ae323be43bf,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -256,6 +301,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2530877269197224553}
     m_Modifications:
+    - target: {fileID: 4043662895589735077, guid: 39ebac75a5242ea49bc616cbbeb4f972,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5265628948072068435, guid: 39ebac75a5242ea49bc616cbbeb4f972,
         type: 3}
       propertyPath: m_LocalScale.y
@@ -311,10 +361,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5387027320520531432, guid: 39ebac75a5242ea49bc616cbbeb4f972,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6285970060339100707, guid: 39ebac75a5242ea49bc616cbbeb4f972,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6285970060805821780, guid: 39ebac75a5242ea49bc616cbbeb4f972,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6285970061317577425, guid: 39ebac75a5242ea49bc616cbbeb4f972,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7638544489812060533, guid: 39ebac75a5242ea49bc616cbbeb4f972,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8395182800169386474, guid: 39ebac75a5242ea49bc616cbbeb4f972,
         type: 3}
       propertyPath: m_Name
       value: Torch
+      objectReference: {fileID: 0}
+    - target: {fileID: 8395182800169386474, guid: 39ebac75a5242ea49bc616cbbeb4f972,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043059839841139073, guid: 39ebac75a5242ea49bc616cbbeb4f972,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -38,7 +38,7 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
         spottedObjects = new List<Collider>();
         fov = GetComponent<FieldOfView>();
         state = EnemyState.STATE_PATROL;
-        animator.SetTrigger("Patrol");
+        //animator.SetTrigger("Patrol");
         Vector3 point;
         movementController.GetNextTargetPos(transform.position, nextTargetMaxRange, out point);
         movementController.SetTarget(point);
@@ -59,7 +59,7 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
                 {
                     if (obj.CompareTag("Player"))
                     {
-                        if (state < EnemyState.STATE_CHASE)
+                        if (!playerSpotted)
                         {
                             ChangeState(EnemyState.STATE_CHASE);
                             movementController.SetTarget(obj.transform.position);
@@ -70,13 +70,18 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
                     }
                     else if (obj.CompareTag("PlayerLightSource") && !playerSpotted)
                     {
-                        if (Vector3.Distance(obj.transform.position, transform.position) > 2 && state < EnemyState.STATE_CHASE)
+                        if (fov.CheckLineOfSight(transform, obj.transform))
                         {
-                            ChangeState(EnemyState.STATE_PATROL);
-                            movementController.SetTarget(obj.ClosestPoint(transform.position));
-                            Debug.Log("Light source spotted");
+                            if (Vector3.Distance(obj.transform.position, transform.position) > 2 && state < EnemyState.STATE_CHASE)
+                            {
+                                ChangeState(EnemyState.STATE_CHASE);
+                                movementController.SetTarget(obj.transform.position);
+                                Debug.Log("Light source spotted");
+                            }
                         }
-                        break;
+                        /// TODO:
+                        /// Make it so that zombie moves towards player when light source is cast on them.
+                        /// Plan: 
                     }
                 }
             }
@@ -176,7 +181,7 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
                     break;
                 case EnemyState.STATE_PATROL:
                     ReturnToPatrol();
-                    animator.SetTrigger("Patrol");
+                    //animator.SetTrigger("Patrol");
                     Debug.Log("Animator: Patrol");
                     break;
                 case EnemyState.STATE_ATTACK:

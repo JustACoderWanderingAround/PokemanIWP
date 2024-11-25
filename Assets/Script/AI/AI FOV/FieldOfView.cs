@@ -72,14 +72,18 @@ public class FieldOfView : MonoBehaviour
                     if (c.gameObject.CompareTag(tag))
                     {
                         Transform target = c.transform;
-                        Vector3 directionToTarget = (target.position - transform.position).normalized;
-                        if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
+                        //Vector3 directionToTarget = (target.position - transform.position).normalized;
+                        //if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
+                        //{
+                        //    float distanceToTarget = Vector3.Distance(transform.position, target.position);
+                        //    if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
+                        //    {
+                        //        foundObjects.Add(c);
+                        //    }
+                        //}
+                        if (CheckLineOfSight(transform, target))
                         {
-                            float distanceToTarget = Vector3.Distance(transform.position, target.position);
-                            if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
-                            {
-                                foundObjects.Add(c);
-                            }
+                            foundObjects.Add(c);
                         }
                     }
                 }
@@ -92,6 +96,20 @@ public class FieldOfView : MonoBehaviour
            
         }
         seenObjects = new List<Collider>();
+        return false;
+    }
+    public bool CheckLineOfSight(Transform currObj, Transform target)
+    {
+        Vector3 directionToTarget = (target.position - currObj.position).normalized;
+        if (Vector3.Angle(currObj.transform.forward, directionToTarget) < angle / 2)
+        {
+            float distanceToTarget = Vector3.Distance(transform.position, target.position);
+            if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
+            {
+                return true;
+            }
+            return false;
+        }
         return false;
     }
 }
