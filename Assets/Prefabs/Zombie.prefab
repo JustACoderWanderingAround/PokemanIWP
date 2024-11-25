@@ -348,6 +348,7 @@ MonoBehaviour:
   animator: {fileID: 4088630762527938232}
   runSpeed: 2.5
   walkSpeed: 1.2
+  randomSoundPlayer: {fileID: 1794356936169670286}
   state: 0
 --- !u!114 &3058691502916623033
 MonoBehaviour:

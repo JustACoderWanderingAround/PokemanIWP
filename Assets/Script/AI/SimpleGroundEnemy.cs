@@ -18,6 +18,8 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
     float runSpeed = 2.5f;
     [SerializeField]
     float walkSpeed = 1.2f;
+    [SerializeField]
+    EntityRandomSoundPlayer randomSoundPlayer;
 
     // AI Related vars
     float stateTimer;
@@ -202,6 +204,7 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
                     animator.SetTrigger("Dead");
                     movementController.StopNavigation();
                     StopAllCoroutines();
+                    randomSoundPlayer.enabled = false;
                     break;
             }
            
