@@ -70,7 +70,7 @@ public class PlayerIntegratedMovementController : UseInputController
                 // set horizontal and vertical axes vals according to latest command
                 horizontal = Mathf.Abs(movementCommand.HorizontalAxis) > 0.999 ? movementCommand.HorizontalAxis : 0;
                 vertical = movementCommand.VerticalAxis;
-                Debug.Log("ReadCommandMA: H " + horizontal + " V "+ vertical);
+                //Debug.Log("ReadCommandMA: H " + horizontal + " V "+ vertical);
             }
         }
         else if (cmd as KeyCodeCommand != null)

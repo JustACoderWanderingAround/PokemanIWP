@@ -5,7 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlayerLightSource
-  - PlayerTerrain
+  - Water
+  - Terrain
   layers:
   - Default
   - TransparentFX

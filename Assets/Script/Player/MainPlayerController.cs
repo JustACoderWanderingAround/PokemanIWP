@@ -21,6 +21,8 @@ public class MainPlayerController : UseInputController
     float runFootstepFrequency;
     [SerializeField]
     float walkFootstepFrequency;
+    [SerializeField]
+    PlayerTerrainStepController ptsc;
 
     // Mouse rotation related vars
     private float horizontalOrientation;
@@ -117,6 +119,7 @@ public class MainPlayerController : UseInputController
             if (footstepTimer > maxFootstepTimer)
             {
                 soundGenerator.PlaySoundOnce(0);
+                ptsc.CheckFootStep();
                 footstepTimer = 0;
             }
         }
