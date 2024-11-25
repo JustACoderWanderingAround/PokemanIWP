@@ -106,6 +106,8 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
         if (spottedObjects.Count < 1)
         {
             playerSpotted = false;
+            movementController.SetTarget(transform.position);
+            ChangeState(EnemyState.STATE_IDLE);
         }
         stateTimer += Time.deltaTime;
         //Debug.Log("ST: " + stateTimer);
