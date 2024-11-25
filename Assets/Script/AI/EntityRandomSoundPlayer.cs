@@ -18,7 +18,7 @@ public class EntityRandomSoundPlayer : MonoBehaviour
     {
 
         if (!playOnAwake)
-            soundTimer = maxSoundTimer; 
+            soundTimer = Random.Range(maxSoundTimer / 2, maxSoundTimer); 
         audioSource = GetComponent<AudioSource>();
     }
 
