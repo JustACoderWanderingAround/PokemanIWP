@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-public class PlayerGun : UsableItem
+public class PlayerGun : MonoBehaviour, UsableItem
 {
     [SerializeField]
     GameObject bulletPrefab;
@@ -10,14 +10,18 @@ public class PlayerGun : UsableItem
     float firingRate;
     [SerializeField]
     GameObject bulletOrigin;
+    SoundGenerator soundGenerator;
 
     float fireTimer;
-
-    public override bool PrimaryUse()
+    private void Awake()
+    {
+        soundGenerator = GetComponent<SoundGenerator>();
+    }
+    public bool PrimaryUse()
     {
         return TryShoot();
     }
-    public override bool SecondaryUse()
+    public bool SecondaryUse()
     {
         return false;
     }
@@ -29,6 +33,7 @@ public class PlayerGun : UsableItem
             {
                 fireTimer = 60 * (1 / firingRate);
                 Instantiate(bulletPrefab, bulletOrigin.transform);
+                soundGenerator.PlaySoundOnce(0, true);
                 return true;
             }
         }

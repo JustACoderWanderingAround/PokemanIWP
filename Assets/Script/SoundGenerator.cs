@@ -21,12 +21,12 @@ public class SoundGenerator : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
     }
-    public void PlaySoundOnce(int soundID)
+    public void PlaySoundOnce(int soundID, bool interruptSource = false)
     {
         audioSource.clip = sounds[soundID].clip;
         audioSource.loop = false;
         loopSoundGenerator = false;
-        if (!audioSource.isPlaying)
+        if (!audioSource.isPlaying || interruptSource)
             audioSource.Play();
         EmitSound(soundID); 
     }

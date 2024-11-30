@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerLight : UsableItem
+public class PlayerLight : MonoBehaviour, UsableItem
 {
     [SerializeField]
     GameObject lightSource;
-    public override bool PrimaryUse()
+    public bool PrimaryUse()
     {
         lightSource.SetActive(true);
         return true;
     }
 
-    public override bool SecondaryUse()
+    public bool SecondaryUse()
     {
         lightSource.SetActive(false);
         return true;

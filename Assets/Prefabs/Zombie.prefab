@@ -26,12 +26,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1729894225182827468}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.031199932, y: 1.6725, z: 0.0937}
+  m_LocalRotation: {x: 0.000000007450581, y: 1.9008439e-10, z: -1.7166712e-11, w: 1}
+  m_LocalPosition: {x: 0.06023494, y: -0.0058920234, z: 0.023779333}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1563499358704525436}
+  m_Father: {fileID: 6538912894834044834}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &3435237013240788006
 Light:
@@ -45,7 +45,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 0.01
+  m_Intensity: 5
   m_Range: 0.01
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -197,12 +197,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3633561234030677800}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.029500008, y: 1.6725, z: 0.0937}
+  m_LocalRotation: {x: 0.000000007450581, y: 1.9008439e-10, z: -1.7166712e-11, w: 1}
+  m_LocalPosition: {x: -0.0592905, y: -0.005891964, z: 0.023779333}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1563499358704525436}
+  m_Father: {fileID: 8545801699315168558}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &7437328519414341411
 Light:
@@ -216,7 +216,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 0.01
+  m_Intensity: 5
   m_Range: 0.01
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -342,9 +342,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityName: Da Zombie
   description: Dis is da zombie
-  maxHealth: 1
+  maxHealth: 3
   movementController: {fileID: 4191802257132747869}
-  nextTargetMaxRange: 10
+  nextTargetMaxRange: 7
   animator: {fileID: 4088630762527938232}
   runSpeed: 2.5
   walkSpeed: 1.2
@@ -711,21 +711,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie
       objectReference: {fileID: 0}
+    - target: {fileID: 6657560127643677590, guid: 0b73897845daa354486188782f90b4a3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 5653519914247303419, guid: 0b73897845daa354486188782f90b4a3,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2210417615769582466}
-    - targetCorrespondingSourceObject: {fileID: 5653519914247303419, guid: 0b73897845daa354486188782f90b4a3,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3970611113435094370}
     - targetCorrespondingSourceObject: {fileID: 6502182839619065283, guid: 0b73897845daa354486188782f90b4a3,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4528859188832857599}
+    - targetCorrespondingSourceObject: {fileID: -9117222261170815195, guid: 0b73897845daa354486188782f90b4a3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2210417615769582466}
+    - targetCorrespondingSourceObject: {fileID: -5953981544481626711, guid: 0b73897845daa354486188782f90b4a3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3970611113435094370}
     - targetCorrespondingSourceObject: {fileID: 1852576806548013000, guid: 0b73897845daa354486188782f90b4a3,
         type: 3}
       insertIndex: -1
@@ -739,12 +744,6 @@ PrefabInstance:
 --- !u!4 &142875889041818948 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6502182839619065283, guid: 0b73897845daa354486188782f90b4a3,
-    type: 3}
-  m_PrefabInstance: {fileID: 6613531699868127367}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1563499358704525436 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5653519914247303419, guid: 0b73897845daa354486188782f90b4a3,
     type: 3}
   m_PrefabInstance: {fileID: 6613531699868127367}
   m_PrefabAsset: {fileID: 0}
@@ -781,9 +780,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!4 &6538912894834044834 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -9117222261170815195, guid: 0b73897845daa354486188782f90b4a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 6613531699868127367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6651048606391449452 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0b73897845daa354486188782f90b4a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 6613531699868127367}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8545801699315168558 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -5953981544481626711, guid: 0b73897845daa354486188782f90b4a3,
     type: 3}
   m_PrefabInstance: {fileID: 6613531699868127367}
   m_PrefabAsset: {fileID: 0}

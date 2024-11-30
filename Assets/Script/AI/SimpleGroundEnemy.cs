@@ -108,8 +108,11 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
         if (spottedObjects.Count < 1)
         {
             playerSpotted = false;
-            movementController.SetTarget(transform.position);
-            ChangeState(EnemyState.STATE_IDLE);
+            if (state > EnemyState.STATE_CHASE)
+            {
+                movementController.SetTarget(transform.position);
+                ChangeState(EnemyState.STATE_IDLE);
+            }
         }
         stateTimer += Time.deltaTime;
         //Debug.Log("ST: " + stateTimer);
@@ -171,10 +174,11 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
     }
     void ChangeState(EnemyState newState)
     {
+        Debug.Log("ChangeState called - currState = " + state + " newstate = " + newState);
+        stateTimer = 0;
         if (state != newState)
         {
             state = newState;
-            stateTimer = 0;
             switch (state)
             {
                 case EnemyState.STATE_IDLE:
@@ -232,7 +236,7 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
         }
         else
         {
-            Debug.Log("no new patrol target set :(");
+            Debug.Log(gameObject.name + ": no new patrol target set :(");
         }
         movementController.ResumeNavigation();
         Debug.Log("Change state: Patrol");
