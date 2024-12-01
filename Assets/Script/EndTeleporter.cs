@@ -6,14 +6,26 @@ public class EndTeleporter : MonoBehaviour
 {
     [SerializeField]
     bool activated;
+    [SerializeField]
+    GameObject endScreen;
     private void OnTriggerEnter(Collider other)
     {
-        if (activated)
+       
+        if (other.gameObject.CompareTag("Player"))
         {
-            if (other.gameObject.CompareTag("Player"))
+            if (activated)
             {
                 Debug.Log("Final teleporter activated!");
+                endScreen.SetActive(true);
+            }
+            else
+            {
+                Debug.Log("Teleporter not active!");
             }
         }
+    }
+    public void ActivateTeleporter()
+    {
+        activated = true;
     }
 }

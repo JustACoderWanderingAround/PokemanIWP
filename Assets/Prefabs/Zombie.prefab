@@ -444,7 +444,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.295
+  m_Volume: 0.2
   m_Pitch: 0.5
   Loop: 0
   Mute: 0

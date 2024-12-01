@@ -39,7 +39,7 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
     {
         spottedObjects = new List<Collider>();
         fov = GetComponent<FieldOfView>();
-        state = EnemyState.STATE_PATROL;
+        ChangeState(EnemyState.STATE_IDLE);
         //animator.SetTrigger("Patrol");
         Vector3 point;
         movementController.GetNextTargetPos(transform.position, nextTargetMaxRange, out point);
@@ -63,10 +63,14 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
                     {
                         if (!playerSpotted)
                         {
-                            ChangeState(EnemyState.STATE_CHASE);
-                            movementController.SetTarget(obj.transform.position);
-                            playerSpotted = true;
-                            Debug.Log("Player spotted");
+                            if (state < EnemyState.STATE_CHASE)
+                            {
+                                Debug.Log("1");
+                                ChangeState(EnemyState.STATE_CHASE);
+                                movementController.SetTarget(obj.transform.position);
+                                playerSpotted = true;
+                                Debug.Log("Player spotted");
+                            }
                         }
                         break;
                     }
@@ -76,9 +80,13 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
                         {
                             if (Vector3.Distance(obj.transform.position, transform.position) > 2 && state < EnemyState.STATE_CHASE)
                             {
-                                ChangeState(EnemyState.STATE_CHASE);
-                                movementController.SetTarget(obj.transform.position);
-                                Debug.Log("Light source spotted");
+                                if (state < EnemyState.STATE_CHASE)
+                                {
+                                    Debug.Log("2");
+                                    ChangeState(EnemyState.STATE_CHASE);
+                                    movementController.SetTarget(obj.transform.position);
+                                    Debug.Log("Light source spotted");
+                                }
                             }
                         }
                         /// TODO:
@@ -135,8 +143,9 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
                 {
                     foreach (var obj in spottedObjects)
                     {
-                        if (obj.CompareTag("Player") && Vector3.Distance(transform.position, obj.transform.position) >= 3)
+                        if (obj.CompareTag("Player") && Vector3.Distance(transform.position, obj.transform.position) >= 5)
                         {
+                            Debug.Log("3");
                             ChangeState(EnemyState.STATE_CHASE);
                         }
                     }
@@ -159,7 +168,7 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
                                     ChangeState(EnemyState.STATE_ATTACK);
                                 else
                                 {
-                                    movementController.SetTarget(obj.ClosestPoint(transform.position));
+                                    movementController.SetTarget(obj.transform.position);
                                 }
                             }
                         }
@@ -176,36 +185,36 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
     {
         Debug.Log("ChangeState called - currState = " + state + " newstate = " + newState);
         stateTimer = 0;
+        ResetAllTriggers();
         if (state != newState)
         {
             state = newState;
             switch (state)
             {
                 case EnemyState.STATE_IDLE:
-                    if (!animator.GetBool("Idle"))
-                        animator.SetTrigger("Idle");
+                    animator.CrossFade("Idle", 0.01f);
                     movementController.ResumeNavigation();
                     Debug.Log("Change state: Idle");
                     break;
                 case EnemyState.STATE_PATROL:
                     ReturnToPatrol();
-                    //animator.SetTrigger("Patrol");
+                    animator.CrossFade("Patrol", 0.01f);
                     Debug.Log("Animator: Patrol");
                     break;
                 case EnemyState.STATE_ATTACK:
-                    if (!animator.GetBool("Attack"))
-                        animator.SetTrigger("Attack");
+                    animator.CrossFade("Attack", 0.01f);
+                    Debug.Log("Animator: Attack");
                     movementController.StopNavigation();
                     Debug.Log("Change state: Attack");
                     break;
                 case EnemyState.STATE_CHASE:
-                    animator.SetTrigger("Chase");
+                    animator.CrossFade("Chase", 0.01f);
                     Debug.Log("Animator: Chase");
                     movementController.ResumeNavigation();
                     Debug.Log("Change state: Chase");
                     break;
                 case EnemyState.STATE_DEAD:
-                    animator.SetTrigger("Dead");
+                    animator.CrossFade("Dead", 0.01f);
                     movementController.StopNavigation();
                     StopAllCoroutines();
                     randomSoundPlayer.enabled = false;
@@ -245,5 +254,15 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
     {
         base.Damage(dmg);
         animator.SetTrigger("Damaged");
+    }
+    private void ResetAllTriggers()
+    {
+        foreach (var param in animator.parameters)
+        {
+            if (param.type == AnimatorControllerParameterType.Trigger)
+            {
+                animator.ResetTrigger(param.name);
+            }
+        }
     }
 }

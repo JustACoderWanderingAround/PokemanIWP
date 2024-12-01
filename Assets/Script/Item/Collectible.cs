@@ -6,18 +6,14 @@ public class Collectible : MonoBehaviour, IInteractable
 {
     public void OnInteract()
     {
-        throw new System.NotImplementedException();
+        PlayerInventory m_inv = FindObjectOfType<PlayerInventory>();
+        m_inv.AddItem("Objective");
+        Debug.Log("Collected~!");
+        Destroy(gameObject);
     }
-
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (other.gameObject.CompareTag("Player")) 
+            OnInteract();
     }
 }
