@@ -54,18 +54,23 @@ public class MapGenerator : MonoBehaviour
     }
     void GenerateMap()
     {
+        int startingLocX;
+        int startingLocY;
+        int endingLocX;
+        int endingLocY;
+
         // ProcGen Init
         {
             // Find random area to place starting tile
-            int startingLocX = Random.Range(0, mapSizeX / 2 );
-            int startingLocY = Random.Range(0, mapSizeY / 2);
+            startingLocX = Random.Range(0, mapSizeX / 2 );
+            startingLocY = Random.Range(0, mapSizeY / 2);
 
             tileGrid[startingLocX][startingLocY] = spawnTile;
 
             // Find random area to place ending tile 
 
-            int endingLocX = startingLocX;
-            int endingLocY = startingLocY;
+            endingLocX = startingLocX;
+            endingLocY = startingLocY;
 
            
 
@@ -81,8 +86,15 @@ public class MapGenerator : MonoBehaviour
         }
         // ProcGen Start
         {
-            
+
         }
+    }
+    // TODO: Given a location on the map, find what tiles are valid.
+    // 1. Find sockets of 4 neighbours
+    // 2. Sort through all tiles and find tile with a valid combo of sockets
+    void EvaluateValidTiles(int tileX, int tileY)
+    {
+        
     }
     void SpawnTiles()
     {
