@@ -686,12 +686,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startX: -22.5
-  startY: -22.5
+  startZ: -22.5
   tileSizeX: 5
-  tileSizeY: 5
+  tileSizeZ: 5
   mapSeed: 219044
+  randomSeed: 1
   mapSizeX: 5
-  mapSizeY: 5
+  mapSizeZ: 5
   mapSpawnExitMinGridDistance: 3
   tilesSOs:
   - {fileID: 11400000, guid: 2adce9a7a347d744bae0d89c082eb610, type: 2}

@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class MapTile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public MapTile up;
+    public MapTile down;
+    public MapTile left;
+    public MapTile right;  
 }

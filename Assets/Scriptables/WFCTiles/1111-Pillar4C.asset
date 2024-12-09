@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a698776d504e643ad490929b766d22, type: 3}
   m_Name: 1111-Pillar4C
   m_EditorClassIdentifier: 
-  socketIDs: 00000000000000000000000000000000
+  socketIDs: 01000000010000000100000001000000
   tilePrefab: {fileID: 1935413457794552156, guid: 3d2c83e2c9424ac49baf238330514dad,
     type: 3}
+  disallowedConnectionsXPos:
+  - {fileID: 11400000}
+  disallowedConnectionsYPos:
+  - {fileID: 11400000}
+  disallowedConnectionsXNeg:
+  - {fileID: 11400000}
+  disallowedConnectionsYNeg:
+  - {fileID: 11400000}
