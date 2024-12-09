@@ -8,6 +8,13 @@ public class PlayerInventory : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this);
+        foreach (InventoryItem item in inventoryItems)
+        {
+            if (item.resetOnStart)
+            {
+                item.numberInInventory = 0;
+            }
+        }
     }
     public void AddItem(string name)
     {

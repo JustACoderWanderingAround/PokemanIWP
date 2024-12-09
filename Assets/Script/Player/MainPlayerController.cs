@@ -14,7 +14,7 @@ public class MainPlayerController : UseInputController
     [SerializeField]
     PlayerHandController playerHandController;
     [SerializeField]
-    Entity data;
+    DamagableEntity data;
     [SerializeField]
     SoundGenerator soundGenerator;
     [SerializeField]

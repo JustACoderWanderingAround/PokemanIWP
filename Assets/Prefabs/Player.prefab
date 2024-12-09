@@ -486,13 +486,14 @@ GameObject:
   - component: {fileID: 5511386416563182605}
   - component: {fileID: 6456712483672591841}
   - component: {fileID: 6683331682616898496}
+  - component: {fileID: 8154154145658482228}
   m_Layer: 0
   m_Name: PlayerCapsule
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &990526267513490384
 Transform:
   m_ObjectHideFlags: 0
@@ -523,7 +524,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8575378031768475079}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -704,6 +705,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - {fileID: 11400000, guid: 0c843b81361745a449b9ee58db25e29a, type: 2}
+--- !u!114 &8154154145658482228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8575378031768475079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7115bee9b2c18643a8dd19cb2dd191e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityName: Player
+  description: 'This is the player. '
+  maxHealth: 0
 --- !u!1001 &3189367544968404531
 PrefabInstance:
   m_ObjectHideFlags: 0

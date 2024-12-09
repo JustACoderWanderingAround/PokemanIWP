@@ -8,5 +8,6 @@ public class InventoryItem : ScriptableObject
     public string itemName;
     [SerializeField]
     public bool isStackable = false;
-    public int numberInInventory = 0; 
+    public int numberInInventory = 0;
+    public bool resetOnStart = false;
 }

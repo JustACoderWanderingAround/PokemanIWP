@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 4202494420599662306}
   m_Layer: 0
   m_Name: RAttackCol
-  m_TagString: Untagged
+  m_TagString: AttackCol
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

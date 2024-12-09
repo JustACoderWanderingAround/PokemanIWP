@@ -192,29 +192,29 @@ public class SimpleGroundEnemy : DamagableEntity, ISoundListener
             switch (state)
             {
                 case EnemyState.STATE_IDLE:
-                    animator.CrossFade("Idle", 0.01f);
+                    animator.CrossFade("Idle", 0.05f);
                     movementController.ResumeNavigation();
                     Debug.Log("Change state: Idle");
                     break;
                 case EnemyState.STATE_PATROL:
                     ReturnToPatrol();
-                    animator.CrossFade("Patrol", 0.01f);
+                    animator.CrossFade("Patrol", 0.05f);
                     Debug.Log("Animator: Patrol");
                     break;
                 case EnemyState.STATE_ATTACK:
-                    animator.CrossFade("Attack", 0.01f);
+                    animator.CrossFade("Attack", 0.05f);
                     Debug.Log("Animator: Attack");
                     movementController.StopNavigation();
                     Debug.Log("Change state: Attack");
                     break;
                 case EnemyState.STATE_CHASE:
-                    animator.CrossFade("Chase", 0.01f);
+                    animator.CrossFade("Chase", 0.05f);
                     Debug.Log("Animator: Chase");
                     movementController.ResumeNavigation();
                     Debug.Log("Change state: Chase");
                     break;
                 case EnemyState.STATE_DEAD:
-                    animator.CrossFade("Dead", 0.01f);
+                    animator.CrossFade("Dead", 0.05f);
                     movementController.StopNavigation();
                     StopAllCoroutines();
                     randomSoundPlayer.enabled = false;

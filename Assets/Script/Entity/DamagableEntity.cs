@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DamagableEntity : Entity
 {
@@ -9,6 +10,7 @@ public class DamagableEntity : Entity
     public int GetMaxHealth() { return maxHealth; }
     int currentHealth;
     public int GetCurrentHealth() { return currentHealth; }
+    public UnityEvent OnDamageEvent;
 
     bool isAlive;
     // Start is called before the first frame update
@@ -21,6 +23,7 @@ public class DamagableEntity : Entity
     {
         currentHealth -= dmg;
         isAlive = currentHealth > 0;
+        OnDamageEvent.Invoke();
     }
     public bool IsAlive() => isAlive;
 }
