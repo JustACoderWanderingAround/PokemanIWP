@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class MapTile : MonoBehaviour
 {
-
-    public MapTile up;
-    public MapTile down;
-    public MapTile left;
-    public MapTile right;  
+    public List<int> socketIDs = new List<int>() { -1, -1, -1, -1 };
+    private MapTileSO tileData;
+    public MapTileSO TileData { get { return tileData; } set { tileData = value; socketIDs = tileData.socketIDs; } }
 }

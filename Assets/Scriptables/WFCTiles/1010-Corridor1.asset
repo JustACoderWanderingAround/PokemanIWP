@@ -15,3 +15,7 @@ MonoBehaviour:
   socketIDs: 01000000000000000100000000000000
   tilePrefab: {fileID: 2518790742967706490, guid: 837d3e0199a8de74982513710a74b89e,
     type: 3}
+  disallowedConnectionsXPos: []
+  disallowedConnectionsYPos: []
+  disallowedConnectionsXNeg: []
+  disallowedConnectionsYNeg: []

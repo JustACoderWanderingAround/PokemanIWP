@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a698776d504e643ad490929b766d22, type: 3}
   m_Name: 0000-4Walls
   m_EditorClassIdentifier: 
-  socketIDs: 00000000000000000000000000000000
+  socketIDs: 00000000000000000100000001000000
   tilePrefab: {fileID: 2518790742967706490, guid: 4bcdae63322bbdd4188add8d956c7fa1,
     type: 3}
+  disallowedConnectionsXPos: []
+  disallowedConnectionsYPos: []
+  disallowedConnectionsXNeg: []
+  disallowedConnectionsYNeg: []
