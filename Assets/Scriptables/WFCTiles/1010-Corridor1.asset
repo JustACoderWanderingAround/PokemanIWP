@@ -12,10 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a698776d504e643ad490929b766d22, type: 3}
   m_Name: 1010-Corridor1
   m_EditorClassIdentifier: 
-  socketIDs: 01000000000000000100000000000000
+  allowedConnectionsXPos:
+  - {fileID: 11400000, guid: 2adce9a7a347d744bae0d89c082eb610, type: 2}
+  allowAllXPos: 0
+  allowedConnectionsZPos:
+  - {fileID: 11400000, guid: 339bd3a8b527b4040a8b4f550009bea0, type: 2}
+  - {fileID: 11400000, guid: 5e455d28faf817a4da460a17228c79d0, type: 2}
+  - {fileID: 11400000, guid: 61d20623321be4e4f8f67270da85e9a8, type: 2}
+  - {fileID: 11400000, guid: 3eb2dc9e79a74454b8a2a0a046d80f61, type: 2}
+  - {fileID: 11400000, guid: 3ea1131f6bc32fe4690a7fd7e893634d, type: 2}
+  - {fileID: 11400000, guid: e620a80b9df92e84a9bf37c5789f8e7f, type: 2}
+  allowAllZPos: 0
+  allowedConnectionsXNeg:
+  - {fileID: 11400000, guid: 2adce9a7a347d744bae0d89c082eb610, type: 2}
+  allowAllXNeg: 0
+  allowedConnectionsZNeg:
+  - {fileID: 11400000, guid: 339bd3a8b527b4040a8b4f550009bea0, type: 2}
+  - {fileID: 11400000, guid: 5e455d28faf817a4da460a17228c79d0, type: 2}
+  - {fileID: 11400000, guid: 61d20623321be4e4f8f67270da85e9a8, type: 2}
+  - {fileID: 11400000, guid: 3eb2dc9e79a74454b8a2a0a046d80f61, type: 2}
+  - {fileID: 11400000, guid: 3ea1131f6bc32fe4690a7fd7e893634d, type: 2}
+  - {fileID: 11400000, guid: e620a80b9df92e84a9bf37c5789f8e7f, type: 2}
+  allowAllZNeg: 0
   tilePrefab: {fileID: 2518790742967706490, guid: 837d3e0199a8de74982513710a74b89e,
     type: 3}
-  disallowedConnectionsXPos: []
-  disallowedConnectionsYPos: []
-  disallowedConnectionsXNeg: []
-  disallowedConnectionsYNeg: []

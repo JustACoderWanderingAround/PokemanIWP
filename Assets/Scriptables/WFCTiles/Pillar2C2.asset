@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6a698776d504e643ad490929b766d22, type: 3}
+  m_Name: Pillar2C2
+  m_EditorClassIdentifier: 
+  allowedConnectionsXPos:
+  - {fileID: 11400000, guid: cdf3d8113fd04d44a9df2f6869e912b7, type: 2}
+  - {fileID: 11400000, guid: 339bd3a8b527b4040a8b4f550009bea0, type: 2}
+  - {fileID: 11400000, guid: 5e455d28faf817a4da460a17228c79d0, type: 2}
+  allowAllXPos: 0
+  allowedConnectionsZPos:
+  - {fileID: 11400000, guid: 98d1e8527b1f74546a6e9003bd480962, type: 2}
+  - {fileID: 11400000, guid: cda24c9889b42ad45a4f0d82aebfb1c8, type: 2}
+  - {fileID: 11400000, guid: 5e455d28faf817a4da460a17228c79d0, type: 2}
+  allowAllZPos: 0
+  allowedConnectionsXNeg:
+  - {fileID: 11400000, guid: cdf3d8113fd04d44a9df2f6869e912b7, type: 2}
+  - {fileID: 11400000, guid: 339bd3a8b527b4040a8b4f550009bea0, type: 2}
+  - {fileID: 11400000, guid: 5e455d28faf817a4da460a17228c79d0, type: 2}
+  allowAllXNeg: 0
+  allowedConnectionsZNeg: []
+  allowAllZNeg: 0
+  tilePrefab: {fileID: 1935413457794552156, guid: 438f7c057e9b7a64e9666886f1a23073,
+    type: 3}

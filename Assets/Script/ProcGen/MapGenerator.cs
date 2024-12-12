@@ -59,23 +59,6 @@ public class MapGenerator : MonoBehaviour
             {
                 dfsVisited[x].Add(false);
                 tileGrid[x].Add(new MapTile());
-                if (x == 0)
-                {
-                    tileGrid[x][z].socketIDs[2] = 0;
-                }
-
-                if (x == mapSizeX)
-                {
-                    tileGrid[x][z].socketIDs[0] = 0;
-                }
-                if (z == 0)
-                {
-                    tileGrid[x][z].socketIDs[3] = 0;
-                }
-                if (z == mapSizeZ)
-                {
-                    tileGrid[x][z].socketIDs[1] = 0;
-                }
             }
         }
         if (!randomSeed)
@@ -160,77 +143,108 @@ public class MapGenerator : MonoBehaviour
     }
     void UpdateTileSockets()
     {
-        for (int x = 0; x < mapSizeX - 1; ++x)
-        {
-            for (int z = 0; z < mapSizeZ - 1; ++z)
-            {
-                // Update edge cases
-                if (x == 0)
-                    tileGrid[x][z].socketIDs[2] = 0;
-                if (z == 0)
-                    tileGrid[x][z].socketIDs[3] = 0;
-                tileGrid[x + 1][z].socketIDs[2] = tileGrid[x][z].socketIDs[0];
-                tileGrid[x][z + 1].socketIDs[3] = tileGrid[x][z].socketIDs[1];
-            }
-        }
+        //for (int x = 0; x < mapSizeX - 1; ++x)
+        //{
+        //    for (int z = 0; z < mapSizeZ - 1; ++z)
+        //    {
+        //        // Update edge cases
+        //        if (x == 0)
+        //            tileGrid[x][z].socketIDs[2] = 0;
+        //        if (z == 0)
+        //            tileGrid[x][z].socketIDs[3] = 0;
+        //        tileGrid[x + 1][z].socketIDs[2] = tileGrid[x][z].socketIDs[0];
+        //        tileGrid[x][z + 1].socketIDs[3] = tileGrid[x][z].socketIDs[1];
+        //    }
+        //}
     }
     // todo: fix this. stuff is spawning but not in the right way.
     bool CanFitInGridSlot(MapTileSO so, int tileX, int tileZ)
     {
-        Debug.Log("Input SO sockets: " + so.socketIDs.ToString());
         string outputStr = "";
-        bool fitsRight, fitsUp, fitsLeft, fitsDown;
+        bool fitsRight = false, fitsUp = false, fitsLeft = false, fitsDown = false;
 
-        
+
 
         // check if neighbouring indices match corresponding sockets or if they're -1 (unpicked)
         // Right
         if (tileX + 1 < mapSizeX)
         {
-            outputStr += tileGrid[tileX + 1][tileZ].socketIDs[2] + "/";
-            fitsRight = so.socketIDs[0] == tileGrid[tileX + 1][tileZ].socketIDs[2] /*&& so.CanConnect(tileGrid[tileX + 1][tileZ], 0)*/
-                || tileGrid[tileX + 1][tileZ].socketIDs[2] == -1;
+            if (tileGrid[tileX + 1][tileZ].TileData != null)
+            {
+                if (!tileGrid[tileX + 1][tileZ].TileData.allowAllXPos)
+                {
+                    MapTileSO currNeighbour = tileGrid[tileX + 1][tileZ].TileData;
+                    fitsRight = CanConnect(so, currNeighbour, directions[0]);
+                }
+                else
+                    fitsRight = true;
+            }
+            else
+                fitsRight = true;
         }
         else
         {
-            outputStr +=  "0/";
-            fitsRight = so.socketIDs[0] == 0;
+            fitsRight = true;
         }
         // Up
         if (tileZ + 1 < mapSizeZ)
         {
-            outputStr += tileGrid[tileX][tileZ + 1].socketIDs[3] + "/";
-            fitsUp = so.socketIDs[1] == tileGrid[tileX][tileZ + 1].socketIDs[3] /*&& so.CanConnect(tileGrid[tileX][tileZ + 1], 1)*/
-                || tileGrid[tileX][tileZ + 1].socketIDs[3] == -1;
+            if (tileGrid[tileX][tileZ + 1].TileData != null)
+            {
+                if (!tileGrid[tileX][tileZ + 1].TileData.allowAllXPos)
+                {
+                    MapTileSO currNeighbour = tileGrid[tileX][tileZ + 1].TileData;
+                    fitsUp = CanConnect(so, currNeighbour, directions[1]);
+                }
+                else
+                    fitsUp = true;
+            }
+            else
+                fitsUp = true;
         }
         else
         {
-            outputStr += "0/";
-            fitsUp = so.socketIDs[1] == 0;
+            fitsUp = true;
         }
         // Left
         if (tileX - 1 > 0)
         {
-            outputStr += tileGrid[tileX - 1][tileZ].socketIDs[0] + "/";
-            fitsLeft = so.socketIDs[2] == tileGrid[tileX - 1][tileZ].socketIDs[0] /*&& so.CanConnect(tileGrid[tileX - 1][tileZ], 2)*/
-                || tileGrid[tileX - 1][tileZ].socketIDs[0] == -1;
+            if (tileGrid[tileX - 1][tileZ].TileData != null)
+            {
+                if (!tileGrid[tileX - 1][tileZ].TileData.allowAllXPos)
+                {
+                    MapTileSO currNeighbour = tileGrid[tileX - 1][tileZ].TileData;
+                    fitsLeft = CanConnect(so, currNeighbour, directions[2]);
+                }
+                else
+                    fitsLeft = true;
+            }
+            else
+                fitsLeft = true;
         }
         else
         {
-            outputStr += "0/";
-            fitsLeft = so.socketIDs[2] == 0;
+            fitsLeft = true;
         }
         // Down
         if (tileZ - 1 > 0)
         {
-            outputStr += tileGrid[tileX][tileZ - 1].socketIDs[1] + "/";
-            fitsDown = so.socketIDs[3] == tileGrid[tileX][tileZ - 1].socketIDs[1] /*&& so.CanConnect(tileGrid[tileX][tileZ - 1], 3)*/
-                || tileGrid[tileX][tileZ - 1].socketIDs[1] == -1;
+            if (tileGrid[tileX][tileZ - 1].TileData != null)
+            {
+                if (!tileGrid[tileX][tileZ - 1].TileData.allowAllXPos)
+                {
+                    MapTileSO currNeighbour = tileGrid[tileX][tileZ - 1].TileData;
+                    fitsDown = CanConnect(so, currNeighbour, directions[2]);
+                }
+                else
+                    fitsDown = true;
+            }
+            else
+                fitsDown = true;
         }
         else
         {
-            outputStr += "0/";
-            fitsDown = so.socketIDs[3] == 0;
+            fitsDown = true;
         }
         Debug.Log(outputStr);
         Debug.Log(fitsRight && fitsUp && fitsDown && fitsLeft);
@@ -252,17 +266,58 @@ public class MapGenerator : MonoBehaviour
     {
        for(int x = 0; x < mapSizeX; x++)
         {
-            for (int y = 0; y < mapSizeZ; y++)
+            for (int z = 0; z < mapSizeZ; z++)
             {
-                if (tileGrid[x][y].TileData != null) 
+                if (tileGrid[x][z].TileData != null) 
                 {
-                    if (tileGrid[x][y].TileData.tilePrefab != null)
+                    if (tileGrid[x][z].TileData.tilePrefab != null)
                     {
-                        Vector3 currentPosition = new Vector3(startX + (mapSizeX * x), 0, startZ + (mapSizeZ * y));
-                        Instantiate(tileGrid[x][y].TileData.tilePrefab, currentPosition, Quaternion.identity);
+                        Vector3 currentPosition = new Vector3(startX + (tileSizeX * x), 0, startZ + (tileSizeZ * z));
+                        Instantiate(tileGrid[x][z].TileData.tilePrefab, currentPosition, Quaternion.identity);
                     }
                 }
             }
         }
+    }
+    /// <summary>
+    /// Checks if a can connect to b. directions is relative to a.
+    /// </summary>
+    /// <param name="a"></param>
+    /// <param name="b"></param>
+    /// <param name="directions"></param>
+    /// <returns></returns>
+    bool CanConnect(MapTileSO a, MapTileSO b, (int, int) directions)
+    {
+        bool returnBool = false;
+        switch (directions)
+        {
+            case (1, 0):
+                return (SearchList(a, b.allowedConnectionsXNeg) || a.allowedConnectionsXPos == b.allowedConnectionsXNeg) ;
+            case (0, 1):
+                return (SearchList(a, b.allowedConnectionsZNeg) || a.allowedConnectionsZPos == b.allowedConnectionsZNeg);
+            case (-1, 0):
+                return (SearchList(a, b.allowedConnectionsXPos) || a.allowedConnectionsXNeg == b.allowedConnectionsXPos);
+            case (0, -1):
+                return (SearchList(a, b.allowedConnectionsZPos) || a.allowedConnectionsZNeg == b.allowedConnectionsZPos);
+        }
+        return returnBool;
+    }
+    /// <summary>
+    /// Checks if a can connect to b. directions is relative to a.
+    /// </summary>
+    /// <param name="a"></param>
+    /// <param name="b"></param>
+    /// <param name="directions"></param>
+    /// <returns></returns>
+    bool SearchList(MapTileSO toFind, List<MapTileSO> toSearch)
+    {
+        foreach (MapTileSO item in toSearch)
+        {
+            if (toFind == item)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
