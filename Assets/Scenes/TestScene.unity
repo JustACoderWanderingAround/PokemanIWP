@@ -689,7 +689,7 @@ MonoBehaviour:
   startZ: -22.5
   tileSizeX: 5
   tileSizeZ: 5
-  mapSeed: 219044
+  mapSeed: 0
   randomSeed: 1
   mapSizeX: 10
   mapSizeZ: 10
@@ -700,11 +700,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cda24c9889b42ad45a4f0d82aebfb1c8, type: 2}
   - {fileID: 11400000, guid: cdf3d8113fd04d44a9df2f6869e912b7, type: 2}
   - {fileID: 11400000, guid: 339bd3a8b527b4040a8b4f550009bea0, type: 2}
-  - {fileID: 11400000, guid: 5e455d28faf817a4da460a17228c79d0, type: 2}
+  - {fileID: 11400000, guid: 499a4a87b0f6f43448240ca2b4679320, type: 2}
   - {fileID: 11400000, guid: 61d20623321be4e4f8f67270da85e9a8, type: 2}
   - {fileID: 11400000, guid: 3eb2dc9e79a74454b8a2a0a046d80f61, type: 2}
   - {fileID: 11400000, guid: 3ea1131f6bc32fe4690a7fd7e893634d, type: 2}
   - {fileID: 11400000, guid: e620a80b9df92e84a9bf37c5789f8e7f, type: 2}
+  - {fileID: 11400000, guid: 69d62d1a4fc91044684684a6958840b3, type: 2}
+  - {fileID: 11400000, guid: 35e7a79aea1ef424d822bda047b0b0c2, type: 2}
+  - {fileID: 11400000, guid: ab01a754c51abf04b98e59d176aa6df5, type: 2}
+  - {fileID: 11400000, guid: 732fc9826733b054d9b1e4f5bddc79b9, type: 2}
   spawnTile: {fileID: 11400000, guid: 5e455d28faf817a4da460a17228c79d0, type: 2}
   exitTile: {fileID: 11400000, guid: 0b91859bee498c348bd94ba4a297afaa, type: 2}
 --- !u!1 &668103487

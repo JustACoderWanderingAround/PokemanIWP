@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6a698776d504e643ad490929b766d22, type: 3}
+  m_Name: BigPoleNP
+  m_EditorClassIdentifier: 
+  allowedConnectionsXPos:
+  - {fileID: 11400000, guid: 69d62d1a4fc91044684684a6958840b3, type: 2}
+  allowAllXPos: 1
+  allowedConnectionsZPos: []
+  allowAllZPos: 1
+  allowedConnectionsXNeg: []
+  allowAllXNeg: 0
+  allowedConnectionsZNeg:
+  - {fileID: 11400000, guid: 732fc9826733b054d9b1e4f5bddc79b9, type: 2}
+  allowAllZNeg: 0
+  tilePrefab: {fileID: 1935413457794552156, guid: e62664f761538834f94ee87140df433d,
+    type: 3}
