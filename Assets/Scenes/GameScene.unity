@@ -335,7 +335,7 @@ PrefabInstance:
     - target: {fileID: 3067016692234486089, guid: 81f05a4595cfb494495c24525f360de5,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5927954210771614687, guid: 81f05a4595cfb494495c24525f360de5,
         type: 3}
@@ -1656,6 +1656,50 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8703b7bded73b4d438ad03724b87bed1, type: 3}
+--- !u!1 &780189691 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8571779051514681604, guid: ad5a87820777bb74b93eb80965b8c1d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 2776733828519053895}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &780189692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780189691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7983998cf2f50a45b38c7c8142b8c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startX: -22.5
+  startZ: -22.5
+  tileSizeX: 5
+  tileSizeZ: 5
+  mapSeed: 0
+  randomSeed: 1
+  mapSizeX: 10
+  mapSizeZ: 10
+  mapSpawnExitMinGridDistance: 3
+  tilesSOs:
+  - {fileID: 11400000, guid: 2adce9a7a347d744bae0d89c082eb610, type: 2}
+  - {fileID: 11400000, guid: 98d1e8527b1f74546a6e9003bd480962, type: 2}
+  - {fileID: 11400000, guid: cda24c9889b42ad45a4f0d82aebfb1c8, type: 2}
+  - {fileID: 11400000, guid: cdf3d8113fd04d44a9df2f6869e912b7, type: 2}
+  - {fileID: 11400000, guid: 339bd3a8b527b4040a8b4f550009bea0, type: 2}
+  - {fileID: 11400000, guid: 499a4a87b0f6f43448240ca2b4679320, type: 2}
+  - {fileID: 11400000, guid: 61d20623321be4e4f8f67270da85e9a8, type: 2}
+  - {fileID: 11400000, guid: 3eb2dc9e79a74454b8a2a0a046d80f61, type: 2}
+  - {fileID: 11400000, guid: 3ea1131f6bc32fe4690a7fd7e893634d, type: 2}
+  - {fileID: 11400000, guid: e620a80b9df92e84a9bf37c5789f8e7f, type: 2}
+  - {fileID: 11400000, guid: 69d62d1a4fc91044684684a6958840b3, type: 2}
+  - {fileID: 11400000, guid: 35e7a79aea1ef424d822bda047b0b0c2, type: 2}
+  - {fileID: 11400000, guid: ab01a754c51abf04b98e59d176aa6df5, type: 2}
+  - {fileID: 11400000, guid: 732fc9826733b054d9b1e4f5bddc79b9, type: 2}
+  spawnTile: {fileID: 11400000, guid: 6c6a54e9c0151124989f89d9a09649bc, type: 2}
+  exitTile: {fileID: 11400000, guid: 0b91859bee498c348bd94ba4a297afaa, type: 2}
 --- !u!1001 &792748612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5374,7 +5418,11 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2134406766}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8571779051514681604, guid: ad5a87820777bb74b93eb80965b8c1d9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 780189692}
   m_SourcePrefab: {fileID: 100100000, guid: ad5a87820777bb74b93eb80965b8c1d9, type: 3}
 --- !u!1001 &5938845060255348603
 PrefabInstance:

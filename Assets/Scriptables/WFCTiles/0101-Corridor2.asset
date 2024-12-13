@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: 0101-Corridor2
   m_EditorClassIdentifier: 
   allowedConnectionsXPos:
-  - {fileID: 11400000, guid: 2adce9a7a347d744bae0d89c082eb610, type: 2}
   - {fileID: 11400000, guid: 499a4a87b0f6f43448240ca2b4679320, type: 2}
   - {fileID: 11400000, guid: 5e455d28faf817a4da460a17228c79d0, type: 2}
   allowAllXPos: 0
@@ -27,7 +26,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 732fc9826733b054d9b1e4f5bddc79b9, type: 2}
   allowAllZPos: 0
   allowedConnectionsXNeg:
-  - {fileID: 11400000, guid: 2adce9a7a347d744bae0d89c082eb610, type: 2}
   - {fileID: 11400000, guid: 499a4a87b0f6f43448240ca2b4679320, type: 2}
   - {fileID: 11400000, guid: 5e455d28faf817a4da460a17228c79d0, type: 2}
   allowAllXNeg: 0

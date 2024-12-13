@@ -102,8 +102,8 @@ public class MapGenerator : MonoBehaviour
 
         }
         {
-            LinearPickTiles();
-            //DFSPickTiles(startingLocX, startingLocZ);
+            //LinearPickTiles();
+            DFSPickTiles(startingLocX, startingLocZ);
         }
     }
     void LinearPickTiles()
@@ -128,18 +128,20 @@ public class MapGenerator : MonoBehaviour
         dfsVisited[tileX][tileZ] = true;
         // Check if visited tile has tile data
         // TODO: FIX!!
-        if (tileGrid[tileX][tileZ].TileData == null)
-            if (tileGrid[tileX][tileZ].TileData.tilePrefab == null)
-                tileGrid[tileX][tileZ].TileData = tilesSOs[Random.Range(0, tilesSOs.Count)];
-            else
-                Debug.Log("1");
-        else
+        if (tileGrid[tileX][tileZ].TileData == null) {
+            tileGrid[tileX][tileZ].TileData = tilesSOs[Random.Range(0, tilesSOs.Count)];
+        }
+        else 
+        {
             Debug.Log("2");
-       foreach ((int dx, int dz) in directions)
-       {
+        }
+
+        foreach ((int dx, int dz) in directions)
+        {
             Debug.Log("Next tile:" + (tileX + dx).ToString() + " " + (tileZ + dz).ToString());
             DFSPickTiles(tileX + dx, tileZ + dz);
-       }
+        }
+
     }
     void UpdateTileSockets()
     {

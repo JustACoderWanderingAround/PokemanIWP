@@ -16,17 +16,29 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cdf3d8113fd04d44a9df2f6869e912b7, type: 2}
   - {fileID: 11400000, guid: 339bd3a8b527b4040a8b4f550009bea0, type: 2}
   - {fileID: 11400000, guid: 5e455d28faf817a4da460a17228c79d0, type: 2}
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: 3ea1131f6bc32fe4690a7fd7e893634d, type: 2}
+  - {fileID: 11400000, guid: e620a80b9df92e84a9bf37c5789f8e7f, type: 2}
+  - {fileID: 11400000, guid: 499a4a87b0f6f43448240ca2b4679320, type: 2}
   allowAllXPos: 0
   allowedConnectionsZPos:
   - {fileID: 11400000, guid: 98d1e8527b1f74546a6e9003bd480962, type: 2}
   - {fileID: 11400000, guid: cda24c9889b42ad45a4f0d82aebfb1c8, type: 2}
   - {fileID: 11400000, guid: 5e455d28faf817a4da460a17228c79d0, type: 2}
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: 3ea1131f6bc32fe4690a7fd7e893634d, type: 2}
+  - {fileID: 11400000, guid: e620a80b9df92e84a9bf37c5789f8e7f, type: 2}
+  - {fileID: 11400000, guid: 499a4a87b0f6f43448240ca2b4679320, type: 2}
   allowAllZPos: 0
   allowedConnectionsXNeg:
   - {fileID: 11400000, guid: cdf3d8113fd04d44a9df2f6869e912b7, type: 2}
   - {fileID: 11400000, guid: 339bd3a8b527b4040a8b4f550009bea0, type: 2}
   - {fileID: 11400000, guid: 5e455d28faf817a4da460a17228c79d0, type: 2}
-  allowAllXNeg: 0
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: 3eb2dc9e79a74454b8a2a0a046d80f61, type: 2}
+  - {fileID: 11400000, guid: 3ea1131f6bc32fe4690a7fd7e893634d, type: 2}
+  - {fileID: 11400000, guid: 499a4a87b0f6f43448240ca2b4679320, type: 2}
+  allowAllXNeg: 1
   allowedConnectionsZNeg: []
   allowAllZNeg: 0
   tilePrefab: {fileID: 1935413457794552156, guid: 1b474a44a9ff1c849b79c44b7f185ea7,

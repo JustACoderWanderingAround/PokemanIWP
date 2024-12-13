@@ -709,7 +709,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 35e7a79aea1ef424d822bda047b0b0c2, type: 2}
   - {fileID: 11400000, guid: ab01a754c51abf04b98e59d176aa6df5, type: 2}
   - {fileID: 11400000, guid: 732fc9826733b054d9b1e4f5bddc79b9, type: 2}
-  spawnTile: {fileID: 11400000, guid: 5e455d28faf817a4da460a17228c79d0, type: 2}
+  spawnTile: {fileID: 11400000, guid: 6c6a54e9c0151124989f89d9a09649bc, type: 2}
   exitTile: {fileID: 11400000, guid: 0b91859bee498c348bd94ba4a297afaa, type: 2}
 --- !u!1 &668103487
 GameObject:
