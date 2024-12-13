@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a698776d504e643ad490929b766d22, type: 3}
   m_Name: 1111-ExitTile
   m_EditorClassIdentifier: 
-  socketIDs: 01000000010000000100000000000000
+  allowedConnectionsXPos: []
+  allowAllXPos: 1
+  allowedConnectionsZPos: []
+  allowAllZPos: 1
+  allowedConnectionsXNeg: []
+  allowAllXNeg: 1
+  allowedConnectionsZNeg: []
+  allowAllZNeg: 1
   tilePrefab: {fileID: 2077821370150211260, guid: a918b140a998ee7458bc1d19d26b3e94,
     type: 3}
-  disallowedConnectionsXPos: []
-  disallowedConnectionsYPos: []
-  disallowedConnectionsXNeg: []
-  disallowedConnectionsYNeg: []

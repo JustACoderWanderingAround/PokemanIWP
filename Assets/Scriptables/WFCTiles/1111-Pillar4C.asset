@@ -12,17 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a698776d504e643ad490929b766d22, type: 3}
   m_Name: 1111-Pillar4C
   m_EditorClassIdentifier: 
-  allowedConnectionsXPos:
-  - {fileID: 11400000, guid: 98d1e8527b1f74546a6e9003bd480962, type: 2}
-  - {fileID: 11400000, guid: c49592a7e68a6bc4d89501521f0a496e, type: 2}
-  allowedConnectionsYPos:
-  - {fileID: 11400000, guid: cdf3d8113fd04d44a9df2f6869e912b7, type: 2}
-  - {fileID: 11400000, guid: 3d9f3bfe355cee249bdf4c0b124ac2fc, type: 2}
-  allowedConnectionsXNeg:
-  - {fileID: 11400000, guid: cdf3d8113fd04d44a9df2f6869e912b7, type: 2}
-  - {fileID: 11400000, guid: cdf3d8113fd04d44a9df2f6869e912b7, type: 2}
-  allowedConnectionsYNeg:
-  - {fileID: 11400000, guid: 98d1e8527b1f74546a6e9003bd480962, type: 2}
-  - {fileID: 11400000, guid: c49592a7e68a6bc4d89501521f0a496e, type: 2}
+  allowedConnectionsXPos: []
+  allowAllXPos: 1
+  allowedConnectionsZPos: []
+  allowAllZPos: 1
+  allowedConnectionsXNeg: []
+  allowAllXNeg: 1
+  allowedConnectionsZNeg: []
+  allowAllZNeg: 1
   tilePrefab: {fileID: 1935413457794552156, guid: 3d2c83e2c9424ac49baf238330514dad,
     type: 3}

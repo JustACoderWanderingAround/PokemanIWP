@@ -22,12 +22,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cda24c9889b42ad45a4f0d82aebfb1c8, type: 2}
   - {fileID: 11400000, guid: 5e455d28faf817a4da460a17228c79d0, type: 2}
   allowAllZPos: 0
-  allowedConnectionsXNeg:
-  - {fileID: 11400000, guid: cdf3d8113fd04d44a9df2f6869e912b7, type: 2}
-  - {fileID: 11400000, guid: 339bd3a8b527b4040a8b4f550009bea0, type: 2}
-  - {fileID: 11400000, guid: 5e455d28faf817a4da460a17228c79d0, type: 2}
+  allowedConnectionsXNeg: []
   allowAllXNeg: 0
-  allowedConnectionsZNeg: []
+  allowedConnectionsZNeg:
+  - {fileID: 11400000, guid: 98d1e8527b1f74546a6e9003bd480962, type: 2}
+  - {fileID: 11400000, guid: cda24c9889b42ad45a4f0d82aebfb1c8, type: 2}
+  - {fileID: 11400000, guid: 5e455d28faf817a4da460a17228c79d0, type: 2}
   allowAllZNeg: 0
   tilePrefab: {fileID: 1935413457794552156, guid: 438f7c057e9b7a64e9666886f1a23073,
     type: 3}
