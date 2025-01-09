@@ -33,8 +33,15 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     MapTileSO exitTile;
 
+    [Header("Extras")]
+    [SerializeField]
+    GameObject gridHolder;
+
     List<List<MapTile>> tileGrid;
     List<List<bool>> dfsVisited;
+
+    GameObject startTile;
+    GameObject endTile;
 
     // Helper var
 
@@ -47,6 +54,9 @@ public class MapGenerator : MonoBehaviour
         };
     // Start is called before the first frame update
     void Start()
+    {
+    }
+    public void InitGenerator()
     {
         // init vars
         tileGrid = new List<List<MapTile>>();
@@ -64,8 +74,10 @@ public class MapGenerator : MonoBehaviour
         if (!randomSeed)
             Random.InitState(mapSeed);
 
+    }
+    public void StartGeneration()
+    {
         GenerateMap();
-
         SpawnTiles();
     }
     void GenerateMap()
@@ -115,7 +127,6 @@ public class MapGenerator : MonoBehaviour
                 List<MapTileSO> validTiles = FindValidTiles(x, z);
                 if (validTiles.Count > 0)
                     tileGrid[x][z].TileData = validTiles[Random.Range(0, validTiles.Count)];
-                UpdateTileSockets();
             }
         }
     }
@@ -142,22 +153,6 @@ public class MapGenerator : MonoBehaviour
             DFSPickTiles(tileX + dx, tileZ + dz);
         }
 
-    }
-    void UpdateTileSockets()
-    {
-        //for (int x = 0; x < mapSizeX - 1; ++x)
-        //{
-        //    for (int z = 0; z < mapSizeZ - 1; ++z)
-        //    {
-        //        // Update edge cases
-        //        if (x == 0)
-        //            tileGrid[x][z].socketIDs[2] = 0;
-        //        if (z == 0)
-        //            tileGrid[x][z].socketIDs[3] = 0;
-        //        tileGrid[x + 1][z].socketIDs[2] = tileGrid[x][z].socketIDs[0];
-        //        tileGrid[x][z + 1].socketIDs[3] = tileGrid[x][z].socketIDs[1];
-        //    }
-        //}
     }
     // todo: fix this. stuff is spawning but not in the right way.
     bool CanFitInGridSlot(MapTileSO so, int tileX, int tileZ)
@@ -275,11 +270,20 @@ public class MapGenerator : MonoBehaviour
                     if (tileGrid[x][z].TileData.tilePrefab != null)
                     {
                         Vector3 currentPosition = new Vector3(startX + (tileSizeX * x), 0, startZ + (tileSizeZ * z));
-                        Instantiate(tileGrid[x][z].TileData.tilePrefab, currentPosition, Quaternion.identity);
+                        GameObject inst = Instantiate(tileGrid[x][z].TileData.tilePrefab, currentPosition, Quaternion.identity, gridHolder.transform);
+                        if (tileGrid[x][z].TileData == spawnTile)
+                        {
+                            startTile = inst;
+                        }
+                        if (tileGrid[x][z].TileData == exitTile)
+                        {
+                            endTile = inst;
+                        }
                     }
                 }
             }
-        }
+       }
+
     }
     /// <summary>
     /// Checks if a can connect to b. directions is relative to a.
@@ -294,13 +298,13 @@ public class MapGenerator : MonoBehaviour
         switch (directions)
         {
             case (1, 0):
-                return (SearchList(a, b.allowedConnectionsXNeg) || a.allowedConnectionsXPos == b.allowedConnectionsXNeg) ;
+                return (PresentInList(a, b.allowedConnectionsXNeg) || a.allowedConnectionsXPos == b.allowedConnectionsXNeg) ;
             case (0, 1):
-                return (SearchList(a, b.allowedConnectionsZNeg) || a.allowedConnectionsZPos == b.allowedConnectionsZNeg);
+                return (PresentInList(a, b.allowedConnectionsZNeg) || a.allowedConnectionsZPos == b.allowedConnectionsZNeg);
             case (-1, 0):
-                return (SearchList(a, b.allowedConnectionsXPos) || a.allowedConnectionsXNeg == b.allowedConnectionsXPos);
+                return (PresentInList(a, b.allowedConnectionsXPos) || a.allowedConnectionsXNeg == b.allowedConnectionsXPos);
             case (0, -1):
-                return (SearchList(a, b.allowedConnectionsZPos) || a.allowedConnectionsZNeg == b.allowedConnectionsZPos);
+                return (PresentInList(a, b.allowedConnectionsZPos) || a.allowedConnectionsZNeg == b.allowedConnectionsZPos);
         }
         return returnBool;
     }
@@ -311,7 +315,7 @@ public class MapGenerator : MonoBehaviour
     /// <param name="b"></param>
     /// <param name="directions"></param>
     /// <returns></returns>
-    bool SearchList(MapTileSO toFind, List<MapTileSO> toSearch)
+    bool PresentInList(MapTileSO toFind, List<MapTileSO> toSearch)
     {
         foreach (MapTileSO item in toSearch)
         {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class SimpleGroundEnemy : DamagableEntity, ISoundListener
+public class SimpleGroundEnemy : Enemy, ISoundListener
 {
     [SerializeField]
     NavAgentMovementController movementController;

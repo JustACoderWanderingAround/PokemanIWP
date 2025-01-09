@@ -1700,6 +1700,23 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 732fc9826733b054d9b1e4f5bddc79b9, type: 2}
   spawnTile: {fileID: 11400000, guid: 6c6a54e9c0151124989f89d9a09649bc, type: 2}
   exitTile: {fileID: 11400000, guid: 0b91859bee498c348bd94ba4a297afaa, type: 2}
+  gridHolder: {fileID: 1608771085}
+--- !u!114 &780189693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780189691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69d4022be8578a64ba3cf56a6ed76fb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnableEnemies:
+  - {fileID: 1164102328113803972, guid: ad22f9fc86af0bd40b1129283fd02988, type: 3}
+  respectiveSpawnChances: []
+  numberToSpawn: 0
 --- !u!1001 &792748612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2201,6 +2218,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EndTeleporter
       objectReference: {fileID: 0}
+    - target: {fileID: 7975244344235464805, guid: 909724fb24d5ab440adf621cac40a3cc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2342,6 +2364,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TestCollectible (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7541403734506201052, guid: 7709033e466476c418e5b0363a742a06,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3623,6 +3650,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestCollectible
       objectReference: {fileID: 0}
+    - target: {fileID: 7541403734506201052, guid: 7709033e466476c418e5b0363a742a06,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3634,6 +3666,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1038955840}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1608771085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1608771086}
+  m_Layer: 0
+  m_Name: GridHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1608771086
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608771085}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 650190578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1613907227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4328,7 +4391,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1777533957
 Transform:
   m_ObjectHideFlags: 0
@@ -4578,18 +4641,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 659457607}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1844301600 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2071869255522610967, guid: 909724fb24d5ab440adf621cac40a3cc,
-    type: 3}
-  m_PrefabInstance: {fileID: 1101694423}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60a185a54e6f3934bbbc4076a24a3e8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1878406090
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5245,8 +5296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b8ef9292b5c01479989e5648d4a81f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 1404181021}
-  endTeleporter: {fileID: 1844301600}
+  mapGenerator: {fileID: 780189692}
+  enemyManager: {fileID: 0}
 --- !u!1 &2134406765
 GameObject:
   m_ObjectHideFlags: 0
@@ -5262,7 +5313,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2134406766
 Transform:
   m_ObjectHideFlags: 0
@@ -5418,11 +5469,19 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2134406766}
+    - targetCorrespondingSourceObject: {fileID: 3730843844722956536, guid: ad5a87820777bb74b93eb80965b8c1d9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1608771086}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8571779051514681604, guid: ad5a87820777bb74b93eb80965b8c1d9,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 780189692}
+    - targetCorrespondingSourceObject: {fileID: 8571779051514681604, guid: ad5a87820777bb74b93eb80965b8c1d9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 780189693}
   m_SourcePrefab: {fileID: 100100000, guid: ad5a87820777bb74b93eb80965b8c1d9, type: 3}
 --- !u!1001 &5938845060255348603
 PrefabInstance:
