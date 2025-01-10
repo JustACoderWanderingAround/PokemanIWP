@@ -217,7 +217,8 @@ public class SimpleGroundEnemy : Enemy, ISoundListener
                     animator.CrossFade("Dead", 0.05f);
                     movementController.StopNavigation();
                     StopAllCoroutines();
-                    randomSoundPlayer.enabled = false;
+                    randomSoundPlayer.StopPlayer();
+                    GetComponent<Collider>().enabled = false;
                     break;
             }
            

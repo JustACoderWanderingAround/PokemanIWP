@@ -43,6 +43,8 @@ public class MapGenerator : MonoBehaviour
     GameObject startTile;
     GameObject endTile;
 
+    List<Vector2> mapData;
+
     // Helper var
 
     List<(int dx, int dy)> directions = new List<(int, int)>
@@ -56,8 +58,10 @@ public class MapGenerator : MonoBehaviour
     void Start()
     {
     }
-    public void InitGenerator()
+    public 
+    void InitGenerator()
     {
+        mapData = new List<Vector2>();
         // init vars
         tileGrid = new List<List<MapTile>>();
         dfsVisited = new List<List<bool>>();
@@ -95,6 +99,8 @@ public class MapGenerator : MonoBehaviour
 
             tileGrid[startingLocX][startingLocZ].TileData = spawnTile;
 
+            mapData.Add(new Vector2(startingLocX, startingLocZ));
+
             // Find random area to place ending tile 
 
             endingLocX = startingLocX;
@@ -108,6 +114,7 @@ public class MapGenerator : MonoBehaviour
                 endingLocZ = Random.Range(0, mapSizeZ);
 
             } while (Vector2.Distance(new Vector2(endingLocX, endingLocZ), new Vector2(startingLocX, startingLocZ)) < mapSpawnExitMinGridDistance);
+            mapData.Add(new Vector2(endingLocX, endingLocZ));
             tileGrid[endingLocX][endingLocZ].TileData = exitTile;
             Debug.Log("Start: " + startingLocX.ToString() + " " + startingLocZ.ToString());
             Debug.Log("End: " + endingLocX.ToString() + " " + endingLocZ.ToString());
@@ -325,5 +332,17 @@ public class MapGenerator : MonoBehaviour
             }
         }
         return false;
+    }
+    public GameObject GetGridGameObjectParent()
+    {
+        return gridHolder;
+    }
+    public List<Vector2> GetMapData()
+    {
+        return mapData;
+    }
+    public Vector3 GetGridPosFromIndex(int x, int z)
+    {
+       return new Vector3(startX + (tileSizeX * x), 1 ,startZ + (tileSizeZ * z));
     }
 }

@@ -10,12 +10,14 @@ public class EnemyManager : MonoBehaviour
     List<float> respectiveSpawnChances;
     [SerializeField]
     int numberToSpawn;
-    public void SpawnEnemies(List<GameObject> potentialLocations)
+    [SerializeField]
+    GameObject enemySlot;
+    public void SpawnEnemies(Transform[] potentialLocations)
     {
         // Validate inputs
         if (spawnableEnemies == null || spawnableEnemies.Count == 0 ||
             respectiveSpawnChances == null || respectiveSpawnChances.Count != spawnableEnemies.Count ||
-            potentialLocations == null || potentialLocations.Count == 0)
+            potentialLocations == null || potentialLocations.Length == 0)
         {
             Debug.LogError("Invalid inputs for enemy spawning.");
             return;
@@ -44,8 +46,8 @@ public class EnemyManager : MonoBehaviour
         for (int i = 0; i < numberToSpawn; i++)
         {
             // Choose a random location
-            int randomLocationIndex = Random.Range(0, potentialLocations.Count);
-            GameObject spawnLocation = potentialLocations[randomLocationIndex];
+            int randomLocationIndex = Random.Range(0, potentialLocations.Length);
+            Vector3 spawnLocation = potentialLocations[randomLocationIndex].position;
 
             // Choose an enemy based on weighted chances
             float randomValue = Random.value; // Value between 0 and 1
@@ -64,7 +66,7 @@ public class EnemyManager : MonoBehaviour
 
             // Instantiate the chosen enemy at the spawn location
             Enemy chosenEnemy = spawnableEnemies[chosenEnemyIndex];
-            Instantiate(chosenEnemy.gameObject, spawnLocation.transform.position, Quaternion.identity);
+            Instantiate(chosenEnemy.gameObject, spawnLocation, Quaternion.identity, enemySlot.transform);
         }
     }
 }

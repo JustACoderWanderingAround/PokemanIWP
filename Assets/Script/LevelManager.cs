@@ -8,6 +8,8 @@ public class LevelManager : MonoBehaviour
     MapGenerator mapGenerator;
     [SerializeField]
     EnemyManager enemyManager;
+    [SerializeField]
+    GameObject playerObject;
     //[SerializeField]
     //PlayerInventory inventory;
     //[SerializeField]
@@ -26,5 +28,9 @@ public class LevelManager : MonoBehaviour
     {
         mapGenerator.InitGenerator();
         mapGenerator.StartGeneration();
+        Transform[] potentialLocs = mapGenerator.GetGridGameObjectParent().GetComponentsInChildren<Transform>();
+        enemyManager.SpawnEnemies(potentialLocs);
+        Vector2 startPosInd = mapGenerator.GetMapData()[0];
+        playerObject.transform.position = mapGenerator.GetGridPosFromIndex((int)startPosInd.x, (int)startPosInd.y);
     }
 }
