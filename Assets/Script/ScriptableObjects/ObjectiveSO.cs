@@ -4,6 +4,5 @@ using UnityEngine;
 
 public class ObjectiveSO : ScriptableObject
 {
-    public bool completed;
-    public string objectiveText;
+    public Objective mainObjective;
 }

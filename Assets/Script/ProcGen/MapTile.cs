@@ -27,4 +27,14 @@ public class MapTile : MonoBehaviour
         allowedConnectionsXNeg = aXN;
         allowedConnectionsZNeg = aYN;
     }
+    public MapTile()
+    {
+    }
+    public MapTile(List<MapTileSO> allowedConnectionsXPos, List<MapTileSO> allowedConnectionsZPos, List<MapTileSO> allowedConnectionsXNeg, List<MapTileSO> allowedConnectionsZNeg)
+    {
+        this.allowedConnectionsXPos = allowedConnectionsXPos;
+        this.allowedConnectionsZPos = allowedConnectionsZPos;
+        this.allowedConnectionsXNeg = allowedConnectionsXNeg;
+        this.allowedConnectionsZNeg = allowedConnectionsZNeg;
+    }
 }

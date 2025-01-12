@@ -27,6 +27,8 @@ public class MapGenerator : MonoBehaviour
     [Header("Map prefabs")]
     [SerializeField]
     List<MapTileSO> tilesSOs;
+    [SerializeField]
+    MapTileSO defaultMapTileSO;
 
     [SerializeField]
     MapTileSO spawnTile;
@@ -44,6 +46,9 @@ public class MapGenerator : MonoBehaviour
     GameObject endTile;
 
     List<Vector2> mapData;
+
+    [SerializeField]
+    List<GameObject> terrainPrefabs;
 
     // Helper var
 
@@ -148,6 +153,8 @@ public class MapGenerator : MonoBehaviour
         // TODO: FIX!!
         if (tileGrid[tileX][tileZ].TileData == null) {
             tileGrid[tileX][tileZ].TileData = tilesSOs[Random.Range(0, tilesSOs.Count)];
+            // For each tile prefab
+            // Check if it fits in this 
         }
         else 
         {
@@ -292,6 +299,16 @@ public class MapGenerator : MonoBehaviour
        }
 
     }
+    void SpawnTerrain()
+    {
+        for (int x = 0; x < mapSizeX; x++)
+        {
+            for (int z = 0; z < mapSizeZ; z++)
+            {
+
+            }
+        }
+    }
     /// <summary>
     /// Checks if a can connect to b. directions is relative to a.
     /// </summary>
@@ -305,13 +322,13 @@ public class MapGenerator : MonoBehaviour
         switch (directions)
         {
             case (1, 0):
-                return (PresentInList(a, b.allowedConnectionsXNeg) || a.allowedConnectionsXPos == b.allowedConnectionsXNeg) ;
+                return (PresentInList(a, b.allowedConnectionsXNeg) || (a.allowAllXNeg || b.allowAllXNeg));
             case (0, 1):
-                return (PresentInList(a, b.allowedConnectionsZNeg) || a.allowedConnectionsZPos == b.allowedConnectionsZNeg);
+                return (PresentInList(a, b.allowedConnectionsZNeg) || (a.allowAllZNeg || b.allowAllZNeg));
             case (-1, 0):
-                return (PresentInList(a, b.allowedConnectionsXPos) || a.allowedConnectionsXNeg == b.allowedConnectionsXPos);
+                return (PresentInList(a, b.allowedConnectionsXPos) || (a.allowAllXPos || b.allowAllXPos));
             case (0, -1):
-                return (PresentInList(a, b.allowedConnectionsZPos) || a.allowedConnectionsZNeg == b.allowedConnectionsZPos);
+                return (PresentInList(a, b.allowedConnectionsZPos) || (a.allowAllZPos || b.allowAllZPos)) ;
         }
         return returnBool;
     }
