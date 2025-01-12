@@ -6,6 +6,12 @@ public class PlayerLight : MonoBehaviour, UsableItem
 {
     [SerializeField]
     GameObject lightSource;
+
+    public bool IsPrimary()
+    {
+        return false;
+    }
+
     public bool PrimaryUse()
     {
         lightSource.SetActive(true);
@@ -17,4 +23,5 @@ public class PlayerLight : MonoBehaviour, UsableItem
         lightSource.SetActive(false);
         return true;
     }
+    
 }

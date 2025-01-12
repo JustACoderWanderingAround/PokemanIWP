@@ -45,4 +45,9 @@ public class PlayerGun : MonoBehaviour, UsableItem
         if (fireTimer > 0)
             fireTimer -= Time.deltaTime;
     }
+
+    public bool IsPrimary()
+    {
+        return true;
+    }
 }

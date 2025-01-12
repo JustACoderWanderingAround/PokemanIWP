@@ -1772,37 +1772,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1435687750
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1435687751}
-  m_Layer: 0
-  m_Name: EmptyTerrain
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1435687751
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1435687750}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1459356824
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2999,8 +2968,20 @@ PrefabInstance:
     - target: {fileID: 2022980762295253567, guid: ad5a87820777bb74b93eb80965b8c1d9,
         type: 3}
       propertyPath: terrainPrefabs.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2022980762295253567, guid: ad5a87820777bb74b93eb80965b8c1d9,
+        type: 3}
+      propertyPath: terrainPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 2155665459715478178, guid: 72af497096733744aad18ff596dfee63,
+        type: 3}
+    - target: {fileID: 2022980762295253567, guid: ad5a87820777bb74b93eb80965b8c1d9,
+        type: 3}
+      propertyPath: terrainPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 2155665459715478178, guid: 8703b7bded73b4d438ad03724b87bed1,
+        type: 3}
     - target: {fileID: 2955690882502449493, guid: ad5a87820777bb74b93eb80965b8c1d9,
         type: 3}
       propertyPath: m_IsActive
@@ -3187,4 +3168,3 @@ SceneRoots:
   - {fileID: 2125338886}
   - {fileID: 1404181022}
   - {fileID: 1114099864}
-  - {fileID: 1435687751}
