@@ -2967,6 +2967,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2022980762295253567, guid: ad5a87820777bb74b93eb80965b8c1d9,
         type: 3}
+      propertyPath: defaultMapTileSO
+      value: 
+      objectReference: {fileID: 11400000, guid: f3fe5acb4d9ed7b4fabc8aec8b8f3e4d,
+        type: 2}
+    - target: {fileID: 2022980762295253567, guid: ad5a87820777bb74b93eb80965b8c1d9,
+        type: 3}
       propertyPath: terrainPrefabs.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -2995,7 +3001,7 @@ PrefabInstance:
     - target: {fileID: 3514029178012563215, guid: ad5a87820777bb74b93eb80965b8c1d9,
         type: 3}
       propertyPath: numberToSpawn
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3730843844722956536, guid: ad5a87820777bb74b93eb80965b8c1d9,
         type: 3}

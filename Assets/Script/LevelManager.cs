@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class LevelManager : MonoBehaviour
     EnemyManager enemyManager;
     [SerializeField]
     GameObject playerObject;
+    UnityEvent ObjectiveCheckEvent;
     //[SerializeField]
     //PlayerInventory inventory;
     //[SerializeField]

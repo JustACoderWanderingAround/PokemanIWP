@@ -77,7 +77,7 @@ public class MapGenerator : MonoBehaviour
             for (int z = 0; z < mapSizeZ; z++)
             {
                 dfsVisited[x].Add(false);
-                tileGrid[x].Add(new MapTile());
+                tileGrid[x].Add(new MapTile(defaultMapTileSO));
             }
         }
         if (!randomSeed)
@@ -151,10 +151,31 @@ public class MapGenerator : MonoBehaviour
         dfsVisited[tileX][tileZ] = true;
         // Check if visited tile has tile data
         // TODO: FIX!!
-        if (tileGrid[tileX][tileZ].TileData == null) {
-            tileGrid[tileX][tileZ].TileData = tilesSOs[Random.Range(0, tilesSOs.Count)];
-            // For each tile prefab
-            // Check if it fits in this 
+        if (tileGrid[tileX][tileZ].TileData == defaultMapTileSO) {
+            //tileGrid[tileX][tileZ].TileData = tilesSOs[Random.Range(0, tilesSOs.Count)];
+            // Pick a random tile prefab
+            MapTileSO randomSO;
+            bool tilePicked = false;
+            int counter = 0;
+            do
+            {
+                randomSO = tilesSOs[Random.Range(0, tilesSOs.Count)];
+                tilePicked = CanFitInGridSlot(randomSO, tileX, tileZ);
+                counter++;
+            } while (!tilePicked || counter < 30);
+            
+            if (counter > 30)
+            {
+                tileGrid[tileX][tileZ].TileData = tilesSOs[5];
+                Debug.LogWarning("DFSPick failed! Resorted to default.");
+            }
+            else
+            {
+                tileGrid[tileX][tileZ].TileData = randomSO;
+            }
+            // Check if it fits in this location
+            // If it does, slot it into this location
+            // If none fit, just put in a 4 corner wall
         }
         else 
         {
@@ -257,7 +278,7 @@ public class MapGenerator : MonoBehaviour
         {
             fitsDown = true;
         }
-        Debug.Log(outputStr);
+        Debug.Log("fits: " + outputStr);
         Debug.Log(fitsRight && fitsUp && fitsDown && fitsLeft);
         return fitsRight && fitsUp && fitsDown && fitsLeft;
     }
