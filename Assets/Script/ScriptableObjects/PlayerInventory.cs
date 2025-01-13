@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[CreateAssetMenu]
 
-public class PlayerInventory : MonoBehaviour
+public class PlayerInventory : ScriptableObject
 {
     public List<InventoryItem> inventoryItems;
     private void Awake()

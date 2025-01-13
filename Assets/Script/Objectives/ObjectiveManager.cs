@@ -2,13 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-// taken from https://www.jonathanyu.xyz/2023/11/29/dynamic-objective-system-tutorial-for-unity/
+// adapted from https://www.jonathanyu.xyz/2023/11/29/dynamic-objective-system-tutorial-for-unity/
 public class ObjectiveManager
 { 
     public Action<Objective> OnObjectiveAdded;
 
     public List<Objective> Objectives { get; } = new();
     private readonly Dictionary<string, List<Objective>> _objectiveMap = new();
+
+    private ObjectiveManager() { }
+    private static ObjectiveManager instance;
+    public static ObjectiveManager Instance
+    {
+        get { 
+            if (instance == null)
+            {
+                instance = new ObjectiveManager();
+            }
+            return instance;
+        }
+    }
 
     // Adds an objective to the objective manager.
     // If the objective has an EventTrigger, it's progress will be incremented
