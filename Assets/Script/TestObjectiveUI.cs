@@ -11,7 +11,7 @@ public class TestObjectiveUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_Inventory = FindAnyObjectByType<PlayerInventory>();
+        m_Inventory = PlayerInventory.instance;
     }
 
     // Update is called once per frame

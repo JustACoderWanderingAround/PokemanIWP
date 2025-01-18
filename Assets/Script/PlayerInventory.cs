@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu]
+using UnityEditor;
 
-public class PlayerInventory : ScriptableObject
+public class PlayerInventory : ScriptableSingleton<PlayerInventory>
 {
-    public List<InventoryItem> inventoryItems;
+    [SerializeField]
+    private PlayerInventorySO m_invSO;
     private void Awake()
     {
-        DontDestroyOnLoad(this);
-        foreach (InventoryItem item in inventoryItems)
+        //DontDestroyOnLoad(this);
+        foreach (InventoryItem item in m_invSO.inventoryItems)
         {
             if (item.resetOnStart)
             {
@@ -20,7 +21,7 @@ public class PlayerInventory : ScriptableObject
     public void AddItem(string name)
     {
         Debug.Log("New item name: " + name);
-        foreach (InventoryItem item in inventoryItems)
+        foreach (InventoryItem item in m_invSO.inventoryItems)
         {
             if (item.itemName == name)
             {
@@ -32,7 +33,7 @@ public class PlayerInventory : ScriptableObject
     }
     public void RemoveItem(string name)
     {
-        foreach (InventoryItem item in inventoryItems)
+        foreach (InventoryItem item in m_invSO.inventoryItems)
         {
             if (item.itemName == name)
             {
@@ -43,7 +44,7 @@ public class PlayerInventory : ScriptableObject
     }
     public int GetCount(string name)
     {
-        foreach (InventoryItem item in inventoryItems)
+        foreach (InventoryItem item in m_invSO.inventoryItems)
         {
             if (item.itemName == name)
             {

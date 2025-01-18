@@ -12,6 +12,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     GameObject playerObject;
     UnityEvent ObjectiveCheckEvent;
+    ObjectiveManager objectiveManager;
+    Objective mainObjective;
+    PlayerInventory playerInventory;
     //[SerializeField]
     //PlayerInventory inventory;
     //[SerializeField]
@@ -30,9 +33,16 @@ public class LevelManager : MonoBehaviour
     {
         mapGenerator.InitGenerator();
         mapGenerator.StartGeneration();
+        mainObjective = new Objective("CollectPotions", "Potions collected: {0}/{1}", 3, "TestCollectible");
+        objectiveManager.AddObjective(mainObjective);
         Transform[] potentialLocs = mapGenerator.GetGridGameObjectParent().GetComponentsInChildren<Transform>();
         enemyManager.SpawnEnemies(potentialLocs);
         Vector2 startPosInd = mapGenerator.GetMapData()[0];
         playerObject.transform.position = mapGenerator.GetGridPosFromIndex((int)startPosInd.x, (int)startPosInd.y);
+        ObjectiveCheckEvent.AddListener(CheckObjectiveEvent);
+    }
+    void CheckObjectiveEvent()
+    {
+
     }
 }
