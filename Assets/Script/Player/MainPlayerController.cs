@@ -23,6 +23,8 @@ public class MainPlayerController : UseInputController
     float walkFootstepFrequency;
     [SerializeField]
     PlayerTerrainStepController ptsc;
+    [SerializeField]
+    PlayerInteractable pi;
 
     // Mouse rotation related vars
     private float horizontalOrientation;
@@ -34,6 +36,7 @@ public class MainPlayerController : UseInputController
     private Vector3 direction;
     private Vector2 orientation;
     public KeyCode runKey = KeyCode.LeftShift;
+    public KeyCode interactableKey = KeyCode.F;
 
     public enum MovementState
     {
@@ -95,6 +98,11 @@ public class MainPlayerController : UseInputController
                 }
                 integratedMovementController.SetMovementState(moveState);
 
+            }
+            if (kcc.KeycodeNumber == interactableKey)
+            {
+                if (kcc.KeyDown)
+                    pi.Interact();
             }
         }
         else if (cmd as MouseButtonCommand != null)

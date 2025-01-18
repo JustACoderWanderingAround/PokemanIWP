@@ -62,7 +62,9 @@ MonoBehaviour:
   runFootstepFrequency: 0
   walkFootstepFrequency: 0.75
   ptsc: {fileID: 5511386416563182605}
+  pi: {fileID: 2912433278958246892}
   runKey: 304
+  interactableKey: 102
 --- !u!114 &1486905261361842226
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -273,7 +273,7 @@ MonoBehaviour:
   inputController: {fileID: 295882471}
   inputControllerList:
   - {fileID: 507819587}
-  playerKeybindings: 
+  playerKeybindings: 66000000
 --- !u!4 &295882473
 Transform:
   m_ObjectHideFlags: 0
@@ -297,26 +297,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1146784868801104508, guid: 7dbaaa7be87eec54295fa5acca510074,
-        type: 3}
-      propertyPath: m_BackGroundColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1146784868801104508, guid: 7dbaaa7be87eec54295fa5acca510074,
-        type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1146784868801104508, guid: 7dbaaa7be87eec54295fa5acca510074,
-        type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1146784868801104508, guid: 7dbaaa7be87eec54295fa5acca510074,
-        type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1428230403955533872, guid: 7dbaaa7be87eec54295fa5acca510074,
         type: 3}
       propertyPath: m_Name
@@ -371,16 +351,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3119690338409696718, guid: 7dbaaa7be87eec54295fa5acca510074,
-        type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6674386157243860873, guid: 7dbaaa7be87eec54295fa5acca510074,
-        type: 3}
-      propertyPath: m_Mass
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

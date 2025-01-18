@@ -25,6 +25,7 @@ public class PlayerInteractable : MonoBehaviour
                 if (interactable != null)
                 {
                     interactable.OnInteract();
+                    Debug.Log("Interactable works");
                 }
             }
         }
