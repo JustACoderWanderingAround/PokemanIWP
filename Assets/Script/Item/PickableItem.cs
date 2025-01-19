@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class PickableItem : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public string inventoryItemName;
+
+    public void OnHover()
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnInteract()
     {
-        
+        PlayerInventory.Instance.AddItem(inventoryItemName);
+        Destroy(gameObject);
     }
 }

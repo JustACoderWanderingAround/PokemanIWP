@@ -6,5 +6,5 @@ public interface UsableItem
 {
     public bool PrimaryUse();
     public bool SecondaryUse();
-    public bool IsPrimary();
+    public bool IsRightHanded();
 }

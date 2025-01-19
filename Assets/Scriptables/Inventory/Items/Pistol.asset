@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26384153409c30b4a8687237d93086c0, type: 3}
-  m_Name: Flashlight
+  m_Name: Pistol
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: Pistol
   isStackable: 0
   numberInInventory: 0
   resetOnStart: 0
+  itemPrefab: {fileID: 3884543037512485887, guid: 7edaeb68073f0824495a644832ec6942,
+    type: 3}

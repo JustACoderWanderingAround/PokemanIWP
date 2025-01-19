@@ -15,6 +15,18 @@ public class PlayerHandController : UseInputController
     [SerializeField]
     private GameObject rightHandSlot;
     public KeyCode secondaryButtonCode = KeyCode.LeftControl;
+    public List<KeyCode> itemSlotKeyList = new List<KeyCode>() { 
+        KeyCode.Alpha1,
+        KeyCode.Alpha2, 
+        KeyCode.Alpha3, 
+        KeyCode.Alpha4, 
+        KeyCode.Alpha5,
+        KeyCode.Alpha6, 
+        KeyCode.Alpha7, 
+        KeyCode.Alpha8, 
+        KeyCode.Alpha9, 
+        KeyCode.Alpha0 
+    }; 
     bool isSecondaryButtonPressed;
     int activeLHandIndex;
     int activeRHandIndex;
@@ -22,6 +34,20 @@ public class PlayerHandController : UseInputController
     {
         activeLHandIndex = 0;
         activeRHandIndex = 0;
+
+        PlayerInventory m_inv = PlayerInventory.Instance;
+
+        foreach (InventoryItem ii in m_inv.GetItems())
+        {
+            if (ii.numberInInventory > 0)
+            {
+                UsableItem currUI = ii.itemPrefab.GetComponent<UsableItem>();
+                if (currUI != null)
+                {
+                    Instantiate(ii.itemPrefab, currUI.IsRightHanded() ? rightHandSlot.transform : leftHandSlot.transform);
+                }
+            }
+        }
     }
 
     public override void ReadCommand(Command cmd)
@@ -33,6 +59,26 @@ public class PlayerHandController : UseInputController
             {
                 isSecondaryButtonPressed = kcc.KeyHeldDown || kcc.KeyDown;
                 Debug.Log("SecondaryButtonPressed");
+            }
+            int counter = 0;
+            foreach (KeyCode kc in itemSlotKeyList)
+            {
+                if (kcc.KeycodeNumber == kc)
+                {
+
+                    if (kcc.KeyDown)
+                    {
+                        if (isSecondaryButtonPressed)
+                        {
+                            SelectLeftHandItem(counter);
+                        }
+                        else
+                        {
+                            SelectRightHandItem(counter);
+                        }
+                    }
+                }
+                counter++;
             }
         }
         if (cmd as MouseButtonCommand != null)
@@ -83,14 +129,23 @@ public class PlayerHandController : UseInputController
     {
         if (handNum == 1)
         {
-            if (leftHandSlot.transform.GetChild(activeLHandIndex) != null)
-                return leftHandSlot.transform.GetChild(activeLHandIndex).GetComponent<UsableItem>().PrimaryUse();
+
+            if (activeLHandIndex < leftHandSlot.transform.childCount)
+            {
+                if (leftHandSlot.transform.GetChild(activeLHandIndex) != null)
+                    return leftHandSlot.transform.GetChild(activeLHandIndex).GetComponent<UsableItem>().PrimaryUse();
+                else return false;
+            }
             else return false;
         }
         else if (handNum == 0)
         {
-            if (rightHandSlot.transform.GetChild(activeRHandIndex) != null)
-                return rightHandSlot.transform.GetChild(activeRHandIndex).GetComponent<UsableItem>().PrimaryUse();
+            if (activeLHandIndex < leftHandSlot.transform.childCount)
+            {
+                if (rightHandSlot.transform.GetChild(activeRHandIndex) != null)
+                    return rightHandSlot.transform.GetChild(activeRHandIndex).GetComponent<UsableItem>().PrimaryUse();
+                else return false;
+            }
             else return false;
         }
         else
@@ -104,15 +159,32 @@ public class PlayerHandController : UseInputController
     {
         if (handNum == 1)
         {
-            if (leftHandSlot.transform.GetChild(activeLHandIndex) != null)
-                return leftHandSlot.transform.GetChild(activeLHandIndex).GetComponent<UsableItem>().SecondaryUse();
-            else return false;
+            if (activeLHandIndex < rightHandSlot.transform.childCount)
+            {
+                if (leftHandSlot.transform.GetChild(activeLHandIndex) != null)
+                    return leftHandSlot.transform.GetChild(activeLHandIndex).GetComponent<UsableItem>().SecondaryUse();
+                else return false;
+
+            }
+            else
+            {
+                activeLHandIndex = 0;
+                return false;
+            }
         }
         else if (handNum == 0)
         {
-            if (rightHandSlot.transform.GetChild(activeRHandIndex) != null)
-                return rightHandSlot.transform.GetChild(activeRHandIndex).GetComponent<UsableItem>().SecondaryUse();
-            else return false;
+            if (activeRHandIndex < rightHandSlot.transform.childCount)
+            {
+                if (rightHandSlot.transform.GetChild(activeRHandIndex) != null)
+                    return rightHandSlot.transform.GetChild(activeRHandIndex).GetComponent<UsableItem>().SecondaryUse();
+                else return false;
+            }
+            else
+            {
+                activeRHandIndex = 0;
+                return false;
+            }
         }
         else
             return false;
@@ -126,14 +198,20 @@ public class PlayerHandController : UseInputController
     }
     public void SelectLeftHandItem(int newActiveLItemIndex)
     {
-        leftHandSlot.transform.GetChild(activeLHandIndex).gameObject.SetActive(false);
-        activeLHandIndex = newActiveLItemIndex;
-        leftHandSlot.transform.GetChild(activeLHandIndex).gameObject.SetActive(true);
+        if (newActiveLItemIndex < leftHandSlot.transform.childCount)
+        {
+            leftHandSlot.transform.GetChild(activeLHandIndex).gameObject.SetActive(false);
+            activeLHandIndex = newActiveLItemIndex;
+            leftHandSlot.transform.GetChild(activeLHandIndex).gameObject.SetActive(true);
+        }
     }
     public void SelectRightHandItem(int newActiveRItemIndex)
     {
-        leftHandSlot.transform.GetChild(activeRHandIndex).gameObject.SetActive(false);
-        activeRHandIndex = newActiveRItemIndex;
-        leftHandSlot.transform.GetChild(activeRHandIndex).gameObject.SetActive(true);
+        if (newActiveRItemIndex < rightHandSlot.transform.childCount)
+        {
+           rightHandSlot.transform.GetChild(activeRHandIndex).gameObject.SetActive(false);
+           activeRHandIndex = newActiveRItemIndex;
+           rightHandSlot.transform.GetChild(activeRHandIndex).gameObject.SetActive(true);
+        }
     }
 }

@@ -7,7 +7,7 @@ public class PlayerLight : MonoBehaviour, UsableItem
     [SerializeField]
     GameObject lightSource;
 
-    public bool IsPrimary()
+    public bool IsRightHanded()
     {
         return false;
     }

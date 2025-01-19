@@ -46,7 +46,7 @@ public class PlayerGun : MonoBehaviour, UsableItem
             fireTimer -= Time.deltaTime;
     }
 
-    public bool IsPrimary()
+    public bool IsRightHanded()
     {
         return true;
     }

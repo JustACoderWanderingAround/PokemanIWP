@@ -11,6 +11,25 @@ public class PlayerInteractable : MonoBehaviour
     {
         mainCam = Camera.main;
     }
+    public void Update()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, maxHitDistance))
+        {
+            Transform objectHit = hit.transform;
+
+            // Do something with the object that was hit by the raycast.
+            if (objectHit != null)
+            {
+                IInteractable interactable = objectHit.gameObject.GetComponent<IInteractable>();
+                if (interactable != null)
+                {
+                    interactable.OnHover();
+                    Debug.Log("Interactable works");
+                }
+            }
+        }
+    }
     public void Interact()
     {
         RaycastHit hit;

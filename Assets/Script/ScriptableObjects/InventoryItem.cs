@@ -10,4 +10,5 @@ public class InventoryItem : ScriptableObject
     public bool isStackable = false;
     public int numberInInventory = 0;
     public bool resetOnStart = false;
+    public GameObject itemPrefab;
 }

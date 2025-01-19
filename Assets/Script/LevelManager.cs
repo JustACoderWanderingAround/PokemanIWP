@@ -32,19 +32,17 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        objectiveManager = ObjectiveManager.Instance;
+        playerInventory = PlayerInventory.Instance;
         mapGenerator.InitGenerator();
         mapGenerator.StartGeneration();
-        mainObjective = new Objective("TestCollectible", "Potions collected: {0}/{1}", 3);
+        mainObjective = new Objective("TestCollectible", "Gold elixirs collected: {0}/{1}", 3);
         objectiveManager.AddObjective(mainObjective);
         mainObjective.OnComplete = () => endTeleporter.ActivateTeleporter();
+        playerInventory.AddItemAction += objectiveManager.CheckInventory;
         Transform[] potentialLocs = mapGenerator.GetGridGameObjectParent().GetComponentsInChildren<Transform>();
         enemyManager.SpawnEnemies(potentialLocs);
         Vector2 startPosInd = mapGenerator.GetMapData()[0];
         playerObject.transform.position = mapGenerator.GetGridPosFromIndex((int)startPosInd.x, (int)startPosInd.y);
-        ObjectiveCheckEvent.AddListener(CheckObjectiveEvent);
-    }
-    void CheckObjectiveEvent()
-    {
-
     }
 }

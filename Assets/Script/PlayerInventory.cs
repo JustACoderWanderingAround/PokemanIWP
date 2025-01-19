@@ -7,6 +7,8 @@ public class PlayerInventory : SingletonScriptableObject<PlayerInventory>
 {
     [SerializeField]
     private PlayerInventorySO m_invSO;
+    public System.Action<InventoryItem> AddItemAction;
+    public System.Action<InventoryItem> RemoveItemAction;
     private void Awake()
     {
         //DontDestroyOnLoad(this);
@@ -25,7 +27,10 @@ public class PlayerInventory : SingletonScriptableObject<PlayerInventory>
         {
             if (item.itemName == name)
             {
-                item.numberInInventory++;
+                if (AddItemAction != null)
+                    AddItemAction.Invoke(item);
+                if ((item.isStackable && item.numberInInventory < 1) || !item.isStackable)
+                    item.numberInInventory++;
                 Debug.Log("Item added!");
                 break;
             }
@@ -37,6 +42,8 @@ public class PlayerInventory : SingletonScriptableObject<PlayerInventory>
         {
             if (item.itemName == name)
             {
+                if (RemoveItemAction != null)
+                    RemoveItemAction.Invoke(item);
                 item.numberInInventory--;
                 break;
             }
@@ -52,5 +59,20 @@ public class PlayerInventory : SingletonScriptableObject<PlayerInventory>
             }
         }
         return -1;
+    }
+    public List<InventoryItem> GetItems()
+    {
+        return m_invSO.inventoryItems;
+    }
+    public void ResetItemCount(string name)
+    {
+        foreach (InventoryItem item in m_invSO.inventoryItems)
+        {
+            if (item.itemName == name)
+            {
+                item.numberInInventory = 0;
+                break;
+            }
+        }
     }
 }

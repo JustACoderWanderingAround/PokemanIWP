@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26384153409c30b4a8687237d93086c0, type: 3}
   m_Name: ObjectiveCollectible
   m_EditorClassIdentifier: 
-  itemName: Objective
-  isStackable: 0
+  itemName: TestCollectible
+  isStackable: 1
   numberInInventory: 0
+  resetOnStart: 0
+  itemPrefab: {fileID: 0}
