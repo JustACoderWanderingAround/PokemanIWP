@@ -2,22 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
-public class EventPostOffice
+[CreateAssetMenu]
+public class EventPostOffice : SingletonScriptableObject<EventPostOffice>
 {
 
-    private static EventPostOffice instance;
-    public static EventPostOffice Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = new EventPostOffice();
-            }
-            return instance;
-        }
-    }
+  
 
     
 }

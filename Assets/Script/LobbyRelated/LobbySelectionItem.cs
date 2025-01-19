@@ -8,6 +8,6 @@ public class LobbySelectionItem : MonoBehaviour, IInteractable
     public string InventoryItemName;
     public void OnInteract()
     {
-
+        Destroy(gameObject);
     }
 }

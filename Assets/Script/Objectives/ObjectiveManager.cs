@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEditor;
+[CreateAssetMenu]
 // adapted from https://www.jonathanyu.xyz/2023/11/29/dynamic-objective-system-tutorial-for-unity/
-public class ObjectiveManager : ScriptableSingleton<ObjectiveManager>
+public class ObjectiveManager : SingletonScriptableObject<ObjectiveManager>
 { 
     public Action<Objective> OnObjectiveAdded;
 

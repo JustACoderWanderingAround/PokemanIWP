@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerInteractable : MonoBehaviour
 {
     Camera mainCam;
+    [SerializeField]
+    float maxHitDistance = 10000f;
     private void Start()
     {
         mainCam = Camera.main;
@@ -12,9 +14,7 @@ public class PlayerInteractable : MonoBehaviour
     public void Interact()
     {
         RaycastHit hit;
-        Ray ray = mainCam.ScreenPointToRay(new Vector3(Screen.width, Screen.height));
-
-        if (Physics.Raycast(ray, out hit))
+        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, maxHitDistance))
         {
             Transform objectHit = hit.transform;
 

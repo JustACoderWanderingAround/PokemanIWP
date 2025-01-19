@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-
-public class PlayerInventory : ScriptableSingleton<PlayerInventory>
+[CreateAssetMenu]
+public class PlayerInventory : SingletonScriptableObject<PlayerInventory>
 {
     [SerializeField]
     private PlayerInventorySO m_invSO;

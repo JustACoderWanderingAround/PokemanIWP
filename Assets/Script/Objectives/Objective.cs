@@ -18,21 +18,18 @@ public class Objective
     public int MaxValue { get; }
     public int CurrentValue { get; private set; }
 
-    public string ValidityCheckString { get; }
-
     private readonly string _statusText;
 
     // Status text can have 2 parameters {0} and {1} for current and max value
     // Example: "Kill {0} of {1} enemies"
-    public Objective(string eventTrigger, string statusText, int maxValue, string validityCheckString)
+    public Objective(string eventTrigger, string statusText, int maxValue)
     {
         EventTrigger = eventTrigger;
         _statusText = statusText;
         MaxValue = maxValue;
-        ValidityCheckString = validityCheckString;  
     }
 
-    public Objective(string statusText, int maxValue, string validityCheckString) : this("", statusText, maxValue, validityCheckString) { }
+    public Objective(string statusText, int maxValue) : this("", statusText, maxValue) { }
 
     private void CheckCompletion()
     {

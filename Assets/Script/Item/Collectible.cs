@@ -6,7 +6,7 @@ public class Collectible : MonoBehaviour, IInteractable
 {
     public void OnInteract()
     {
-        PlayerInventory m_inv = PlayerInventory.instance;
+        PlayerInventory m_inv = PlayerInventory.Instance;
         m_inv.AddItem("Objective");
         Debug.Log("Collected~!");
         Destroy(gameObject);

@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour
     ObjectiveManager objectiveManager;
     Objective mainObjective;
     PlayerInventory playerInventory;
+    EndTeleporter endTeleporter;
     //[SerializeField]
     //PlayerInventory inventory;
     //[SerializeField]
@@ -33,8 +34,9 @@ public class LevelManager : MonoBehaviour
     {
         mapGenerator.InitGenerator();
         mapGenerator.StartGeneration();
-        mainObjective = new Objective("CollectPotions", "Potions collected: {0}/{1}", 3, "TestCollectible");
+        mainObjective = new Objective("TestCollectible", "Potions collected: {0}/{1}", 3);
         objectiveManager.AddObjective(mainObjective);
+        mainObjective.OnComplete = () => endTeleporter.ActivateTeleporter();
         Transform[] potentialLocs = mapGenerator.GetGridGameObjectParent().GetComponentsInChildren<Transform>();
         enemyManager.SpawnEnemies(potentialLocs);
         Vector2 startPosInd = mapGenerator.GetMapData()[0];
