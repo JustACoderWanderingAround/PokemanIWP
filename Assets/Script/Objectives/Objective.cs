@@ -18,11 +18,14 @@ public class Objective
     public int MaxValue { get; }
     public int CurrentValue { get; private set; }
 
+    public string ComparisonStr { get { return _comparisonStr;  } }
+    private readonly string _comparisonStr;
+
     private readonly string _statusText;
 
     // Status text can have 2 parameters {0} and {1} for current and max value
     // Example: "Kill {0} of {1} enemies"
-    public Objective(string eventTrigger, string statusText, int maxValue)
+    public Objective(string eventTrigger, string statusText, int maxValue, string _comparisonStr = "")
     {
         EventTrigger = eventTrigger;
         _statusText = statusText;

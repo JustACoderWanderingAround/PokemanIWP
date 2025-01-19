@@ -36,8 +36,8 @@ public class LevelManager : MonoBehaviour
         playerInventory = PlayerInventory.Instance;
         mapGenerator.InitGenerator();
         mapGenerator.StartGeneration();
-        mainObjective = new Objective("TestCollectible", "Gold elixirs collected: {0}/{1}", 3);
-        objectiveManager.AddObjective(mainObjective);
+        //mainObjective = new Objective("TestCollectible", "Gold elixirs collected: {0}/{1}", 3);
+        //objectiveManager.AddObjective(mainObjective);
         mainObjective.OnComplete = () => endTeleporter.ActivateTeleporter();
         playerInventory.AddItemAction += objectiveManager.CheckInventory;
         Transform[] potentialLocs = mapGenerator.GetGridGameObjectParent().GetComponentsInChildren<Transform>();
