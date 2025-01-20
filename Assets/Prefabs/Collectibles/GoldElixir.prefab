@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 7078601042845768991}
   - component: {fileID: 4695857799007719812}
   m_Layer: 10
-  m_Name: TestCollectible
+  m_Name: GoldElixir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

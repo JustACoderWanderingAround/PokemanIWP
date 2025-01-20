@@ -12,6 +12,7 @@ public class LobbySelectObjectiveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        selectionObjects = new List<LobbySelectionObjective>();
         for(int i = 0; i < objectiveSlots.Count; i++)
         {
             LobbySelectionObjective newInst = Instantiate(selObjPrefab, objectiveSlots[i].transform).GetComponent<LobbySelectionObjective>();

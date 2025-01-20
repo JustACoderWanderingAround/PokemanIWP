@@ -7,9 +7,16 @@ public class PlayerInteractable : MonoBehaviour
     Camera mainCam;
     [SerializeField]
     float maxHitDistance = 10000f;
+    string currHoverString;
+    string savedStringState;
+    public System.Action<string> OnHoverStringUpdate;
     private void Start()
     {
         mainCam = Camera.main;
+        currHoverString = "";
+        savedStringState = "";
+        if (OnHoverStringUpdate!= null)
+            OnHoverStringUpdate.Invoke("");
     }
     public void Update()
     {
@@ -24,11 +31,28 @@ public class PlayerInteractable : MonoBehaviour
                 IInteractable interactable = objectHit.gameObject.GetComponent<IInteractable>();
                 if (interactable != null)
                 {
-                    interactable.OnHover();
+                    if (currHoverString != interactable.OnHover())
+                    {
+                        currHoverString = interactable.OnHover();
+                    }
                     Debug.Log("Interactable works");
                 }
+                else
+                {
+                    currHoverString = "";
+                }
+            }
+            else
+            {
+                currHoverString = "";
             }
         }
+        if (currHoverString != savedStringState)
+        {
+            savedStringState = currHoverString;
+            OnHoverStringUpdate.Invoke(savedStringState);
+        }
+        
     }
     public void Interact()
     {
