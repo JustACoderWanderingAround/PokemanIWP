@@ -50,6 +50,9 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     List<GameObject> terrainPrefabs;
 
+    [SerializeField]
+    List<GameObject> allowedCollectibles;
+
     // Helper var
 
     List<(int dx, int dy)> directions = new List<(int, int)>
@@ -110,8 +113,6 @@ public class MapGenerator : MonoBehaviour
 
             endingLocX = startingLocX;
             endingLocZ = startingLocZ;
-
-           
 
             do
             {
@@ -382,5 +383,12 @@ public class MapGenerator : MonoBehaviour
     public Vector3 GetGridPosFromIndex(int x, int z)
     {
        return new Vector3(startX + (tileSizeX * x), 1 ,startZ + (tileSizeZ * z));
+    }
+    public void GenerateObjectives(Objective m_obj)
+    {
+        for (int i = 0; i < m_obj.MaxValue + 1; ++i)
+        {
+
+        }
     }
 }

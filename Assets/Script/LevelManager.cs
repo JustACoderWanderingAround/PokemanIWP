@@ -40,7 +40,7 @@ public class LevelManager : MonoBehaviour
         //objectiveManager.AddObjective(mainObjective);
         endTeleporter = FindObjectOfType<EndTeleporter>();
         List<Objective> objectives = objectiveManager.FindObjectives("MainObjective");
-        mainObjective = objectiveManager.FindObjectives("MainObjective")[0];
+        mainObjective = objectives[0];
         mainObjective.OnComplete = () => endTeleporter.ActivateTeleporter();
         playerInventory.AddItemAction += objectiveManager.CheckInventory;
         Transform[] potentialLocs = mapGenerator.GetGridGameObjectParent().GetComponentsInChildren<Transform>();

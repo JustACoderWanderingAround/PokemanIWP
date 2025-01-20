@@ -77,13 +77,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 065a71a216a88dc4db942a0a2ca41196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMoveSpeed: 2
+  currentMoveSpeed: 5
   standingPlayerHeight: 1
   maxLeanAngle: 15
-  runningSpeed: 5
-  defaultSpeed: 2
+  runningSpeed: 10
+  defaultSpeed: 5
   crouchSpeed: 0
-  crawlSpeed: 0
+  crawlSpeed: 1
   toggleToLean: 0
   leanSlot: {fileID: 2507209859406098564}
   leanController: {fileID: 8626251992171839217}
@@ -256,8 +256,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1428230403955533872}
   serializedVersion: 4
-  m_Mass: 5
-  m_Drag: 1
+  m_Mass: 1
+  m_Drag: 2
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}

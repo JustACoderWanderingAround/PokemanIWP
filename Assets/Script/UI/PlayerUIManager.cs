@@ -21,7 +21,8 @@ public class PlayerUIManager : MonoBehaviour
         objectiveManager = ObjectiveManager.Instance;
         m_interactable.OnHoverStringUpdate += UpdateHoverText;
         m_obj = objectiveManager.FindObjectives("MainObjective")[0];
-        UpdateObjectiveText(m_obj);
+        if (m_obj == null)
+            UpdateObjectiveText(m_obj);
         objectiveManager.OnObjectiveUpdated += UpdateObjectiveText;
     }
 
