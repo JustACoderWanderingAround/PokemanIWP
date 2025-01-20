@@ -31,6 +31,7 @@ public class Objective
         _statusText = statusText;
         MaxValue = maxValue;
         this._comparisonStr = comparisonStr;
+        CurrentValue = 0;
     }
 
     public Objective(string statusText, int maxValue) : this("", statusText, maxValue) { }

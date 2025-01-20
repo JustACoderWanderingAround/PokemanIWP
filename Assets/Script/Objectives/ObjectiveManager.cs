@@ -64,6 +64,6 @@ public class ObjectiveManager : SingletonScriptableObject<ObjectiveManager>
         {
             return _objectiveMap[eventTrigger];
         }
-        else return null;
+        else return new List<Objective>();
     }
 }

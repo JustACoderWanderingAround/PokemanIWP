@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SportsDrink
   m_EditorClassIdentifier: 
   itemName: SportsDrink
-  isStackable: 0
+  isStackable: 1
   numberInInventory: 0
-  resetOnStart: 0
+  resetOnStart: 1
   itemPrefab: {fileID: 5732947567654007435, guid: 22d13084f56b92146bf8e4c7cf55ba52,
     type: 3}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4451682422982535024}
   - component: {fileID: 6330657013562419035}
   m_Layer: 0
-  m_Name: SportsDrinkCollectible
+  m_Name: SportsDrink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

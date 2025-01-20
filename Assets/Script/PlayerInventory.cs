@@ -9,8 +9,9 @@ public class PlayerInventory : SingletonScriptableObject<PlayerInventory>
     private PlayerInventorySO m_invSO;
     public System.Action<InventoryItem> AddItemAction;
     public System.Action<InventoryItem> RemoveItemAction;
-    private void Awake()
+    private void Start()
     {
+        Debug.LogWarning("PlayerInvStart");
         //DontDestroyOnLoad(this);
         foreach (InventoryItem item in m_invSO.inventoryItems)
         {
@@ -29,7 +30,7 @@ public class PlayerInventory : SingletonScriptableObject<PlayerInventory>
             {
                 if (AddItemAction != null)
                     AddItemAction.Invoke(item);
-                if ((item.isStackable && item.numberInInventory < 1) || !item.isStackable)
+                if((!item.isStackable && item.numberInInventory < 1) || (item.isStackable))
                     item.numberInInventory++;
                 Debug.Log("Item added!");
                 break;
@@ -79,7 +80,7 @@ public class PlayerInventory : SingletonScriptableObject<PlayerInventory>
     {
         foreach (InventoryItem item in m_invSO.inventoryItems)
         {
-            if (item.itemName == name)
+            if (item.itemName == itemName)
             {
                 return item.itemPrefab;
             }

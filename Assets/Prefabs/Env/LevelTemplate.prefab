@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0ac430f1103451b4cb66d41f3c33b35e, type: 2}
+  - {fileID: 2100000, guid: 693226fc2256e7f4886a814a5cdbc1b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -167,7 +167,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 693226fc2256e7f4886a814a5cdbc1b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -272,7 +272,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 693226fc2256e7f4886a814a5cdbc1b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -463,7 +463,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 693226fc2256e7f4886a814a5cdbc1b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -886,9 +886,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 35e7a79aea1ef424d822bda047b0b0c2, type: 2}
   - {fileID: 11400000, guid: ab01a754c51abf04b98e59d176aa6df5, type: 2}
   - {fileID: 11400000, guid: 732fc9826733b054d9b1e4f5bddc79b9, type: 2}
+  defaultMapTileSO: {fileID: 0}
   spawnTile: {fileID: 11400000, guid: 6c6a54e9c0151124989f89d9a09649bc, type: 2}
   exitTile: {fileID: 11400000, guid: 0b91859bee498c348bd94ba4a297afaa, type: 2}
   gridHolder: {fileID: 6961253527688705441}
+  terrainPrefabs: []
+  allowedCollectibles: []
 --- !u!114 &3514029178012563215
 MonoBehaviour:
   m_ObjectHideFlags: 0

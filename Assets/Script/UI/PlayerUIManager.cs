@@ -20,10 +20,14 @@ public class PlayerUIManager : MonoBehaviour
     {
         objectiveManager = ObjectiveManager.Instance;
         m_interactable.OnHoverStringUpdate += UpdateHoverText;
-        m_obj = objectiveManager.FindObjectives("MainObjective")[0];
-        if (m_obj == null)
-            UpdateObjectiveText(m_obj);
-        objectiveManager.OnObjectiveUpdated += UpdateObjectiveText;
+        List<Objective> objs = objectiveManager.FindObjectives("MainObjective");
+        if (objs.Count > 0)
+        {
+            m_obj = objs[0];
+            if (m_obj != null)
+                UpdateObjectiveText(m_obj);
+            objectiveManager.OnObjectiveUpdated += UpdateObjectiveText;
+        }
     }
 
     public void UpdateHoverText(string newText)

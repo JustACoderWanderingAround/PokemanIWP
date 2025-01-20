@@ -53,6 +53,11 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     List<GameObject> allowedCollectibles;
 
+    int startingLocX;
+    int startingLocZ;
+    int endingLocX;
+    int endingLocZ;
+
     // Helper var
 
     List<(int dx, int dy)> directions = new List<(int, int)>
@@ -94,10 +99,7 @@ public class MapGenerator : MonoBehaviour
     }
     void GenerateMap()
     {
-        int startingLocX;
-        int startingLocZ;
-        int endingLocX;
-        int endingLocZ;
+
 
         // ProcGen Init
         {
@@ -388,8 +390,15 @@ public class MapGenerator : MonoBehaviour
     {
         for (int i = 0; i < m_obj.MaxValue + 1; ++i)
         {
-           
-            Instantiate(objectiveObject, GetGridPosFromIndex((Random.Range(0, (int)tileSizeZ)), (Random.Range(0, (int)tileSizeZ))), Quaternion.identity);
+            int randomX;
+            int randomZ;
+            randomX = (Random.Range(0, (int)tileSizeX));
+            randomZ = (Random.Range(0, (int)tileSizeZ));
+            do {
+                randomX = (Random.Range(0, (int)tileSizeX));
+                randomZ = (Random.Range(0, (int)tileSizeZ));
+            } while (Mathf.Abs(randomX - endingLocX) > 1 && Mathf.Abs(randomZ - endingLocZ) > 1);
+            Instantiate(objectiveObject, GetGridPosFromIndex(randomX, randomZ), Quaternion.identity);
         }
     }
 }
