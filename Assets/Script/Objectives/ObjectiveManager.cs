@@ -6,9 +6,9 @@ using UnityEditor;
 [CreateAssetMenu]
 // adapted from https://www.jonathanyu.xyz/2023/11/29/dynamic-objective-system-tutorial-for-unity/
 public class ObjectiveManager : SingletonScriptableObject<ObjectiveManager>
-{ 
+{
     public Action<Objective> OnObjectiveAdded;
-
+    public Action<Objective> OnObjectiveUpdated;
     public List<Objective> Objectives { get; } = new List<Objective>();
 
     private readonly Dictionary<string, List<Objective>> _objectiveMap = new();
@@ -42,11 +42,13 @@ public class ObjectiveManager : SingletonScriptableObject<ObjectiveManager>
         foreach (var objective in _objectiveMap[eventTrigger])
         {
             objective.AddProgress(value);
+            OnObjectiveUpdated.Invoke(objective);
         }
+
     }
     public void CheckInventory(InventoryItem newItem)
     {
-        
+
         if (_objectiveMap.ContainsKey(newItem.itemName))
         {
             foreach (var objective in _objectiveMap[newItem.itemName])
@@ -54,5 +56,14 @@ public class ObjectiveManager : SingletonScriptableObject<ObjectiveManager>
                 objective.AddProgress(1);
             }
         }
+    }
+    public List<Objective> FindObjectives(string eventTrigger)
+    {
+
+        if (_objectiveMap.ContainsKey(eventTrigger))
+        {
+            return _objectiveMap[eventTrigger];
+        }
+        else return null;
     }
 }

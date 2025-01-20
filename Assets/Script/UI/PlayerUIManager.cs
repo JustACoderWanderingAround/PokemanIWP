@@ -14,14 +14,23 @@ public class PlayerUIManager : MonoBehaviour
     PlayerInteractable m_interactable;
     ObjectiveManager objectiveManager;
 
+    Objective m_obj;
     // Start is called before the first frame update
     void Start()
     {
+        objectiveManager = ObjectiveManager.Instance;
         m_interactable.OnHoverStringUpdate += UpdateHoverText;
+        m_obj = objectiveManager.FindObjectives("MainObjective")[0];
+        UpdateObjectiveText(m_obj);
+        objectiveManager.OnObjectiveUpdated += UpdateObjectiveText;
     }
 
-    void UpdateHoverText(string newText)
+    public void UpdateHoverText(string newText)
     {
         hoverText.text = newText;
+    }
+    public void UpdateObjectiveText(Objective objective)
+    {
+        objectiveText.text = "Current objective: \n" + objective.GetStatusText();
     }
 }
