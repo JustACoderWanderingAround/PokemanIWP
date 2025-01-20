@@ -33,6 +33,6 @@ public class LobbySelectObjectiveManager : MonoBehaviour
     }
     private void OnDestroy()
     {
-        ObjectiveManager.Instance.AddObjective(new Objective("MainObjective", selectionObjects[selectedindex].selectedUIstr, selectionObjects[selectedindex].selectedAmount));
+        ObjectiveManager.Instance.AddObjective(new Objective("MainObjective", selectionObjects[selectedindex].selectedUIstr, selectionObjects[selectedindex].selectedAmount, selectionObjects[selectedindex].selectedObject.name));
     }
 }

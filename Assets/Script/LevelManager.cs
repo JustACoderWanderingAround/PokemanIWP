@@ -43,6 +43,7 @@ public class LevelManager : MonoBehaviour
         mainObjective = objectives[0];
         mainObjective.OnComplete = () => endTeleporter.ActivateTeleporter();
         playerInventory.AddItemAction += objectiveManager.CheckInventory;
+        mapGenerator.GenerateObjectives(mainObjective, playerInventory.GetItemPrefab(mainObjective.ComparisonStr));
         Transform[] potentialLocs = mapGenerator.GetGridGameObjectParent().GetComponentsInChildren<Transform>();
         enemyManager.SpawnEnemies(potentialLocs);
         Vector2 startPosInd = mapGenerator.GetMapData()[0];

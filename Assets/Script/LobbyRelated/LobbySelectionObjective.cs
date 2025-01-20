@@ -10,7 +10,7 @@ public class LobbySelectionObjective : MonoBehaviour, IInteractable
     bool selected = false;
     public List<string> uiStrings = new List<string>();
     public List<GameObject> allowedObjectiveObjects = new List<GameObject>();
-    GameObject selectedObject;
+    public GameObject selectedObject;
     public string selectedUIstr;
     [HideInInspector]
     public int selectedAmount;

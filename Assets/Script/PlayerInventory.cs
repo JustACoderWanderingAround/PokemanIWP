@@ -75,4 +75,15 @@ public class PlayerInventory : SingletonScriptableObject<PlayerInventory>
             }
         }
     }
+    public GameObject GetItemPrefab(string itemName)
+    {
+        foreach (InventoryItem item in m_invSO.inventoryItems)
+        {
+            if (item.itemName == name)
+            {
+                return item.itemPrefab;
+            }
+        }
+        return null;
+    }
 }

@@ -384,11 +384,12 @@ public class MapGenerator : MonoBehaviour
     {
        return new Vector3(startX + (tileSizeX * x), 1 ,startZ + (tileSizeZ * z));
     }
-    public void GenerateObjectives(Objective m_obj)
+    public void GenerateObjectives(Objective m_obj, GameObject objectiveObject)
     {
         for (int i = 0; i < m_obj.MaxValue + 1; ++i)
         {
-
+           
+            Instantiate(objectiveObject, GetGridPosFromIndex((Random.Range(0, (int)tileSizeZ)), (Random.Range(0, (int)tileSizeZ))), Quaternion.identity);
         }
     }
 }

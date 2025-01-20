@@ -25,11 +25,12 @@ public class Objective
 
     // Status text can have 2 parameters {0} and {1} for current and max value
     // Example: "Kill {0} of {1} enemies"
-    public Objective(string eventTrigger, string statusText, int maxValue, string _comparisonStr = "")
+    public Objective(string eventTrigger, string statusText, int maxValue, string comparisonStr = "")
     {
         EventTrigger = eventTrigger;
         _statusText = statusText;
         MaxValue = maxValue;
+        this._comparisonStr = comparisonStr;
     }
 
     public Objective(string statusText, int maxValue) : this("", statusText, maxValue) { }
