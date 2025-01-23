@@ -53,7 +53,15 @@ public class LevelManager : MonoBehaviour
         playerInventory.AddItemAction += objectiveManager.CheckInventory;
         mapGenerator.GenerateObjectives(mainObjective, playerInventory.GetItemPrefab(mainObjective.ComparisonStr));
         Transform[] potentialLocs = mapGenerator.GetGridGameObjectParent().GetComponentsInChildren<Transform>();
-        enemyManager.SpawnEnemies(potentialLocs);
+        List<Transform> potentialLocList = new List<Transform>();
+        potentialLocList.AddRange(potentialLocs);
+        for(int i = 0; i < potentialLocList.Count; ++i)
+        {
+            if (potentialLocList[i].gameObject.name.Contains("EndTile") || potentialLocList[i].gameObject.name.Contains("Start")) {
+                potentialLocList.Remove(potentialLocList[i]);
+            }
+        }
+        enemyManager.SpawnEnemies(potentialLocList.ToArray());
         Vector2 startPosInd = mapGenerator.GetMapData()[0];
         playerObject.transform.position = mapGenerator.GetGridPosFromIndex((int)startPosInd.x, (int)startPosInd.y);
     }

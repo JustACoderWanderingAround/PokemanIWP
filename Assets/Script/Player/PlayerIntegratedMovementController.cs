@@ -151,7 +151,8 @@ public class PlayerIntegratedMovementController : UseInputController
         // Move player
         //Debug.Log(horizontal + " " + vertical);
         //transform.position += direction.normalized * currentMoveSpeed * Time.deltaTime;
-        rb.AddForce(direction.normalized * currentMoveSpeed);
+        rb.MovePosition(transform.position += direction.normalized * currentMoveSpeed * Time.deltaTime);
+        //rb.AddForce(direction.normalized * currentMoveSpeed);
         // set player rotation
         float targetAngle = Mathf.Atan2((Camera.main.transform.forward + sideDirection).normalized.x, (Camera.main.transform.forward + sideDirection).normalized.z) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, targetAngle, 0), currentMoveSpeed * 10 * Time.deltaTime);

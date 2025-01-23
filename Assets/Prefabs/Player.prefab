@@ -77,10 +77,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 065a71a216a88dc4db942a0a2ca41196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMoveSpeed: 5
+  currentMoveSpeed: 2
   standingPlayerHeight: 1
   maxLeanAngle: 15
-  runningSpeed: 10
+  runningSpeed: 5
   defaultSpeed: 5
   crouchSpeed: 0
   crawlSpeed: 1
