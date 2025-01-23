@@ -54,7 +54,7 @@ public class ObjectiveManager : SingletonScriptableObject<ObjectiveManager>
         {
             if (objective.ComparisonStr == newItem.itemName)
             {
-                objective.AddProgress(1);   
+                AddProgress(objective.EventTrigger, 1);   
             }
         }
 

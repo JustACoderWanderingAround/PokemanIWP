@@ -159,7 +159,7 @@ public class PlayerIntegratedMovementController : UseInputController
         // for jumping
         centreOfMass = transform.position + new Vector3(0, standingPlayerHeight * 0.5f, 0);
 
-
+        Debug.Log("speed:" + currentMoveSpeed);
     }
     public void RotatePlayer(float rotAngle)
     {
@@ -177,10 +177,12 @@ public class PlayerIntegratedMovementController : UseInputController
         {
             case MainPlayerController.MovementState.Walk:
                 currentMoveSpeed = defaultSpeed;
+
                 break;
             case MainPlayerController.MovementState.Run:
                 currentMoveSpeed = runningSpeed;
                 break;
         }
+        Debug.Log("CurrentMoveSpeed = " + currentMoveSpeed.ToString());
     }
 }

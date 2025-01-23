@@ -30,6 +30,21 @@ public class LevelManager : MonoBehaviour
     //    }
     //}
 
+    static LevelManager mInstance;
+
+    public static LevelManager Instance
+    {
+        get
+        {
+            if (mInstance == null)
+            {
+                GameObject go = new GameObject();
+                mInstance = go.AddComponent<LevelManager>();
+            }
+            return mInstance;
+        }
+    }
+
     private void Start()
     {
         objectiveManager = ObjectiveManager.Instance;
@@ -51,6 +66,7 @@ public class LevelManager : MonoBehaviour
             Debug.LogError("OBJECTIVES IS NULL! WHAT THE FUCK ARE YOU DOING!");
         }
         playerInventory.AddItemAction += objectiveManager.CheckInventory;
+        
         mapGenerator.GenerateObjectives(mainObjective, playerInventory.GetItemPrefab(mainObjective.ComparisonStr));
         Transform[] potentialLocs = mapGenerator.GetGridGameObjectParent().GetComponentsInChildren<Transform>();
         List<Transform> potentialLocList = new List<Transform>();

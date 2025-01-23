@@ -82,20 +82,25 @@ public class MainPlayerController : UseInputController
         else if (cmd as KeyCodeCommand != null)
         {
             KeyCodeCommand kcc = cmd as KeyCodeCommand;
+            Debug.Log("Run:" + kcc.KeyHeldDown.ToString() + kcc.KeyDown.ToString());
             if (kcc.KeycodeNumber == runKey)
             {
+                moveState = MovementState.Walk;
                 if (kcc.KeyHeldDown)
                 {
      
                     moveState = MovementState.Run;
                     maxFootstepTimer = runFootstepFrequency;
+                    Debug.Log("Run");
                 }
-                else if (kcc.KeyDown == false)
+                if (kcc.KeyHeldDown == false && kcc.KeyDown == false)
                 {
-     
+
                     moveState = MovementState.Walk;
                     maxFootstepTimer = walkFootstepFrequency;
+                    Debug.Log("Walk");
                 }
+                Debug.Log("New Movestate: " + moveState.ToString());
                 integratedMovementController.SetMovementState(moveState);
 
             }
@@ -112,6 +117,7 @@ public class MainPlayerController : UseInputController
         }
         playerHandController.ReadCommand(cmd);
         integratedMovementController.ReadCommand(cmd);
+        Debug.Log(moveState.ToString());
     }
 
     public override void UpdateController(double deltaTime)
