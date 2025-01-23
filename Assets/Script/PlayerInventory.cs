@@ -28,10 +28,13 @@ public class PlayerInventory : SingletonScriptableObject<PlayerInventory>
         {
             if (item.itemName == name)
             {
-                if (AddItemAction != null)
-                    AddItemAction.Invoke(item);
-                if((!item.isStackable && item.numberInInventory < 1) || (item.isStackable))
+
+                if ((!item.isStackable && item.numberInInventory < 1) || (item.isStackable))
+                {
                     item.numberInInventory++;
+                    if (AddItemAction != null)
+                        AddItemAction.Invoke(item);
+                }
                 Debug.Log("Item added!");
                 break;
             }

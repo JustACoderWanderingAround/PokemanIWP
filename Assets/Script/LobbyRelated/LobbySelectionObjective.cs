@@ -25,7 +25,7 @@ public class LobbySelectionObjective : MonoBehaviour, IInteractable
     ObjectiveType m_OT = ObjectiveType.OT_Collect;
     private void Start()
     {
-        selectedAmount = Random.Range(1, 4);
+        selectedAmount = Random.Range(2, 5);
         selectedObject = allowedObjectiveObjects[Random.Range(0, allowedObjectiveObjects.Count)];
         if (selectedObject.GetComponent<Enemy>())
         {

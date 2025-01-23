@@ -4,28 +4,15 @@ using UnityEngine;
 
 public class EndTeleporter : MonoBehaviour
 {
-    [SerializeField]
-    bool activated;
-    [SerializeField]
     GameObject endScreen;
-    private void OnTriggerEnter(Collider other)
+    InteractableSceneSwitcher interactableSceneSwitcher;
+
+    private void Start()
     {
-       
-        if (other.gameObject.CompareTag("Player"))
-        {
-            if (activated)
-            {
-                Debug.Log("Final teleporter activated!");
-                endScreen.SetActive(true);
-            }
-            else
-            {
-                Debug.Log("Teleporter not active!");
-            }
-        }
+        interactableSceneSwitcher = GetComponent<InteractableSceneSwitcher>();
     }
     public void ActivateTeleporter()
     {
-        activated = true;
+        interactableSceneSwitcher.isInteractable = true;
     }
 }

@@ -49,13 +49,15 @@ public class ObjectiveManager : SingletonScriptableObject<ObjectiveManager>
     public void CheckInventory(InventoryItem newItem)
     {
 
-        if (_objectiveMap.ContainsKey(newItem.itemName))
+       
+        foreach (var objective in Objectives)
         {
-            foreach (var objective in _objectiveMap[newItem.itemName])
+            if (objective.ComparisonStr == newItem.itemName)
             {
-                objective.AddProgress(1);
+                objective.AddProgress(1);   
             }
         }
+
     }
     public List<Objective> FindObjectives(string eventTrigger)
     {

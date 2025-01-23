@@ -165,7 +165,7 @@ public class MapGenerator : MonoBehaviour
                 randomSO = tilesSOs[Random.Range(0, tilesSOs.Count)];
                 tilePicked = CanFitInGridSlot(randomSO, tileX, tileZ);
                 counter++;
-            } while (!tilePicked || counter < 30);
+            } while (tilePicked != true && counter < 30);
             
             if (counter > 30)
             {
@@ -175,6 +175,7 @@ public class MapGenerator : MonoBehaviour
             else
             {
                 tileGrid[tileX][tileZ].TileData = randomSO;
+                Debug.Log("DFSPick passed!");
             }
             // Check if it fits in this location
             // If it does, slot it into this location
@@ -384,12 +385,13 @@ public class MapGenerator : MonoBehaviour
     }
     public Vector3 GetGridPosFromIndex(int x, int z)
     {
-       return new Vector3(startX + (tileSizeX * x), 1 ,startZ + (tileSizeZ * z));
+       return new Vector3(startX + (tileSizeX * x), 1, startZ + (tileSizeZ * z));
     }
     public void GenerateObjectives(Objective m_obj, GameObject objectiveObject)
     {
         for (int i = 0; i < m_obj.MaxValue + 1; ++i)
         {
+            int counter = 0;
             int randomX;
             int randomZ;
             randomX = (Random.Range(0, (int)tileSizeX));
@@ -397,7 +399,8 @@ public class MapGenerator : MonoBehaviour
             do {
                 randomX = (Random.Range(0, (int)tileSizeX));
                 randomZ = (Random.Range(0, (int)tileSizeZ));
-            } while (Mathf.Abs(randomX - endingLocX) > 1 && Mathf.Abs(randomZ - endingLocZ) > 1);
+                counter++; 
+            } while (Mathf.Abs(randomX - endingLocX) > 1 && Mathf.Abs(randomZ - endingLocZ) > 1 && counter < 30);
             Instantiate(objectiveObject, GetGridPosFromIndex(randomX, randomZ), Quaternion.identity);
         }
     }

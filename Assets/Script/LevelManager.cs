@@ -44,6 +44,11 @@ public class LevelManager : MonoBehaviour
         {
             mainObjective = objectives[0];
             mainObjective.OnComplete = () => endTeleporter.ActivateTeleporter();
+            Debug.LogWarning("Objective set successfully!");
+        }
+        else
+        {
+            Debug.LogError("OBJECTIVES IS NULL! WHAT THE FUCK ARE YOU DOING!");
         }
         playerInventory.AddItemAction += objectiveManager.CheckInventory;
         mapGenerator.GenerateObjectives(mainObjective, playerInventory.GetItemPrefab(mainObjective.ComparisonStr));

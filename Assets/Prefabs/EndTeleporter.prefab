@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1960014481872606879}
   - component: {fileID: 6798797573161339529}
-  - component: {fileID: 2071869255522610967}
+  - component: {fileID: 4768197906803036343}
+  - component: {fileID: 8358334237621343272}
   m_Layer: 0
   m_Name: EndTeleporter
   m_TagString: Untagged
@@ -55,7 +56,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.5, y: 3, z: 2}
   m_Center: {x: 0, y: 1.5, z: 0}
---- !u!114 &2071869255522610967
+--- !u!114 &4768197906803036343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7975244344235464805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e0a31e0f011a6c448b6decaa7bdba8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInteractable: 0
+  interactableText: Teleporter active! Interact to finish mission.
+  nonInteractableText: Teleporter inactive! Finish your mission.
+  nextSceneName: LobbyScene
+--- !u!114 &8358334237621343272
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67,7 +84,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60a185a54e6f3934bbbc4076a24a3e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activated: 0
 --- !u!1001 &1701700795116956743
 PrefabInstance:
   m_ObjectHideFlags: 0
