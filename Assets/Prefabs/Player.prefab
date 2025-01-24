@@ -80,7 +80,7 @@ MonoBehaviour:
   currentMoveSpeed: 1
   standingPlayerHeight: 1
   maxLeanAngle: 15
-  runningSpeed: 5
+  runningSpeed: 3
   defaultSpeed: 1
   crouchSpeed: 0
   crawlSpeed: 1
