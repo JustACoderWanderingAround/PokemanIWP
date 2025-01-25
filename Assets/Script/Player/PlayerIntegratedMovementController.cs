@@ -50,6 +50,15 @@ public class PlayerIntegratedMovementController : UseInputController
     private float targetLeanAngle;
     bool canJump = true;
     bool grounded;
+
+    [Header("Stamina")]
+    [SerializeField]
+    float maxStamina = 10f;
+    [SerializeField]
+    float staminaRechargeSpeed = 0.3f;
+    [SerializeField]
+    float staminaDischageSpeed = 0.5f;
+    float currStamina;
     public enum LeanState
     {
         LeanStateL = -1,
@@ -133,6 +142,18 @@ public class PlayerIntegratedMovementController : UseInputController
 
     public override void UpdateController(double deltaTime)
     {
+        if (currentMoveSpeed > defaultSpeed)
+        {
+            if (currStamina > 0)
+                currStamina -= Time.deltaTime * staminaDischageSpeed;
+        }
+        else
+        {
+            if (currStamina < maxStamina)
+            {
+                currStamina += Time.deltaTime * staminaRechargeSpeed;
+            }
+        }
         targetLeanAngle = (int)leanState * maxLeanAngle;
         // calculate directions - directly forward and 90 degrees to the side
         Vector3 forwardDirection = Vector3.ProjectOnPlane(Camera.main.transform.forward * vertical, Vector3.up);
@@ -180,7 +201,8 @@ public class PlayerIntegratedMovementController : UseInputController
 
                 break;
             case MainPlayerController.MovementState.Run:
-                currentMoveSpeed = runningSpeed;
+                if (currStamina > 0)
+                    currentMoveSpeed = runningSpeed;
                 break;
         }
         Debug.Log("CurrentMoveSpeed = " + currentMoveSpeed.ToString());

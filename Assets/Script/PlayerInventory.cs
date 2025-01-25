@@ -40,7 +40,7 @@ public class PlayerInventory : SingletonScriptableObject<PlayerInventory>
             }
         }
     }
-    public void RemoveItem(string name)
+    public void RemoveItem(string name, int amount = 1)
     {
         foreach (InventoryItem item in m_invSO.inventoryItems)
         {
@@ -48,7 +48,7 @@ public class PlayerInventory : SingletonScriptableObject<PlayerInventory>
             {
                 if (RemoveItemAction != null)
                     RemoveItemAction.Invoke(item);
-                item.numberInInventory--;
+                item.numberInInventory -= amount;
                 break;
             }
         }

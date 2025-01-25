@@ -38,7 +38,7 @@ public class LobbySelectionObjective : MonoBehaviour, IInteractable
         switch (m_OT)
         {
             case ObjectiveType.OT_Collect:
-                selectedUIstr = "Collect " + selectedAmount + " " + selectedObject.gameObject.GetComponent<Collectible>().inventoryItemName + "\nCoins collected: {0} / {1}";
+                selectedUIstr = "Collect " + selectedAmount + " " + selectedObject.gameObject.GetComponent<Collectible>().inventoryItemName + "\n" + selectedObject.gameObject.GetComponent<Collectible>().inventoryItemName + "collected: {0} / {1}";
                 break;
             case ObjectiveType.OT_Kill:
                 selectedUIstr = "Kill " + selectedAmount + " " + selectedObject.gameObject.name + "\nZombies killed: {0} / {1}"; ;
