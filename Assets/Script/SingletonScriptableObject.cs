@@ -22,7 +22,7 @@ public abstract class SingletonScriptableObject<T> : ScriptableObject where T : 
                 {
                     //throw new System.Exception($"Not found Singleton Scriptable Object of type: {typeof(T).ToString()}");
                     instance = ScriptableObject.CreateInstance<T>();
-                    UnityEditor.AssetDatabase.MoveAsset(UnityEditor.AssetDatabase.GetAssetPath(instance), $"Assets/Resources/SingletonScriptables");
+                    //UnityEditor.AssetDatabase.MoveAsset(UnityEditor.AssetDatabase.GetAssetPath(instance), $"Assets/Resources/SingletonScriptables");
                     Debug.LogWarning("New scriptable object of type " + typeof(T).ToString() + " created.");
                     return instance;
                 }

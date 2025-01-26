@@ -3400,6 +3400,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gun
       objectReference: {fileID: 0}
+    - target: {fileID: 4573640878527355480, guid: 3d5110f3b49b0454699738b9b3881b4c,
+        type: 3}
+      propertyPath: ammoUI
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573640878527355480, guid: 3d5110f3b49b0454699738b9b3881b4c,
+        type: 3}
+      propertyPath: maxAmmoPerClip
+      value: 17
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

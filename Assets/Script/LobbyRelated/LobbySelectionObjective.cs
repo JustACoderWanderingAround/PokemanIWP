@@ -27,6 +27,8 @@ public class LobbySelectionObjective : MonoBehaviour, IInteractable
     {
         selectedAmount = Random.Range(2, 5);
         selectedObject = allowedObjectiveObjects[Random.Range(0, allowedObjectiveObjects.Count)];
+        GameObject poo = Instantiate(selectedObject, this.transform);
+        Destroy(poo.GetComponent<Collectible>());
         if (selectedObject.GetComponent<Enemy>())
         {
             m_OT = ObjectiveType.OT_Kill;

@@ -19,7 +19,6 @@ public class ObjectiveManager : SingletonScriptableObject<ObjectiveManager>
     // the same EventTrigger (i.e. MobKilled, ItemCollected, etc)
     public void AddObjective(Objective objective)
     {
-        Objectives.Add(objective);
         if (!string.IsNullOrEmpty(objective.EventTrigger))
         {
             if (!_objectiveMap.ContainsKey(objective.EventTrigger))
@@ -67,5 +66,12 @@ public class ObjectiveManager : SingletonScriptableObject<ObjectiveManager>
             return _objectiveMap[eventTrigger];
         }
         else return new List<Objective>();
+    }
+    public void RemoveObjective(string eventTrigger)
+    {
+        if (_objectiveMap.ContainsKey(eventTrigger))
+        {
+            _objectiveMap.Remove(eventTrigger);
+        }
     }
 }

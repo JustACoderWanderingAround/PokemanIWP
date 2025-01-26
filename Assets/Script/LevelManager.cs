@@ -79,4 +79,8 @@ public class LevelManager : MonoBehaviour
         Vector2 startPosInd = mapGenerator.GetMapData()[0];
         playerObject.transform.position = mapGenerator.GetGridPosFromIndex((int)startPosInd.x, (int)startPosInd.y);
     }
+    private void OnDestroy()
+    {
+        ObjectiveManager.Instance.RemoveObjective("MainObjective");
+    }
 }
