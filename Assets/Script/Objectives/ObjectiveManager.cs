@@ -38,8 +38,10 @@ public class ObjectiveManager : SingletonScriptableObject<ObjectiveManager>
     {
         if (!_objectiveMap.ContainsKey(eventTrigger))
             return;
-        foreach (var objective in _objectiveMap[eventTrigger])
+        //foreach (var objective in _objectiveMap[eventTrigger])
+        for (int i = 0; i < _objectiveMap[eventTrigger].Count; i++)
         {
+            Objective objective = _objectiveMap[eventTrigger][i];
             objective.AddProgress(value);
             OnObjectiveUpdated.Invoke(objective);
         }
@@ -48,9 +50,10 @@ public class ObjectiveManager : SingletonScriptableObject<ObjectiveManager>
     public void CheckInventory(InventoryItem newItem)
     {
 
-       
-        foreach (var objective in Objectives)
+
+        for (int i = 0; i < Objectives.Count; i++)
         {
+            Objective objective = Objectives[i];
             if (objective.ComparisonStr == newItem.itemName)
             {
                 AddProgress(objective.EventTrigger, 1);   

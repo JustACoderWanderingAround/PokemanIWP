@@ -56,7 +56,8 @@ public class LevelManager : MonoBehaviour
         if (objectives != null)
         {
             mainObjective = objectives[0];
-            mainObjective.OnComplete = () => endTeleporter.ActivateTeleporter();
+            mainObjective.OnComplete += () => endTeleporter.ActivateTeleporter();
+            mainObjective.OnComplete += () => OnFirstMainObjectiveCompleted();
             Debug.LogWarning("Objective set successfully!");
         }
         else
@@ -78,6 +79,11 @@ public class LevelManager : MonoBehaviour
         enemyManager.SpawnEnemies(potentialLocList.ToArray());
         Vector2 startPosInd = mapGenerator.GetMapData()[0];
         playerObject.transform.position = mapGenerator.GetGridPosFromIndex((int)startPosInd.x, (int)startPosInd.y);
+    }
+    public void OnFirstMainObjectiveCompleted()
+    {
+        //ObjectiveManager.Instance.RemoveObjective("MainObjective");
+        objectiveManager.AddObjective(new Objective("MainObjective", "Find the teleporter and escape.", 0));
     }
     private void OnDestroy()
     {

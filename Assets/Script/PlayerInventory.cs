@@ -13,8 +13,8 @@ public class PlayerInventory : SingletonScriptableObject<PlayerInventory>
     {
         Debug.LogWarning("PlayerInvStart");
         //DontDestroyOnLoad(this);
-        foreach (InventoryItem item in m_invSO.inventoryItems)
-        {
+       for(int i = 0; i < m_invSO.inventoryItems.Count; ++i) {
+            InventoryItem item = m_invSO.inventoryItems[i];
             if (item.resetOnStart)
             {
                 item.numberInInventory = 0;
@@ -24,8 +24,8 @@ public class PlayerInventory : SingletonScriptableObject<PlayerInventory>
     public void AddItem(string name)
     {
         Debug.Log("New item name: " + name);
-        foreach (InventoryItem item in m_invSO.inventoryItems)
-        {
+       for(int i = 0; i < m_invSO.inventoryItems.Count; ++i) {
+            InventoryItem item = m_invSO.inventoryItems[i];
             if (item.itemName == name)
             {
 
@@ -42,8 +42,8 @@ public class PlayerInventory : SingletonScriptableObject<PlayerInventory>
     }
     public void RemoveItem(string name, int amount = 1)
     {
-        foreach (InventoryItem item in m_invSO.inventoryItems)
-        {
+       for(int i = 0; i < m_invSO.inventoryItems.Count; ++i) {
+            InventoryItem item = m_invSO.inventoryItems[i];
             if (item.itemName == name)
             {
                 if (RemoveItemAction != null)
@@ -55,8 +55,8 @@ public class PlayerInventory : SingletonScriptableObject<PlayerInventory>
     }
     public int GetCount(string name)
     {
-        foreach (InventoryItem item in m_invSO.inventoryItems)
-        {
+       for(int i = 0; i < m_invSO.inventoryItems.Count; ++i) {
+            InventoryItem item = m_invSO.inventoryItems[i];
             if (item.itemName == name)
             {
                 return item.numberInInventory;
@@ -70,8 +70,8 @@ public class PlayerInventory : SingletonScriptableObject<PlayerInventory>
     }
     public void ResetItemCount(string name)
     {
-        foreach (InventoryItem item in m_invSO.inventoryItems)
-        {
+       for(int i = 0; i < m_invSO.inventoryItems.Count; ++i) {
+            InventoryItem item = m_invSO.inventoryItems[i];
             if (item.itemName == name)
             {
                 item.numberInInventory = 0;
@@ -81,8 +81,8 @@ public class PlayerInventory : SingletonScriptableObject<PlayerInventory>
     }
     public GameObject GetItemPrefab(string itemName)
     {
-        foreach (InventoryItem item in m_invSO.inventoryItems)
-        {
+       for(int i = 0; i < m_invSO.inventoryItems.Count; ++i) {
+            InventoryItem item = m_invSO.inventoryItems[i];
             if (item.itemName == itemName)
             {
                 return item.itemPrefab;
