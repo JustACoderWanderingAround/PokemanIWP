@@ -53,6 +53,8 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     List<GameObject> allowedCollectibles;
 
+    List<List<int>> biomeGrid;
+
     int startingLocX;
     int startingLocZ;
     int endingLocX;
@@ -78,14 +80,17 @@ public class MapGenerator : MonoBehaviour
         // init vars
         tileGrid = new List<List<MapTile>>();
         dfsVisited = new List<List<bool>>();
+        biomeGrid = new List<List<int>>();
         for (int x = 0; x < mapSizeX; x++)
         {
+            biomeGrid.Add(new List<int>());
             dfsVisited.Add(new List<bool>());
             tileGrid.Add(new List<MapTile>());
             for (int z = 0; z < mapSizeZ; z++)
             {
                 dfsVisited[x].Add(false);
                 tileGrid[x].Add(new MapTile(defaultMapTileSO));
+                biomeGrid[x].Add(0);
             }
         }
         if (!randomSeed)
@@ -130,9 +135,20 @@ public class MapGenerator : MonoBehaviour
         }
         {
             //LinearPickTiles();
-            DFSPickTiles(startingLocX, startingLocZ);
+            DFS(startingLocX, startingLocZ);
+            dfsVisited = new List<List<bool>>();
+            for (int x = 0; x < mapSizeX; x++)
+            {
+                dfsVisited.Add(new List<bool>());
+                for (int z = 0; z < mapSizeZ; z++)
+                {
+                    dfsVisited[x].Add(false);
+                }
+            }
+                DFS(0, 0, SpawnBiomeTile);
         }
     }
+
     void LinearPickTiles()
     {
         for (int x = 0; x < mapSizeX; ++x)
@@ -145,7 +161,56 @@ public class MapGenerator : MonoBehaviour
             }
         }
     }
-    void DFSPickTiles(int tileX, int tileZ)
+    void SpawnBiomeTile(int tileX, int tileZ)
+    {
+        Debug.Log("Start spawn biome " + tileSizeX + " " + tileSizeZ);
+        List<int> spawnChances = new List<int>() { 0, 0, 0, 0};
+        int totalWeight = 0;
+        if (biomeGrid[tileX][tileZ] == 0) {
+            int counter = 0;
+            foreach ((int dx, int dz) in directions)
+            {
+                if (!(tileX + dx < 0 || tileX + dx > mapSizeX - 1|| tileZ + dz < 0 || tileZ + dz > mapSizeZ - 1))
+                {
+
+                    MapTileSO currMapTile = tileGrid[tileX + dx][tileZ + dz].TileData;
+                    if (currMapTile.biomeIndex > 0)
+                    {
+                        spawnChances[currMapTile.biomeIndex] += 25;
+                        totalWeight += 25;
+                    }
+                    counter++;
+                }
+            }
+        }
+        if (totalWeight > 0)
+        {
+            int randomValue = UnityEngine.Random.Range(0, totalWeight);
+            int chosenIndex = -1;
+
+            for (int i = 0; i < spawnChances.Count; i++)
+            {
+                randomValue -= spawnChances[i];
+                if (randomValue < 0)
+                {
+                    chosenIndex = i;
+                    biomeGrid[tileX][tileZ] = chosenIndex;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            int randomValue = Random.Range(0, 100);
+            int biomeChance = terrainPrefabs.Count * 10;
+            if (randomValue < biomeChance)
+            {
+                int selectedIndex =(int)Mathf.Round(randomValue / 10);
+                biomeGrid[tileX][tileZ] = selectedIndex;
+            }
+        }
+    }
+    void DFS(int tileX, int tileZ, System.Action<int, int> functionToExecute = null)
     {
         // Check if out of bounds
         if (tileX < 0 || tileX > mapSizeX - 1|| tileZ < 0 || tileZ > mapSizeZ - 1 || dfsVisited[tileX][tileZ])
@@ -154,42 +219,55 @@ public class MapGenerator : MonoBehaviour
         dfsVisited[tileX][tileZ] = true;
         // Check if visited tile has tile data
         // TODO: FIX!!
-        if (tileGrid[tileX][tileZ].TileData == defaultMapTileSO) {
-            //tileGrid[tileX][tileZ].TileData = tilesSOs[Random.Range(0, tilesSOs.Count)];
-            // Pick a random tile prefab
-            MapTileSO randomSO;
-            bool tilePicked = false;
-            int counter = 0;
-            do
+        // Function to execute
+        if (functionToExecute == null)
+        {
+            if (tileGrid[tileX][tileZ].TileData == defaultMapTileSO)
             {
-                randomSO = tilesSOs[Random.Range(0, tilesSOs.Count)];
-                tilePicked = CanFitInGridSlot(randomSO, tileX, tileZ);
-                counter++;
-            } while (tilePicked != true && counter < 30);
-            
-            if (counter > 30)
-            {
-                tileGrid[tileX][tileZ].TileData = tilesSOs[5];
-                Debug.LogWarning("DFSPick failed! Resorted to default.");
+                //tileGrid[tileX][tileZ].TileData = tilesSOs[Random.Range(0, tilesSOs.Count)];
+                // Pick a random tile prefab
+                MapTileSO randomSO;
+                bool tilePicked = false;
+                int counter = 0;
+                do
+                {
+                    int pickedIndex = Random.Range(0, tilesSOs.Count);
+                    if (pickedIndex > 13)
+                    { }
+                    randomSO = tilesSOs[pickedIndex];
+                    tilePicked = CanFitInGridSlot(randomSO, tileX, tileZ);
+                    counter++;
+                } while (tilePicked != true && counter < 30);
+
+                if (counter > 30)
+                {
+                    tileGrid[tileX][tileZ].TileData = tilesSOs[5];
+                    Debug.LogWarning("DFSPick failed! Resorted to default.");
+                }
+                else
+                {
+                    tileGrid[tileX][tileZ].TileData = randomSO;
+                    Debug.Log("DFSPick passed!");
+                }
+                biomeGrid[tileX][tileZ] = tileGrid[tileX][tileZ].TileData.biomeIndex;
+                // Check if it fits in this location
+                // If it does, slot it into this location
+                // If none fit, just put in a 4 corner wall
             }
             else
             {
-                tileGrid[tileX][tileZ].TileData = randomSO;
-                Debug.Log("DFSPick passed!");
+                Debug.Log("2");
             }
-            // Check if it fits in this location
-            // If it does, slot it into this location
-            // If none fit, just put in a 4 corner wall
         }
-        else 
-        {
-            Debug.Log("2");
+        else {
+            functionToExecute.Invoke(tileX, tileZ);
         }
+        
 
         foreach ((int dx, int dz) in directions)
         {
             Debug.Log("Next tile:" + (tileX + dx).ToString() + " " + (tileZ + dz).ToString());
-            DFSPickTiles(tileX + dx, tileZ + dz);
+            DFS(tileX + dx, tileZ + dz, functionToExecute);
         }
 
     }
@@ -222,6 +300,7 @@ public class MapGenerator : MonoBehaviour
         {
             fitsRight = true;
         }
+        if (fitsRight) outputStr += " right";
         // Up
         if (tileZ + 1 < mapSizeZ)
         {
@@ -242,6 +321,7 @@ public class MapGenerator : MonoBehaviour
         {
             fitsUp = true;
         }
+        if (fitsRight) outputStr += " up";
         // Left
         if (tileX - 1 > 0)
         {
@@ -262,6 +342,7 @@ public class MapGenerator : MonoBehaviour
         {
             fitsLeft = true;
         }
+        if (fitsRight) outputStr += " left";
         // Down
         if (tileZ - 1 > 0)
         {
@@ -282,7 +363,8 @@ public class MapGenerator : MonoBehaviour
         {
             fitsDown = true;
         }
-        Debug.Log("fits: " + outputStr);
+        if (fitsRight) outputStr += " down";
+        Debug.LogWarning(so.name + " fits: " + outputStr);
         Debug.Log(fitsRight && fitsUp && fitsDown && fitsLeft);
         return fitsRight && fitsUp && fitsDown && fitsLeft;
     }
@@ -310,6 +392,10 @@ public class MapGenerator : MonoBehaviour
                     {
                         Vector3 currentPosition = new Vector3(startX + (tileSizeX * x), 0, startZ + (tileSizeZ * z));
                         GameObject inst = Instantiate(tileGrid[x][z].TileData.tilePrefab, currentPosition, Quaternion.identity, gridHolder.transform);
+                        if (tileGrid[x][z].TileData.biomeIndex != biomeGrid[x][z])
+                        {
+                            GameObject instBiome = Instantiate(terrainPrefabs[biomeGrid[x][z]], currentPosition, Quaternion.identity, inst.transform);
+                        }
                         if (tileGrid[x][z].TileData == spawnTile)
                         {
                             startTile = inst;

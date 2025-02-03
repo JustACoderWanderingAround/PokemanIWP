@@ -31,3 +31,8 @@ MonoBehaviour:
   allowAllZNeg: 0
   tilePrefab: {fileID: 1935413457794552156, guid: a4f1286b93eb828469883f00a7f7f54f,
     type: 3}
+  biomeNames:
+  - default
+  - water
+  - grass
+  biomeIndex: 1

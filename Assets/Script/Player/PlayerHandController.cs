@@ -14,6 +14,8 @@ public class PlayerHandController : UseInputController
     private GameObject leftHandSlot;
     [SerializeField]
     private GameObject rightHandSlot;
+    [SerializeField]
+    private PlayerInteractable pi;
     public KeyCode secondaryButtonCode = KeyCode.LeftControl;
     public List<KeyCode> itemSlotKeyList = new List<KeyCode>() { 
         KeyCode.Alpha1,
@@ -94,7 +96,10 @@ public class PlayerHandController : UseInputController
                     }
                     else
                     {
-                        UseItem(0);
+                        if (leftHandSlot.transform.GetChild(activeLHandIndex) != null)
+                            UseItem(0);
+                        else
+                            CheckAndPickUp();
                     }
 
                 }
@@ -192,6 +197,7 @@ public class PlayerHandController : UseInputController
     public void CheckAndPickUp()
     {
         // Raycast to check what's around the player
+        pi.Interact();
         // Create Copy of item's prefab
         // Delete item copy on the floor
 

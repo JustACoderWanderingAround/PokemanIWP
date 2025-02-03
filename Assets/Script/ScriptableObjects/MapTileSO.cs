@@ -14,4 +14,6 @@ public class MapTileSO : ScriptableObject
     public List<MapTileSO> allowedConnectionsZNeg;
     public bool allowAllZNeg;
     public GameObject tilePrefab;
+    public List<string> biomeNames = new List<string>() { "default", "water", "grass", "mud" };
+    public int biomeIndex = 0;
 }
