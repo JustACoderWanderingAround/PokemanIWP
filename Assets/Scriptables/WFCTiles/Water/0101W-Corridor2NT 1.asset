@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedConnectionsXPos:
   - {fileID: 11400000, guid: 499a4a87b0f6f43448240ca2b4679320, type: 2}
+  - {fileID: 11400000, guid: c9e1cffd6b51dcf4b9b42f3024cda450, type: 2}
   allowAllXPos: 0
   allowedConnectionsZPos:
   - {fileID: 11400000, guid: 98d1e8527b1f74546a6e9003bd480962, type: 2}
@@ -26,6 +27,7 @@ MonoBehaviour:
   allowAllZPos: 0
   allowedConnectionsXNeg:
   - {fileID: 11400000, guid: 499a4a87b0f6f43448240ca2b4679320, type: 2}
+  - {fileID: 11400000, guid: c9e1cffd6b51dcf4b9b42f3024cda450, type: 2}
   allowAllXNeg: 0
   allowedConnectionsZNeg:
   - {fileID: 11400000, guid: 98d1e8527b1f74546a6e9003bd480962, type: 2}

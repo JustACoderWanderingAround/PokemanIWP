@@ -214,6 +214,7 @@ MonoBehaviour:
   - {fileID: 8602202266790394254, guid: 6ebc8f70d11fdb4428816bdf6324ae45, type: 3}
   - {fileID: 907737577407192764, guid: 3c94a574020d3de429d0c295b3a83db4, type: 3}
   - {fileID: 6630375654688184054, guid: c79d59d66358e0f45a098f4b8a82f8be, type: 3}
+  - {fileID: 556608131800322745, guid: 1ea5db6151271a14398a1f65c6133da0, type: 3}
   availableDecoSpawnLocs:
   - {fileID: 2209406700618400211}
   - {fileID: 1559150566540007571}

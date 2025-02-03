@@ -23,7 +23,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 732fc9826733b054d9b1e4f5bddc79b9, type: 2}
   allowAllXPos: 0
   allowedConnectionsZPos:
-  - {fileID: 11400000, guid: 5e455d28faf817a4da460a17228c79d0, type: 2}
+  - {fileID: 11400000, guid: 499a4a87b0f6f43448240ca2b4679320, type: 2}
+  - {fileID: 11400000, guid: c9e1cffd6b51dcf4b9b42f3024cda450, type: 2}
   allowAllZPos: 0
   allowedConnectionsXNeg:
   - {fileID: 11400000}
@@ -37,6 +38,7 @@ MonoBehaviour:
   allowAllXNeg: 0
   allowedConnectionsZNeg:
   - {fileID: 11400000, guid: 499a4a87b0f6f43448240ca2b4679320, type: 2}
+  - {fileID: 11400000, guid: c9e1cffd6b51dcf4b9b42f3024cda450, type: 2}
   allowAllZNeg: 1
   tilePrefab: {fileID: 2518790742967706490, guid: deb9f16181c018740b1b1d6db45fd24d,
     type: 3}

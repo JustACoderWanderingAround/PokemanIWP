@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availableDecoPrefabs:
-  - {fileID: 531400902464107881, guid: f483f0f123570184194fc4c9e20d38ad, type: 3}
+  - {fileID: 531400902464107881, guid: 12e605b7a79997042b6ac64a52b1125d, type: 3}
   - {fileID: 7030994941266997987, guid: 725d9061657be724facf6fda9fe05b4f, type: 3}
   availableDecoSpawnLocs:
   - {fileID: 5619035538449779664}
