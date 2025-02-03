@@ -22,7 +22,7 @@ public class PlayerTerrainStepController : MonoBehaviour
         if (currTerrain > 0)
         {
             Debug.Log("Splash sound played");
-            soundGenerator.PlaySoundOnce(((int)currTerrain) - 1);
+            soundGenerator.PlaySoundOnce(((int)currTerrain) - 1, true);
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -34,7 +34,16 @@ public class PlayerTerrainStepController : MonoBehaviour
             currTerrain = (TerrainType)other.gameObject.GetComponent<Terrain>().terrainNum;
         }
     }
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Terrain"))
+        {
+            Debug.Log("PTSC: Terrain enter");
+            if (other.GetComponent<Terrain>() != null)
+                currTerrain = (TerrainType)other.gameObject.GetComponent<Terrain>().terrainNum;
+        }
+    }
+        private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Terrain"))
         {
