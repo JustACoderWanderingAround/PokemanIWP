@@ -690,6 +690,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5816733707222969660, guid: 7dbaaa7be87eec54295fa5acca510074,
+        type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3600,7 +3605,7 @@ PrefabInstance:
     - target: {fileID: 3092759736906926635, guid: 69583648b99194d4594cc0baddbee07d,
         type: 3}
       propertyPath: isInteractable
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3092759736906926635, guid: 69583648b99194d4594cc0baddbee07d,
         type: 3}

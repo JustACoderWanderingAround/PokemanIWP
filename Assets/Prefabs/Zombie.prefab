@@ -305,6 +305,7 @@ GameObject:
   - component: {fileID: 6574675660415119547}
   - component: {fileID: 8698817791415873079}
   - component: {fileID: 1794356936169670286}
+  - component: {fileID: 374030073485620757}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -343,12 +344,16 @@ MonoBehaviour:
   entityName: Da Zombie
   description: Dis is da zombie
   maxHealth: 3
+  OnDamageEvent:
+    m_PersistentCalls:
+      m_Calls: []
   movementController: {fileID: 4191802257132747869}
   nextTargetMaxRange: 7
   animator: {fileID: 4088630762527938232}
   runSpeed: 2.5
   walkSpeed: 1.2
   randomSoundPlayer: {fileID: 1794356936169670286}
+  maxHitStunTiming: 0.1
   state: 0
 --- !u!114 &3058691502916623033
 MonoBehaviour:
@@ -427,7 +432,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.49
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
@@ -563,6 +568,33 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c5c3dead92e46df41bcfbef10ce9a6c8, type: 3}
   maxSoundTimer: 15
   playOnAwake: 1
+--- !u!54 &374030073485620757
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3956056507582781333}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8530935128383825748
 GameObject:
   m_ObjectHideFlags: 0

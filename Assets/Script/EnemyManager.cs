@@ -21,9 +21,12 @@ public class EnemyManager : MonoBehaviour
     [SerializeField]
     float maxSpawnTimer = 30.0f;
     float spawnTimer;
+    Transform[] allowedLocs;
     private void Start()
     {
         spawnTimer = maxSpawnTimer;
+        deadEnemies = 0;
+        enemies = new List<Enemy>();
     }
     private void Update()
     {
@@ -35,16 +38,65 @@ public class EnemyManager : MonoBehaviour
             }
             else
             {
+                spawnTimer = maxSpawnTimer;
                 int randomNum = Random.Range(0, 3);
-                for(int i = 0; i < randomNum; ++i)
+                for(int j = 0; j < randomNum; ++j)
                 {
                     int randomLocIndex = Random.Range(0, 3);
+                    // Normalize spawn chances
+                    float totalChance = 0;
+                    foreach (float chance in respectiveSpawnChances)
+                    {
+                        totalChance += chance;
+                    }
+
+                    if (totalChance <= 0)
+                    {
+                        Debug.LogError("Total spawn chances must be greater than 0.");
+                        return;
+                    }
+
+                    List<float> normalizedChances = new List<float>();
+                    foreach (float chance in respectiveSpawnChances)
+                    {
+                        normalizedChances.Add(chance / totalChance);
+                    }
+
+                    // Spawn enemies
+                    for (int i = 0; i < numberToSpawn; i++)
+                    {
+                        // Choose a random location
+                        int randomLocationIndex = Random.Range(0, allowedLocs.Length);
+                        Vector3 spawnLocation = allowedLocs[randomLocationIndex].position;
+
+                        // Choose an enemy based on weighted chances
+                        float randomValue = Random.value; // Value between 0 and 1
+                        float cumulativeChance = 0;
+                        int chosenEnemyIndex = 0;
+
+                        for (int r = 0; r < normalizedChances.Count; r++)
+                        {
+                            cumulativeChance += normalizedChances[r];
+                            if (randomValue <= cumulativeChance)
+                            {
+                                chosenEnemyIndex = r;
+                                break;
+                            }
+                        }
+
+                        // Instantiate the chosen enemy at the spawn location
+                        Enemy chosenEnemy = spawnableEnemies[chosenEnemyIndex];
+                        Instantiate(chosenEnemy.gameObject, spawnLocation, Quaternion.identity, enemySlot.transform);
+                        enemies.Add(chosenEnemy);
+
+                    }
                 }
             }
         }
     }
     public void SpawnEnemies(Transform[] potentialLocations)
     {
+        allowedLocs = potentialLocations;
         // Validate inputs
         if (spawnableEnemies == null || spawnableEnemies.Count == 0 ||
             respectiveSpawnChances == null || respectiveSpawnChances.Count != spawnableEnemies.Count ||
