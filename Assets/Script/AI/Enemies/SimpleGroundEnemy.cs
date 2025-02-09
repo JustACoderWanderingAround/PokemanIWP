@@ -20,6 +20,9 @@ public class SimpleGroundEnemy : Enemy, ISoundListener
     float walkSpeed = 1.2f;
     [SerializeField]
     EntityRandomSoundPlayer randomSoundPlayer;
+    [SerializeField]
+    float maxHitStunTiming = 0.1f;
+    float hitStunTiming;
 
     // AI Related vars
     float stateTimer;
@@ -106,6 +109,14 @@ public class SimpleGroundEnemy : Enemy, ISoundListener
         else
         {
             ChangeState(EnemyState.STATE_DEAD);
+        }
+        if (hitStunTiming > 0)
+        {
+            hitStunTiming -= Time.deltaTime;
+        }
+        else
+        {
+            movementController.ResumeNavigation();
         }
     }
     // plan: randomly walk around
@@ -255,6 +266,7 @@ public class SimpleGroundEnemy : Enemy, ISoundListener
     {
         base.Damage(dmg);
         animator.SetTrigger("Damaged");
+        hitStunTiming = maxHitStunTiming;
     }
     private void ResetAllTriggers()
     {
