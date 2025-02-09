@@ -223,6 +223,7 @@ public class SimpleGroundEnemy : Enemy, ISoundListener
                     Debug.Log("Animator: Chase");
                     movementController.ResumeNavigation();
                     Debug.Log("Change state: Chase");
+                    OnPlayerObserved();
                     break;
                 case EnemyState.STATE_DEAD:
                     OnDeath();

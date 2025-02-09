@@ -120,6 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftHandSlot: {fileID: 3409699169559691161}
   rightHandSlot: {fileID: 3366595572899280417}
+  pi: {fileID: 0}
   secondaryButtonCode: 306
   itemSlotKeyList: 31000000320000003300000034000000350000003600000037000000380000003900000030000000
 --- !u!82 &3404643405425099810
@@ -250,7 +251,19 @@ MonoBehaviour:
   maxHealth: 10
   OnDamageEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 745146257166661814}
+        m_TargetAssemblyTypeName: MainPlayerController, Assembly-CSharp
+        m_MethodName: OnDamageCheck
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!54 &6674386157243860873
 Rigidbody:
   m_ObjectHideFlags: 0

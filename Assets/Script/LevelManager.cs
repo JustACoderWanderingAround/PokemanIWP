@@ -16,6 +16,8 @@ public class LevelManager : MonoBehaviour
     Objective mainObjective;
     PlayerInventory playerInventory;
     EndTeleporter endTeleporter;
+    [SerializeField]
+    GameObject EndScreen;
     //[SerializeField]
     //PlayerInventory inventory;
     //[SerializeField]
@@ -78,6 +80,7 @@ public class LevelManager : MonoBehaviour
         }
         enemyManager.SpawnEnemies(potentialLocList.ToArray());
         Vector2 startPosInd = mapGenerator.GetMapData()[0];
+        playerObject.GetComponent<MainPlayerController>().OnDeathEvent += OnPlayerGameEnd;
         playerObject.transform.position = mapGenerator.GetGridPosFromIndex((int)startPosInd.x, (int)startPosInd.y);
     }
     public void OnFirstMainObjectiveCompleted()
@@ -88,5 +91,9 @@ public class LevelManager : MonoBehaviour
     private void OnDestroy()
     {
         ObjectiveManager.Instance.RemoveObjective("MainObjective");
+    }
+    public void OnPlayerGameEnd(bool win)
+    {
+
     }
 }

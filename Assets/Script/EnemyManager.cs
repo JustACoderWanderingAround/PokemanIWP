@@ -88,7 +88,8 @@ public class EnemyManager : MonoBehaviour
                         Enemy chosenEnemy = spawnableEnemies[chosenEnemyIndex];
                         Instantiate(chosenEnemy.gameObject, spawnLocation, Quaternion.identity, enemySlot.transform);
                         enemies.Add(chosenEnemy);
-
+                        chosenEnemy.OnPlayerObservedEvent += OnEnemySeesPlayer;
+                        chosenEnemy.OnDeathEvent += OnEnemyDied;
                     }
                 }
             }
@@ -151,7 +152,8 @@ public class EnemyManager : MonoBehaviour
             Enemy chosenEnemy = spawnableEnemies[chosenEnemyIndex];
             Instantiate(chosenEnemy.gameObject, spawnLocation, Quaternion.identity, enemySlot.transform);
             enemies.Add(chosenEnemy);
-
+            chosenEnemy.OnPlayerObservedEvent += OnEnemySeesPlayer;
+            chosenEnemy.OnDeathEvent += OnEnemyDied;
         }
     }
     public void OnEnemySeesPlayer()

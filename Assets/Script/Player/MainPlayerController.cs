@@ -25,6 +25,7 @@ public class MainPlayerController : UseInputController
     PlayerTerrainStepController ptsc;
     [SerializeField]
     PlayerInteractable pi;
+    public System.Action<bool> OnDeathEvent;
 
     // Mouse rotation related vars
     private float horizontalOrientation;
@@ -152,7 +153,14 @@ public class MainPlayerController : UseInputController
     {
         if (collision.gameObject.CompareTag("AttackCol"))
         {
-
+            Debug.Log("Player attacked!");
+        }
+    }
+    public void OnDamageCheck()
+    {
+        if (GetComponent<DamagableEntity>().GetCurrentHealth() < 1)
+        {
+            OnDeathEvent.Invoke(false);
         }
     }
 }
