@@ -9,9 +9,11 @@ public class LobbySelectObjectiveManager : MonoBehaviour
     public List<GameObject> objectiveSlots;
     List<LobbySelectionObjective> selectionObjects;
     int selectedindex;
+    InteractableSceneSwitcher iss;
     // Start is called before the first frame update
     void Start()
     {
+        iss = GameObject.FindFirstObjectByType<InteractableSceneSwitcher>();
         selectionObjects = new List<LobbySelectionObjective>();
         for(int i = 0; i < objectiveSlots.Count; i++)
         {
@@ -26,6 +28,8 @@ public class LobbySelectObjectiveManager : MonoBehaviour
     }
     void OnObjectiveSelected(int index)
     {
+        if (!iss.isInteractable)
+            iss.isInteractable = true;
         for(int i = 0; i < objectiveSlots.Count; i++)
         {
             selectionObjects[i].DeSelect();

@@ -124,8 +124,8 @@ public class MainPlayerController : UseInputController
     {
         Vector2 headAngle = new Vector2(verticalOrientation, horizontalOrientation);
         integratedMovementController.UpdateController(deltaTime);
-        integratedMovementController.RotatePlayer(horizontalOrientation);
-        mainPlayerCameraController.RotateHeadXAxis(verticalOrientation);
+        integratedMovementController.RotatePlayer(horizontalOrientation * Time.timeScale);
+        mainPlayerCameraController.RotateHeadXAxis(verticalOrientation * Time.timeScale);
         // plan: if maxFootstepTimer is > -1, then wait until footstepTimer is > maxFootstepTimer. when it does, emit 1 sound. 
         if (maxFootstepTimer > -1)
         {
@@ -147,5 +147,12 @@ public class MainPlayerController : UseInputController
     {
         Camera.main.transform.SetParent(cameraHolderSlot.transform);
         Camera.main.transform.localPosition = Vector3.zero;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("AttackCol"))
+        {
+
+        }
     }
 }

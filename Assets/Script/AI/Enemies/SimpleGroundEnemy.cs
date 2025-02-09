@@ -225,6 +225,7 @@ public class SimpleGroundEnemy : Enemy, ISoundListener
                     Debug.Log("Change state: Chase");
                     break;
                 case EnemyState.STATE_DEAD:
+                    OnDeath();
                     animator.CrossFade("Dead", 0.05f);
                     movementController.StopNavigation();
                     StopAllCoroutines();

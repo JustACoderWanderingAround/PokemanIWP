@@ -12,6 +12,37 @@ public class EnemyManager : MonoBehaviour
     int numberToSpawn;
     [SerializeField]
     GameObject enemySlot;
+    [SerializeField]
+    SoundGenerator stingNoiseGenerator;
+    [SerializeField]
+    List<AudioClip> stings;
+    List<Enemy> enemies;
+    int deadEnemies;
+    [SerializeField]
+    float maxSpawnTimer = 30.0f;
+    float spawnTimer;
+    private void Start()
+    {
+        spawnTimer = maxSpawnTimer;
+    }
+    private void Update()
+    {
+        if (deadEnemies > enemies.Count / 4)
+        {
+            if (spawnTimer > 0)
+            {
+                spawnTimer -= Time.deltaTime;
+            }
+            else
+            {
+                int randomNum = Random.Range(0, 3);
+                for(int i = 0; i < randomNum; ++i)
+                {
+                    int randomLocIndex = Random.Range(0, 3);
+                }
+            }
+        }
+    }
     public void SpawnEnemies(Transform[] potentialLocations)
     {
         // Validate inputs
@@ -67,6 +98,16 @@ public class EnemyManager : MonoBehaviour
             // Instantiate the chosen enemy at the spawn location
             Enemy chosenEnemy = spawnableEnemies[chosenEnemyIndex];
             Instantiate(chosenEnemy.gameObject, spawnLocation, Quaternion.identity, enemySlot.transform);
+            enemies.Add(chosenEnemy);
+
         }
+    }
+    public void OnEnemySeesPlayer()
+    {
+        stingNoiseGenerator.PlaySoundOnce(stings[Random.Range(0, stings.Count)]);
+    }
+    public void OnEnemyDied()
+    {
+        deadEnemies++;
     }
 }

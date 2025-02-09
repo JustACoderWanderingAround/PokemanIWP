@@ -80,8 +80,8 @@ public class PlayerIntegratedMovementController : UseInputController
             if (movementCommand != null)
             {
                 // set horizontal and vertical axes vals according to latest command
-                horizontal = Mathf.Abs(movementCommand.HorizontalAxis) > 0.999 ? movementCommand.HorizontalAxis : 0;
-                vertical = movementCommand.VerticalAxis;
+                horizontal = Mathf.Abs(movementCommand.HorizontalAxis) > 0.999 ? movementCommand.HorizontalAxis*Time.timeScale : 0;
+                vertical = movementCommand.VerticalAxis * Time.timeScale;
                 //Debug.Log("ReadCommandMA: H " + horizontal + " V "+ vertical);
             }
         }
