@@ -38,6 +38,8 @@ public class MainPlayerController : UseInputController
     private Vector2 orientation;
     public KeyCode runKey = KeyCode.LeftShift;
     public KeyCode interactableKey = KeyCode.F;
+    float horizontal;
+    float vertical;
 
     public enum MovementState
     {
@@ -60,8 +62,9 @@ public class MainPlayerController : UseInputController
         {
             MovementAxisCommand mac = (cmd as MovementAxisCommand);
             // set horizontal and vertical axes vals according to latest command
-            float horizontal = Mathf.Abs(mac.HorizontalAxis) > 0.999 ? mac.HorizontalAxis : 0;
-            if (mac.VerticalAxis != 0 || horizontal != 0)
+            horizontal = Mathf.Abs(mac.HorizontalAxis) > 0.999 ? mac.HorizontalAxis : 0;
+            vertical = mac.VerticalAxis;
+            if (vertical != 0 || horizontal != 0)
             {
                 switch (moveState)
                 {
@@ -128,19 +131,22 @@ public class MainPlayerController : UseInputController
         integratedMovementController.RotatePlayer(horizontalOrientation * Time.timeScale);
         mainPlayerCameraController.RotateHeadXAxis(verticalOrientation * Time.timeScale);
         // plan: if maxFootstepTimer is > -1, then wait until footstepTimer is > maxFootstepTimer. when it does, emit 1 sound. 
-        if (maxFootstepTimer > -1)
+        if (horizontal > 0 || vertical > 0)
         {
-            footstepTimer += Time.deltaTime;
-            if (footstepTimer > maxFootstepTimer)
+            if (maxFootstepTimer > -1)
             {
-                soundGenerator.PlaySoundOnce(0);
-                ptsc.CheckFootStep();
+                footstepTimer += Time.deltaTime;
+                if (footstepTimer > maxFootstepTimer)
+                {
+                    soundGenerator.PlaySoundOnce(0);
+                    ptsc.CheckFootStep();
+                    footstepTimer = 0;
+                }
+            }
+            else
+            {
                 footstepTimer = 0;
             }
-        }
-        else
-        {
-            footstepTimer = 0;
         }
 
     }

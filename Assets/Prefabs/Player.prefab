@@ -59,7 +59,7 @@ MonoBehaviour:
   playerHandController: {fileID: 3252378079614052428}
   data: {fileID: 3787461988646790523}
   soundGenerator: {fileID: 8947487854218680974}
-  runFootstepFrequency: 0
+  runFootstepFrequency: 0.35
   walkFootstepFrequency: 0.75
   ptsc: {fileID: 5511386416563182605}
   pi: {fileID: 2912433278958246892}

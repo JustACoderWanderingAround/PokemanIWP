@@ -5,6 +5,10 @@ using UnityEngine;
 public class DetectibleSoundSO : ScriptableObject
 {
     public string soundName;
-    public AudioClip clip;
+    public List<AudioClip> clips;
+    public AudioClip clip
+    {
+        get { return clips[Random.Range(0, clips.Count)]; }
+    }
     public float detectionRadius;
 }

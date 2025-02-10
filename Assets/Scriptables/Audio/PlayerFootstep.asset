@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: PlayerFootstep
   m_EditorClassIdentifier: 
   soundName: Default Player Footsteps
-  clip: {fileID: 8300000, guid: 4e2a284fc8fc0c84584fa698ce94470a, type: 3}
+  clips:
+  - {fileID: 8300000, guid: 4e2a284fc8fc0c84584fa698ce94470a, type: 3}
+  - {fileID: 8300000, guid: 91aaad77d6c49054ba4eb774be4f465a, type: 3}
+  - {fileID: 8300000, guid: 100d7ba02a177dd439e4c89b8240b2d5, type: 3}
+  - {fileID: 8300000, guid: 3e0a877604405cf42b7fdc11e3a1a49e, type: 3}
+  - {fileID: 8300000, guid: 2518a98d7f536844fa4851ddc61aebc9, type: 3}
   detectionRadius: 0.5

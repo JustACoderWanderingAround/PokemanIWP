@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: WaterfootstepSound
   m_EditorClassIdentifier: 
   soundName: Water footstep splash
-  clip: {fileID: 8300000, guid: c73da127865b97f4ca361c667665e932, type: 3}
+  clips:
+  - {fileID: 8300000, guid: da3151ebe2d3cc94b9d7acb9035bd533, type: 3}
+  - {fileID: 8300000, guid: 8cde1df23691282489ddbda991e2fb3d, type: 3}
+  - {fileID: 8300000, guid: 45cc371f848567b40923ea35da2f5a9b, type: 3}
+  - {fileID: 8300000, guid: 0d102a8ccc40d33458839a62eebb6e71, type: 3}
+  - {fileID: 8300000, guid: c73da127865b97f4ca361c667665e932, type: 3}
   detectionRadius: 5

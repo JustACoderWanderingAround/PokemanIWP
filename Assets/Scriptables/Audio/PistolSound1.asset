@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: PistolSound1
   m_EditorClassIdentifier: 
   soundName: PistolSound
-  clip: {fileID: 8300000, guid: b6e9862ccec214741aab58628289d084, type: 3}
+  clips:
+  - {fileID: 8300000, guid: b6e9862ccec214741aab58628289d084, type: 3}
   detectionRadius: 6
